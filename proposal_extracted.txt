@@ -1,0 +1,2052 @@
+II
+
+
+
+
+      Evaluasi Kapabilitas Deteksi Anti-Spyware terhadap Packer
+                         Spyware Mode Stealth
+
+
+
+
+                         Laporan Tugas Akhir
+
+
+
+              Disusun sebagai syarat kelulusan tingkat sarjana
+
+
+
+
+                                   Oleh
+                            Nathaniel Liady
+                            NIM : 18222114
+
+
+
+
+     PROGRAM STUDI SISTEM DAN TEKNOLOGI INFORMASI
+       SEKOLAH TEKNIK ELEKTRO DAN INFORMATIKA
+                INSTITUT TEKNOLOGI BANDUNG
+                           <Bulan> <Tahun>
+II
+
+
+
+
+     Evaluasi Kapabilitas Deteksi Anti-Spyware terhadap Packer
+
+                         Spyware Mode Stealth
+
+
+
+
+                          Laporan Tugas Akhir
+
+
+
+                                    Oleh
+                             Nathaniel Liady
+                              NIM : 1822114
+           Program Studi Sistem dan Teknologi Informasi
+                   Sekolah Teknik Elektro dan Informatika
+                         Institut Teknologi Bandung
+
+
+
+
+           Telah disetujui dan disahkan sebagai Laporan Tugas Akhir
+                     di Bandung, pada tanggal <tanggal>
+
+
+
+
+                                Pembimbing,
+
+
+
+
+                       <Nama dan Gelar Pembimbing>
+                           NIP <NIP Pembimbing>
+II
+
+
+
+
+     Evaluasi Kapabilitas Deteksi Anti-Spyware terhadap Packer
+                          Spyware Mode Stealth
+
+
+
+
+                           Laporan Tugas Akhir
+
+
+
+                                     Oleh
+                              Nathaniel LIady
+                              NIM : 18222114
+            Program Studi Sistem dan Teknologi Informasi
+                    Sekolah Teknik Elektro dan Informatika
+                          Institut Teknologi Bandung
+
+
+
+
+            Telah disetujui dan disahkan sebagai Laporan Tugas Akhir
+                      di Bandung, pada tanggal <tanggal>
+
+
+
+
+             Pembimbing I,                          Pembimbing II,
+
+
+
+
+     <Nama dan Gelar Pembimbing I>          <Nama dan Gelar Pembimbing II>
+        NIP <NIP Pembimbing I>                 NIP <NIP Pembimbing II>
+II
+II
+
+
+
+
+                        LEMBAR PERNYATAAN
+
+
+
+Dengan ini saya menyatakan bahwa:
+
+1.​ Pengerjaan dan penulisan Laporan Tugas Akhir ini dilakukan tanpa
+     menggunakan bantuan yang tidak dibenarkan.
+2.​ Segala bentuk kutipan dan acuan terhadap tulisan orang lain yang digunakan
+     di dalam penyusunan laporan tugas akhir ini telah dituliskan dengan baik dan
+     benar.
+3.​ Laporan Tugas Akhir ini belum pernah diajukan pada program pendidikan di
+     perguruan tinggi mana pun.
+
+Jika terbukti melanggar hal-hal di atas, saya bersedia dikenakan sanksi sesuai
+dengan Peraturan Rektor ITB No. 257 tahun 2019 tentang Penegakan Norma
+Akademik dan Kemahasiswaan Institut Teknologi Bandung.
+
+
+
+Bandung, <tanggal>
+
+
+
+
+<Mahasiswa>
+NIM <NIM>
+II
+
+
+
+
+                                  ABSTRAK
+
+
+<CONTOH JUDUL: PENGEMBANGAN SISTEM INFORMASI
+
+              DI PUSKESMAS DAERAH PEDESAAN>
+
+                                         Oleh
+
+                            <NAMA MAHASISWA>
+
+                          NIM : <NIM MAHASISWA>
+
+Abstrak berisi ringkasan apa yang telah dikerjakan dalam tugas akhir. Ada
+   beberapa hal yang perlu diperhatikan dalam penulisan abstrak. Pertama,
+   abstrak harus memuat permasalahan yang dikaji, metode/teknik yang
+   digunakan untuk menyelesaikan masalah, hasil yang dicapai / evaluasi kajian,
+   kesimpulan yang diperoleh, dan kata kunci. Kedua, cara penulisannya harus
+   padat dan terarah. Setiap kalimat harus dapat memberikan informasi sebanyak
+   dan setepat mungkin, mudah dibaca dan dimengerti. Panjang ringkasan
+   dibatasi maksimal 300 kata dan ditulis dengan satu spasi. Panjang ringkasan
+   dibatasi maksimal 300 kata dan ditulis dengan satu spasi.
+
+Kata kunci: ringkasan, singkat, padat.
+II
+
+
+
+                             KATA PENGANTAR
+
+
+
+
+Gunakan bagian ini untuk memberikan ucapan terima kasih kepada semua pihak
+yang secara langsung atau tidak langsung membantu penyelesaian tugas akhir,
+termasuk pemberi beasiswa jika ada. Utamakan untuk memberikan ucapan terima
+kasih kepada tim pembimbing tugas akhir dan staf pengajar atau pihak program
+studi, bahkan sebelum mengucapkan terima kasih kepada keluarga. Ucapan terima
+kasih sebaiknya bukan hanya menyebutkan nama orang saja, tetapi juga
+memberikan penjelasan bagaimana bentuk bantuan/dukungan yang diberikan.
+Gunakan bahasa yang baik dan sopan serta memberikan kesan yang enak untuk
+dibaca. Sebagai contoh: “Tidak lupa saya ucapkan terima kasih kepada teman
+dekat saya, Tito, yang sejak satu tahun terakhir ini selalu memberikan semangat
+dan mengingatkan saya apabila lengah dalam mengerjakan Tugas Akhir ini. Tito
+juga banyak membantu mengoreksi format dan layout tulisan. Apresiasi saya
+sampaikan kepada pemberi beasiswa, Yayasan Beasiswa, yang telah memberikan
+bantuan dana kuliah dan biaya hidup selama dua tahun. Bantuan dana tersebut
+sangat membantu saya untuk dapat lebih fokus dalam menyelesaikan pendidikan
+saya. ....”. Ucapan permintaan maaf karena kekurangsempurnaan hasil Tugas
+Akhir tidak perlu ditulis.
+II
+
+
+
+
+                                                   DAFTAR ISI
+
+
+
+
+ABSTRAK.............................................................................................................. v
+
+DAFTAR ISI.........................................................................................................vii
+
+DAFTAR LAMPIRAN.......................................................................................... x
+
+DAFTAR GAMBAR.............................................................................................xi
+
+DAFTAR TABEL.................................................................................................xii
+
+BAB I PENDAHULUAN.......................................................................................1
+
+     I.1​     Latar Belakang............................................................................................1
+
+     I.2​     Rumusan Masalah.......................................................................................1
+
+     I.3​     Tujuan......................................................................................................... 2
+
+     I.4​     Batasan Masalah......................................................................................... 2
+
+     I.5​     Metodologi..................................................................................................2
+
+BAB II STUDI LITERATUR............................................................................... 4
+
+     II.1​ Judul A........................................................................................................4
+
+        II.1.1​ Judul A1............................................................................................... 4
+
+        II.1.2​ Judul A2............................................................................................... 4
+
+     II.2​ Judul B........................................................................................................ 5
+
+     II.3​ Judul Subbab...............................................................................................5
+
+     II.4​ Judul Subbab...............................................................................................5
+II
+
+
+
+     II.5​ Judul Subbab...............................................................................................5
+
+        II.5.1​ Contoh Subbab.....................................................................................5
+
+BAB III ANALISIS MASALAH.......................................................................... 8
+
+     III.1​     Analisis Kondisi Saat Ini.........................................................................8
+
+     III.2​     Analisis Kebutuhan............................................................................... 10
+
+        III.2.1​      Identifikasi Masalah Pengguna.......................................................10
+
+        III.2.2​      Kebutuhan Fungsional.................................................................... 12
+
+        III.2.3​      Kebutuhan Nonfungsional.............................................................. 13
+
+     III.3​     Analisis Pemilihan Solusi..................................................................... 15
+
+        III.3.1​      Alternatif Solusi..............................................................................15
+
+        III.3.2​      Analisis Penentuan Solusi.............................................................. 15
+
+BAB IV DESAIN SOLUSI.................................................................................. 16
+
+     IV.1​      Tahapan Desain..................................................................................... 16
+
+        IV.1.1​       Tahapan Pertama.............................................................................17
+
+        IV.1.2​       Tahapan Kedua............................................................................... 17
+
+        IV.1.3​       Tahapan Ketiga............................................................................... 17
+
+     IV.2​      Hasil Desain.......................................................................................... 17
+
+BAB V EVALUASI.............................................................................................. 18
+
+     V.1​ Cara Melakukan Evaluasi......................................................................... 18
+
+        V.1.1​ Konfigurasi Sistem.............................................................................18
+
+        V.1.2​ Skenario Pengujian............................................................................ 18
+II
+
+
+
+     V.2​ Hasil Evaluasi........................................................................................... 18
+
+     V.3​ Diskusi...................................................................................................... 18
+
+BAB VI KESIMPULAN DAN SARAN............................................................. 19
+
+     VI.1​       Kesimpulan........................................................................................... 19
+
+     VI.2​       Saran......................................................................................................19
+
+DAFTAR PUSTAKA........................................................................................... 20
+
+LAMPIRAN A JUDUL LAMPIRAN............................................................... 21
+II
+
+
+
+
+                                      DAFTAR LAMPIRAN
+
+
+BAB I PENDAHULUAN.........................................................................................1
+  I.1 Latar Belakang............................................................................................ 1
+  I.2 Rumusan Masalah.......................................................................................2
+  I.3 Tujuan..........................................................................................................3
+  I.4 Batasan Masalah.........................................................................................4
+  I.5 Metodologi................................................................................................... 4
+BAB II STUDI LITERATUR....................................................................................8
+  II.1 Information Gathering.................................................................................8
+  II.2 Social Engineering....................................................................................10
+  II.3 Cyber Security.......................................................................................... 11
+  II.4 Anti-Malware.............................................................................................12
+  II.5 Malware.................................................................................................... 14
+  II.6 Spyware....................................................................................................16
+BAB III ANALISIS MASALAH.............................................................................19
+       III.1 Analisis Kondisi Saat Ini.................................................................... 19
+            III.1.1 Masalah Kerentanan dan Ketertinggalan Anti-Malware
+            Konvensional...................................................................................... 19
+            III.1.1.1 Keterbatasan Deteksi Berbasis Tanda Tangan
+            (Signature-Based)...............................................................................19
+            III.1.1.2 Gagal Menganalisis Code Bytecode dan Fileless Execution.20
+            III.1.1.3 Efektivitas Teknik Evasi Sederhana.......................................20
+            III.1.1.4 Kurangnya Deteksi Proaktif Terhadap Arsitektur Serangan.. 20
+            III.1.2 Gap Analysis Celah Deteksi Packer Spyware Mode Stealth....21
+       III.2 Analisis Kebutuhan............................................................................22
+            III.2.1 Kebutuhan Fungsional..............................................................22
+            III.2.2 Kebutuhan Nonfungsional........................................................ 23
+       III.3 Analisis Pemilihan Solusi...................................................................23
+            III.3.1 Alternatif Solusi.........................................................................24
+                 III.3.1.1 Rust................................................................................. 24
+                 III.3.1.2 C/C++.............................................................................. 25
+                 III.3.1.3 Python..............................................................................25
+            III.3.2 Analisis Penentuan Solusi........................................................ 25
+BAB IV DESAIN SOLUSI.................................................................................... 32
+       IV.1 Klarifikasi Tugas Desain dan Persyaratan Solusi.............................. 32
+II
+
+
+
+
+          IV.1.1 Penentuan Key Factors dan Intended Impact Model............... 33
+          IV.1.2 Desain Artefak Packer.............................................................. 34
+              IV.1.2.2 Modul Packer: Teknik Obfuscation dan Enkripsi..............35
+          IV.1.3 Rancangan Lingkungan Pengujian...........................................35
+          IV.1.4 Spesifikasi Mesin Uji.................................................................35
+      IV.2 Konseptualisasi Arsitektur Prototipe..................................................36
+          IV.2.1 Analisis Fungsional Prototipe................................................... 36
+          IV.2.2 Pemilihan Konsep Solusi dan Teknik Kunci..............................37
+          IV.2.3 Pembedaan Intended Support dan Actual Support.................. 37
+      IV.3 Realisasi dan Dokumentasi Actual Support...................................... 38
+          IV.3.1 Desain Modul Packer dan Obfuscation.................................... 38
+          IV.3.2 Desain Modul Loader dan Eksekusi Fileless............................38
+          IV.3.3 Actual Introduction Plan............................................................39
+      IV.4 Verifikasi Internal dan Perencanaan Evaluasi Awal.......................... 39
+          IV.4.1 Support Evaluation................................................................... 39
+          IV.4.2 Actual Impact Model dan Kriteria Keberhasilan Akhir.............. 40
+          IV.4.3 Outline Evaluation Plan............................................................ 40
+BAB V RENCANA SELANJUTNYA.................................................................... 41
+      V.1 Rencana Implementasi.......................................................................41
+          V.1.1 Langkah-langkah Implementasi.................................................41
+      V.2 Rencana Evaluasi...............................................................................42
+          V.2.1 Metode Pengujian: Studi Kuasi-Eksperimental Komparatif....... 42
+          V.2.2 Kriteria Keberhasilan................................................................. 43
+          V.2.3 Analisis Risiko........................................................................... 44
+II
+
+
+
+
+                           DAFTAR GAMBAR
+
+
+
+Gambar II.1 Tahapan konstruksi koleksi retorik kalimat​   6
+II
+
+
+
+
+                          DAFTAR TABEL
+
+
+Tabel II.1 Pengelompokan nomor Tag MARC-21​   7
+II
+
+
+
+
+            DAFTAR RUMUS
+
+
+
+
+Rumus                            I.1
+………………………………………………………………………….1
+II
+
+
+
+
+                                BAB I​ ​
+
+                            PENDAHULUAN
+
+
+
+I.1​   Latar Belakang
+
+Ancaman siber saat ini telah berevolusi dari malware tradisional berbasis file
+menjadi serangan yang lebih canggih dan tersembunyi, seperti fileless malware
+dan spyware. Malware jenis ini dirancang khusus untuk menghindari deteksi
+dengan memanfaatkan fitur-fitur sah dari sistem operasi, seperti PowerShell dan
+Windows Management Instrumentation (WMI), untuk menjalankan kode
+berbahaya langsung di memori tanpa menulis file apapun ke disk. Karena tidak
+memiliki file yang dapat dideteksi oleh antivirus berbasis tanda tangan
+(signature-based), serangan ini seringkali luput dari pantauan sistem keamanan
+tradisional.
+
+Kecanggihan ini membuat fileless malware menjadi ancaman yang sangat
+berbahaya bagi perusahaan manapun karena kemampuannya untuk bertahan lama
+dan menghindari solusi antivirus yang ada. Menurut penelitian, anti-malware
+modern masih memiliki kelemahan signifikan, bahkan terhadap malware "lama"
+yang dimodifikasi dengan trik baru. Misalnya, sebuah studi pada tahun 2023
+menemukan bahwa hampir separuh dari 12 mesin antivirus yang diuji hanya
+mampu mendeteksi kurang dari setengah varian malware yang disamarkan.
+Penelitian lain juga menunjukkan bahwa metode seperti enkripsi, injeksi proses,
+dan penambahan data sampah ke file eksekusi (junk data) terbukti sangat efektif
+dalam menghindari deteksi. Teknik ini bahkan dapat membingungkan antivirus
+gratis dan berbayar, membuat mereka gagal mendeteksi atau mengkarantina file
+yang berbahaya.
+II
+
+
+
+Situasi ini semakin diperparah dengan temuan bahwa banyak alat keamanan,
+termasuk anti-malware, sering kali gagal menganalisis kode yang dikemas
+menggunakan alat populer seperti PyInstaller untuk bahasa Python. Hal ini terjadi
+karena antivirus tidak dapat memahami konten kode bita Python (Python
+bytecode), yang secara efektif menyamarkan skrip berbahaya dari analisis statis.
+Kurangnya deteksi yang efektif oleh solusi keamanan yang ada, termasuk
+anti-malware dan EDRs (Endpoint Detection and Response), menciptakan celah
+besar yang dieksploitasi oleh kelompok penjahat siber dan APTs (Advanced
+Persistent Threats), yang semakin sering menggunakan skrip fileless PowerShell
+untuk menghindari pertahanan.
+
+I.2​    Rumusan Masalah
+
+Berdasarkan latar belakang di atas, maka rumusan masalah dalam penelitian ini
+adalah:
+
+       1.​ Bagaimana kapabilitas sistem anti-malware dalam mendeteksi aktivitas
+          tersembunyi dari perilaku spyware mode stealth pada lingkungan uji
+          terkontrol?
+
+       2.​ Bagaimana pendekatan paling efektif untuk menyisipkan spyware mode
+          stealth ke sistem?
+
+       3.​ Bagaimana teknik penyamaran (obfuscation) dan metode eksekusi
+          berbasis memori (in-memory execution) mempengaruhi kemampuan
+          deteksi produk anti-malware saat ini?
+
+       4.​ Apa saja celah keamanan dan kelemahan spesifik yang ditemukan pada
+          produk anti-malware dan EDR ketika dihadapkan pada serangan spyware
+          kustom yang dirancang untuk menghindari deteksi?
+II
+
+
+
+I.3​     Tujuan
+
+Secara umum, tujuan dari pelaksanaan tugas akhir ini adalah untuk mengukur dan
+mengevaluasi efektivitas produk anti-malware dan EDR komersial dalam
+mendeteksi spyware mode stealth yang dikembangkan dengan teknik-teknik
+penghindaran deteksi modern.
+
+Secara spesifik, tujuan yang ingin dicapai adalah:
+
+       1.​ Menganalisis dan mengidentifikasi teknik-teknik evasi yang paling efektif
+          digunakan oleh spyware untuk menghindari deteksi dari anti-malware dan
+          EDR.
+       2.​ Mengembangkan sebuah prototipe spyware mode stealth, termasuk reverse
+          shell fileless PowerShell, yang menggabungkan teknik-teknik evasif yang
+          telah diidentifikasi.
+       3.​ Melakukan pengujian komparatif prototipe spyware pada sejumlah produk
+          anti-malware dan EDR komersial untuk mengevaluasi tingkat keberhasilan
+          dan kegagalan deteksi.
+       4.​ Mendokumentasikan dan mempublikasikan celah keamanan yang
+          ditemukan pada produk anti-malware, serta menyusun rekomendasi
+          mitigasi untuk pengembangan sistem pertahanan yang lebih adaptif dan
+          tangguh.
+
+Kriteria keberhasilan tugas akhir ini meliputi:
+
+       ●​ Prototipe spyware berhasil dikembangkan dengan setidaknya dua teknik
+          evasif (misalnya, enkripsi dan obfuscation) dan mampu menghindari
+          deteksi oleh salah satu produk anti-malware yang diuji.
+       ●​ Hasil pengujian menunjukkan bahwa ada perbedaan signifikan dalam
+          tingkat deteksi antara format skrip dan anti-malware yang berbeda.
+II
+
+
+
+Kedua kriteria tersebut menjadi indikator utama untuk menilai efektivitas
+penelitian, serta menunjukkan sejauh mana solusi yang ditawarkan mampu
+mengungkap kelemahan sistem keamanan siber saat ini. Pencapaian terhadap
+kriteria ini diharapkan dapat menjadi dasar pertimbangan dalam peningkatan
+kapabilitas deteksi anti-malware dan EDR di masa depan
+
+
+
+
+I.4​     Batasan Masalah
+
+Batasan dalam pengerjaan Tugas Akhir ini dibagi menjadi tiga: Batasan umum,
+       batasan desain pengujian, dan batasan implementasi pengujian. Batasan
+       masalah secara umum dari Tugas Akhir ini dapat dibagi menjadi dua hal.
+       Pertama, pengujian akan dilakukan dalam controlled environment dengan
+       skenario yang sudah disiapkan sebagai simulasi. Kedua, pengujian hanya
+       dilakukan sampai tahap initial access untuk menginfiltrasi target.
+
+I.5​     Metodologi
+
+Metodologi penelitian yang digunakan adalah Design Research Methodology
+       (DRM) dikenalkan oleh Lucienne Blessing dan Amaresh Chakrabarti
+       [BLE09]. DRM dibuat dengan tujuan supaya riset dilakukan dengan lebih
+       efektif dan efisien. Metodologi ini terdiri dari empat tahap utama yaitu
+       Research Clarification (RC), Descriptive Study I (DS-I), Perspective Study
+       (PS), dan Descriptive Study II (DS-II). Berikut ini adalah gambaran dari
+       kerangka kerja DRM.
+II
+
+
+
+
+                           Gambar I.1 DRM Framework
+
+     1.​ Research Clarification (RC)
+
+Fase ini akan dimulai dengan identifikasi masalah utama: adanya celah yang
+     signifikan antara teknik serangan siber modern, khususnya spyware mode
+     stealth, dan kemampuan deteksi solusi keamanan yang ada. Pengumpulan data
+     awal akan dilakukan melalui tinjauan literatur komprehensif, termasuk laporan
+     industri, artikel akademis, dan berita, untuk memahami lanskap ancaman dan
+     teknik evasif yang digunakan untuk menghindari deteksi anti-malware dan
+     EDR. Hasil dari fase ini adalah rumusan masalah yang jelas dan terperinci,
+     yang akan menjadi landasan untuk seluruh penelitian.
+
+     2.​ Descriptive Study I
+
+Pada fase ini, analisis mendalam terhadap masalah yang telah dirumuskan akan
+     dilakukan dengan mengumpulkan data dan informasi yang relevan. Ini
+II
+
+
+
+     mencakup analisis rinci mengenai teknik-teknik evasi canggih, seperti
+     penggunaan PowerShell dan obfuscation, untuk memahami bagaimana
+     ancaman ini bekerja dan mengapa mereka sulit dideteksi. Selain itu,
+     studi-studi terdahulu yang telah menguji bypass antivirus akan dikaji untuk
+     mendapatkan wawasan mengenai metode dan potensi hasil. Sebagai bagian
+     penting dari fase ini, alur kerja atau arsitektur teknis dari serangan spyware
+     akan disusun, yang akan menjelaskan fase-fase seperti Initial Access,
+     Establish Foothold & Persistence, Data Collection, dan Exfiltration. Diagram
+     alur yang telah ada akan menjadi representasi visual dari arsitektur ini.
+
+     3.​ Prescriptive Study
+
+Fase ini merupakan inti dari DRM, di mana solusi untuk masalah yang telah
+     didefinisikan akan dirancang dan dikembangkan. Artefak yang akan dibuat
+     adalah prototipe spyware mode stealth dengan fungsi-fungsi spesifik seperti
+     keylogging dan screen capture. Desain prototipe akan mengintegrasikan teknik
+     evasi yang telah diidentifikasi pada fase sebelumnya, seperti enkripsi payload
+     dan penggunaan PowerShell untuk menjalankan kode langsung di memori.
+     Berbagai modul, termasuk Packer untuk menyamarkan payload.
+
+     4.​ Descriptive Study II
+
+Fase terakhir ini bertujuan untuk menguji dan mengevaluasi efektivitas solusi
+     yang telah dikembangkan. Serangkaian pengujian eksperimental akan
+     dilakukan dalam lingkungan virtual yang terisolasi untuk mengukur tingkat
+     deteksi berbagai produk anti-malware terhadap prototipe spyware. Hasil
+     pengujian akan dianalisis untuk mengidentifikasi teknik evasi mana yang
+     paling efektif dan mengapa produk keamanan tertentu gagal atau berhasil
+     dalam mendeteksi ancaman. Analisis ini akan memvalidasi temuan awal dan
+     memberikan kontribusi nyata pada pemahaman tentang kerentanan sistem
+II
+
+
+
+     keamanan modern, yang akan menjadi dasar untuk rekomendasi perbaikan dan
+     penelitian lebih lanjut.
+II
+
+
+
+
+                                  BAB II​ ​
+
+                             STUDI LITERATUR
+
+Bab ini membahas landasan teori dan kajian literatur yang relevan untuk
+     mendukung penelitian ini. Studi literatur dilakukan untuk memahami konsep,
+     teori, dan teknologi yang mendasari penelitian, termasuk information
+     gathering, social engineering, cyber security, anti-malware, malware, dan
+     spyware. Selain itu, kajian terhadap penelitian terdahulu yang berkaitan juga
+     dilakukan untuk mengidentifikasi solusi yang sudah ada, celah penelitian,
+     serta pendekatan yang dapat diadopsi atau dikembangkan lebih lanjut. Hasil
+     dari studi literatur ini akan menjadi dasar dalam merumuskan solusi desain
+     yang diusulkan dalam penelitian ini.
+
+
+
+
+II.1​ Information Gathering
+
+Information gathering merupakan tahap awal yang sangat penting dalam proses
+     pengujian keamanan siber maupun kegiatan intelijen digital. Tahap ini
+     bertujuan untuk mengumpulkan informasi sebanyak mungkin mengenai target,
+     baik berupa sistem, jaringan, organisasi, maupun individu, dengan tujuan
+     memahami     permukaan serangan        yang tersedia. Verma dkk. (2021)
+     menjelaskan bahwa kegiatan information gathering dilakukan untuk
+     memetakan aset dan mengidentifikasi potensi kerentanan sebelum serangan
+     atau pengujian keamanan dilakukan. Secara umum, proses ini terbagi menjadi
+     dua pendekatan utama, yaitu pasif dan aktif. Pengumpulan informasi secara
+     pasif dilakukan tanpa melakukan interaksi langsung dengan sistem target,
+     misalnya dengan memanfaatkan data publik dari mesin pencari, basis data
+     domain, atau sumber intelijen terbuka (Open Source Intelligence/OSINT).
+II
+
+
+
+     Sebaliknya, pendekatan aktif melibatkan aktivitas langsung seperti port
+     scanning, service enumeration, atau banner grabbing untuk memperoleh data
+     teknis yang lebih spesifik, namun metode ini berisiko lebih tinggi untuk
+     terdeteksi oleh sistem keamanan target.
+
+Teknik information gathering secara tradisional terdiri atas tiga tahap utama, yaitu
+     footprinting, scanning, dan enumeration. Pada tahap footprinting, peneliti
+     mengumpulkan informasi dasar seperti alamat IP, nama domain, sistem
+     operasi, serta teknologi yang digunakan. Tahap scanning bertujuan untuk
+     menemukan host aktif dan port terbuka, sementara enumeration melibatkan
+     eksplorasi lebih dalam terhadap layanan, pengguna, atau konfigurasi sistem
+     yang dapat dimanfaatkan dalam tahap berikutnya. Seiring berkembangnya
+     teknologi, berbagai alat bantu seperti Nmap, Wireshark, The Harvester,
+     Netcraft, dan Metagoofil banyak digunakan untuk mendukung proses
+     pengumpulan informasi ini. Studi Verma dkk. (2021) juga menyoroti
+     pentingnya    kombinasi    antara   OSINT     dan    pemindaian aktif untuk
+     meningkatkan efektivitas deteksi potensi risiko, meskipun penggunaan metode
+     ini harus dibatasi dalam ruang lingkup yang legal dan etis.
+
+Selain aspek teknis, penelitian terbaru menekankan pentingnya aspek etika dan
+     hukum dalam kegiatan information gathering. Pengumpulan data secara
+     berlebihan atau tanpa izin dapat melanggar privasi individu maupun regulasi
+     keamanan informasi. Oleh karena itu, para peneliti dianjurkan untuk
+     melakukan kegiatan ini dalam lingkungan laboratorium yang terisolasi,
+     dengan batasan yang jelas dan persetujuan dari pihak terkait. Di sisi lain, hasil
+     pengumpulan informasi juga harus dikelola dengan prinsip responsible
+     disclosure, yaitu melaporkan temuan yang berpotensi sensitif kepada pihak
+     yang berwenang tanpa menyebarkannya secara publik. Dengan demikian,
+     information gathering tidak hanya berfungsi sebagai tahapan teknis untuk
+     mendukung pengujian keamanan, tetapi juga sebagai fondasi penting dalam
+II
+
+
+
+     membangun kesadaran, kebijakan, dan strategi pertahanan siber yang lebih
+     komprehensif.
+
+
+
+II.2​ Social Engineering
+
+Social engineering adalah teknik manipulasi psikologis yang mengeksploitasi
+     kelemahan manusia, bukan kerentanan teknis pada sistem keamanan. Dalam
+     lanskap siber yang terus berkembang, social engineering menjadi salah satu
+     ancaman paling signifikan dan efektif. Sejak tahun 2021, serangan social
+     engineering telah meningkat baik dari segi volume maupun kecanggihan,
+     dengan penjahat siber dan kelompok terorganisir mengeksploitasi bias kognitif
+     dan emosi manusia untuk menipu. Ini menjadikan faktor manusia sebagai
+     mata rantai terlemah dalam keamanan siber
+
+Penelitian terbaru mengidentifikasi berbagai metode serangan social engineering,
+     mulai dari yang sederhana hingga yang sangat canggih. Phishing, spear
+     phishing, dan whaling adalah serangan yang menggunakan email atau pesan
+     palsu yang disesuaikan untuk menipu individu atau target tingkat tinggi.
+     Serangan phishing di media sosial juga dapat menjangkau audiens yang lebih
+     luas daripada email konvensional. Selain itu, pretexting adalah ketika
+     penyerang menciptakan skenario palsu untuk mendapatkan informasi sensitif
+     atau akses, sering kali dengan menyamar sebagai rekan kerja atau figur
+     otoritas. Ada juga metode baiting yang menggunakan umpan (seperti file
+     berbahaya) atau manipulasi suara untuk memancing korban agar mengambil
+     tindakan   yang   membahayakan.      Penyerang    juga    dapat   melakukan
+     impersonation, yaitu menyamar sebagai individu yang dikenal atau dipercaya,
+     sebuah taktik yang lebih mudah dilakukan di media sosial karena
+     melimpahnya informasi korban. Untuk meningkatkan presisi dan skalabilitas,
+     penjahat siber kini juga memanfaatkan teknologi canggih seperti kecerdasan
+II
+
+
+
+     buatan (AI) dan deepfake untuk membuat serangan social engineering lebih
+     meyakinkan.
+
+Berbagai studi telah mengidentifikasi beberapa faktor yang membuat individu
+     rentan terhadap serangan social engineering. Kesadaran keamanan yang
+     rendah adalah salah satu faktor utama. Penyerang juga mengeksploitasi emosi
+     seperti ketakutan, urgensi, rasa ingin tahu, dan kepercayaan untuk mendorong
+     korban membuat keputusan yang salah. Kepercayaan berlebihan pada figur
+     otoritas juga membuat korban lebih mudah dimanipulasi. Serangan-serangan
+     ini memiliki dampak yang signifikan, termasuk kerugian finansial, kerusakan
+     reputasi, dan hilangnya data. Studi kasus skema penipuan keuangan yang
+     menargetkan Google dan Facebook menunjukkan bahwa organisasi dengan
+     sistem keamanan yang kuat pun tidak kebal terhadap social engineering.
+
+II.3​ Cyber Security
+
+Cyber security merupakan disiplin ilmu dan praktik yang berfokus pada
+     perlindungan sistem komputer, jaringan, data, serta perangkat digital dari
+     berbagai ancaman yang dapat mengganggu kerahasiaan, integritas, dan
+     ketersediaan informasi. Menurut Ainslie dkk. (2023), keamanan siber tidak
+     hanya menjadi isu teknis, melainkan juga tantangan strategis yang
+     berpengaruh terhadap pengambilan keputusan di tingkat organisasi. Dalam
+     konteks modern, setiap keputusan bisnis harus mempertimbangkan potensi
+     risiko siber, karena ancaman digital kini dapat berdampak langsung pada
+     keberlanjutan operasional dan reputasi perusahaan. Oleh karena itu, cyber
+     security mencakup kombinasi aspek teknologi, manusia, dan kebijakan
+     organisasi yang bekerja secara terpadu untuk mencegah, mendeteksi, dan
+     merespons insiden keamanan secara efektif.
+
+Komponen utama dalam cyber security meliputi perlindungan data dan privasi,
+     pengelolaan risiko, deteksi serta respons terhadap insiden, hingga penerapan
+II
+
+
+
+     Cyber Threat Intelligence (CTI) yang berfungsi untuk mengidentifikasi pola
+     serangan dan memberikan wawasan bagi pengambilan keputusan keamanan
+     (Ainslie dkk., 2023). Selain itu, munculnya ancaman baru seperti fileless
+     malware turut memperluas ruang lingkup keamanan siber. Berdasarkan
+     penelitian Sudhakar dan Kumar (2020), fileless malware beroperasi langsung
+     di memori tanpa menyimpan file berbahaya di sistem, sehingga sulit dideteksi
+     oleh antivirus tradisional yang berbasis tanda tangan. Ancaman ini
+     menunjukkan bahwa sistem pertahanan harus bergeser dari deteksi berbasis
+     file menuju pendekatan berbasis perilaku dan analisis memori.
+
+Dalam penerapannya, pendekatan holistik menjadi kunci keberhasilan manajemen
+     keamanan siber. FLECO, sebuah kerangka kerja yang dikembangkan oleh
+     Rodrigues dkk. (2024), menekankan pentingnya integrasi antara aspek
+     teknologi, tata kelola, dan budaya organisasi untuk membangun sistem
+     keamanan yang berkelanjutan. Pendekatan ini membantu organisasi dalam
+     mengukur kesiapan keamanan siber dan memperkuat koordinasi lintas
+     departemen agar setiap unit memahami tanggung jawabnya dalam menjaga
+     keamanan digital. Dengan demikian, cyber security tidak hanya berfungsi
+     untuk merespons ancaman yang terjadi, tetapi juga sebagai strategi proaktif
+     yang melibatkan seluruh komponen organisasi dalam menciptakan ketahanan
+     siber yang adaptif dan menyeluruh.
+
+II.4​ Anti-Malware
+
+Anti-malware merupakan salah satu komponen inti dalam sistem pertahanan siber
+     yang dirancang untuk mendeteksi, mencegah, dan menanggulangi perangkat
+     lunak berbahaya seperti virus, trojan, ransomware, maupun spyware. Seiring
+     berkembangnya kompleksitas serangan dan munculnya varian malware yang
+     memanfaatkan teknik penyamaran (obfuscation), efektivitas sistem deteksi
+     tradisional berbasis tanda tangan mengalami penurunan signifikan. Menurut
+II
+
+
+
+     Tayyab dkk. (2022), pendekatan modern dalam deteksi malware harus
+     menggabungkan analisis statis dan dinamis untuk meningkatkan kemampuan
+     identifikasi terhadap ancaman baru. Melalui penerapan deep learning berbasis
+     analisis perilaku, penelitian mereka menunjukkan peningkatan akurasi deteksi
+     hingga lebih dari 97%, menegaskan bahwa integrasi metode pembelajaran
+     mesin dan analisis perilaku jauh lebih efisien dibanding deteksi berbasis pola
+     semata.
+
+Aboaoja dkk. (2022) menyoroti tantangan utama yang dihadapi sistem
+     anti-malware saat ini, yaitu kemampuan malware modern untuk melakukan
+     evasi terhadap mekanisme deteksi. Teknik seperti code packing, reflection,
+     dynamic code loading, hingga penggunaan fileless execution memungkinkan
+     malware beroperasi langsung di memori tanpa meninggalkan jejak file di disk,
+     sehingga sulit dideteksi oleh antivirus konvensional. Sementara itu, Artillery
+     dkk. (2024) menunjukkan bahwa malware berbasis PowerShell dengan teknik
+     obfuscation kompleks mampu melewati perlindungan Antimalware Scan
+     Interface (AMSI) pada sebagian besar produk antivirus yang diuji,
+     mengindikasikan bahwa ancaman yang beroperasi melalui skrip sistem masih
+     menjadi titik lemah utama bagi banyak solusi keamanan.
+
+Penelitian lebih lanjut oleh Akhtar dan Feng (2023) mengevaluasi sejumlah
+     algoritma machine learning seperti Random Forest, Support Vector Machine,
+     dan   XGBoost     untuk   deteksi   malware    berbasis   perilaku. Hasilnya
+     menunjukkan     bahwa     pendekatan     ensemble     learning   memberikan
+     keseimbangan terbaik antara akurasi dan tingkat false positive, terutama dalam
+     mendeteksi varian baru yang belum terdaftar pada basis data tanda tangan.
+     Hasil uji lapangan yang dilakukan oleh AVLab (2023) juga mendukung
+     temuan tersebut, dengan deteksi pre-launch (sebelum malware aktif) mencapai
+     69%, namun menurun hingga 31% setelah malware dieksekusi (post-launch),
+II
+
+
+
+     menandakan perlunya peningkatan kemampuan deteksi berbasis perilaku
+     waktu nyata.
+
+Secara keseluruhan, literatur 2021–2024 menunjukkan bahwa sistem anti-malware
+     modern harus berevolusi menuju pendekatan hibrida yang menggabungkan
+     analisis statis, dinamis, dan perilaku untuk menghadapi teknik penghindaran
+     yang semakin kompleks. Integrasi artificial intelligence dan adversarial
+     training menjadi strategi penting untuk memperkuat ketahanan model deteksi
+     terhadap serangan evasi. Dengan demikian, fokus penelitian di bidang
+     anti-malware tidak lagi sekadar pada peningkatan akurasi deteksi, tetapi juga
+     pada pengembangan sistem yang adaptif, tangguh, dan mampu bereaksi secara
+     cerdas terhadap perubahan pola ancaman di ekosistem siber yang terus
+     berevolusi.
+
+II.5​ Malware
+
+Malware merupakan salah satu ancaman utama dalam dunia keamanan siber yang
+     terus berevolusi dari generasi ke generasi. Secara umum, malware adalah
+     perangkat lunak berbahaya yang dirancang untuk menyusup, merusak, atau
+     mencuri data dari sistem komputer tanpa sepengetahuan pengguna. Sudhakar
+     dan Kumar (2020) menjelaskan bahwa evolusi malware telah bergeser dari
+     bentuk tradisional berbasis file menuju fileless malware yang beroperasi
+     sepenuhnya di memori. Jenis malware ini tidak meninggalkan jejak file di
+     sistem, sehingga sulit dideteksi oleh antivirus berbasis tanda tangan. Fileless
+     malware sering memanfaatkan komponen sah dari sistem operasi, seperti
+     Windows Management Instrumentation (WMI) dan PowerShell, untuk
+     melancarkan serangan tanpa menulis file berbahaya ke disk. Teknik ini
+     memungkinkan pelaku untuk melakukan aksi seperti reconnaissance,
+     pencurian data, dan persistensi tanpa terdeteksi oleh solusi keamanan
+     konvensional.
+II
+
+
+
+Chatzoglou dkk. (2023) menambahkan bahwa dalam “permainan kucing dan
+     tikus” antara pembuat malware dan pembuat antivirus, berbagai teknik
+     penghindaran deteksi     terus berkembang.    Teknik-teknik seperti   code
+     obfuscation, polymorphism, packing, dan process injection digunakan untuk
+     mengubah struktur dan perilaku kode agar tidak mudah dikenali. Studi mereka
+     menunjukkan bahwa dari 16 sampel malware yang diujikan dengan tujuh
+     teknik penghindaran klasik, hanya sebagian kecil antivirus yang mampu
+     mendeteksi lebih dari separuh variasi malware tersebut. Hal ini menegaskan
+     bahwa bahkan malware “lama” dengan trik penyamaran baru masih mampu
+     menembus sistem deteksi modern. Lebih jauh lagi, peneliti juga menemukan
+     bahwa penggunaan model pembelajaran mesin (ML) untuk deteksi malware
+     masih rentan terhadap serangan adversarial, di mana pembuat malware dapat
+     menghasilkan varian baru yang tampak seperti program sah.
+
+Koutsokostas dan Patsakis (2021) berfokus pada pengembangan malware stealth
+     berbasis Python yang mampu menghindari deteksi tanpa menggunakan
+     obfuscation. Mereka menemukan bahwa keterbatasan pada mesin deteksi
+     statis, seperti VirusTotal dan sandbox analisis dinamis, dapat dimanfaatkan
+     untuk menciptakan malware yang “bersih” dari hasil pemindaian puluhan
+     antivirus. Studi tersebut mengungkapkan bahwa PyInstaller—alat populer
+     untuk membungkus program Python menjadi executable—dapat dimodifikasi
+     agar menghasilkan malware yang tidak terdeteksi karena kelemahan inheren
+     dalam cara antivirus memproses bytecode Python. Selain itu, mereka
+     menemukan bahwa sandbox publik sering kali gagal mendeteksi malware
+     yang menunda eksekusi, mendeteksi lingkungan virtual, atau memeriksa
+     artefak sistem sebelum beraksi.
+
+Berdasarkan literatur tersebut, tren utama dalam penelitian malware modern
+     menyoroti bahwa ancaman kini tidak hanya berasal dari varian baru, tetapi
+     dari kemampuan malware untuk beradaptasi terhadap mekanisme pertahanan
+II
+
+
+
+     yang ada. Dengan kombinasi teknik living-off-the-land, penghindaran berbasis
+     memori, dan eksploitasi terhadap celah dalam sistem analisis otomatis,
+     malware modern semakin sulit diidentifikasi. Oleh karena itu, studi-studi ini
+     menegaskan perlunya pendekatan deteksi berbasis perilaku dan kecerdasan
+     buatan yang mampu mengenali pola aktivitas abnormal alih-alih bergantung
+     semata pada tanda tangan statis. Dengan demikian, penelitian mengenai
+     malware tidak hanya penting untuk memahami sifat serangan, tetapi juga
+     menjadi dasar dalam merancang sistem pertahanan yang lebih adaptif dan
+     tangguh terhadap ancaman siber generasi baru.
+
+
+
+II.6​ Spyware
+
+Spyware merupakan salah satu bentuk malware yang dirancang untuk memantau,
+     mengumpulkan, dan mengirimkan informasi pengguna tanpa izin atau
+     kesadaran mereka. Perangkat lunak ini biasanya berjalan secara tersembunyi
+     di latar belakang sistem dan dapat merekam aktivitas pengguna, seperti
+     penekanan tombol (keylogging), riwayat peramban, data login, serta file
+     sensitif. Dalam literatur keamanan siber, spyware sering dikategorikan sebagai
+     ancaman yang bersifat stealth, karena kemampuannya untuk beroperasi tanpa
+     menimbulkan indikasi mencolok bagi pengguna maupun sistem keamanan.
+     Menurut Koutsokostas dan Patsakis (2021), kemampuan stealth seperti ini
+     muncul karena malware modern, termasuk spyware, memanfaatkan teknik
+     penghindaran analisis dan deteksi baik dalam bentuk statis maupun dinamis.
+     Mereka menunjukkan bahwa banyak antivirus gagal mengenali kode
+     berbahaya yang dikemas menggunakan alat seperti PyInstaller karena
+     keterbatasan dalam menganalisis bytecode Python. Hal ini menyebabkan
+     sebagian besar multi-engine scanner, termasuk VirusTotal, dapat memberikan
+     hasil “bersih” terhadap file yang sebenarnya mengandung komponen spyware.
+II
+
+
+
+Chatzoglou dkk. (2023) dalam studi “Bypassing Antivirus Detection: Old-school
+     Malware, New Tricks” menguatkan temuan tersebut dengan menyoroti
+     bagaimana teknik klasik seperti code obfuscation, packing, dan process
+     injection masih sangat efektif untuk menghindari deteksi antivirus modern.
+     Mereka menguji berbagai varian malware, termasuk spyware, terhadap
+     beberapa produk antivirus dan menemukan bahwa sebagian besar sistem
+     deteksi hanya mampu mengenali sebagian kecil varian yang dimodifikasi.
+     Temuan ini menunjukkan bahwa banyak mesin antivirus masih mengandalkan
+     pencocokan tanda tangan (signature-based detection), yang tidak mampu
+     mengidentifikasi pola perilaku baru dari spyware yang berevolusi. Selain itu,
+     metode penghindaran berbasis lingkungan—seperti deteksi sandbox atau
+     penundaan eksekusi (delayed execution)—membuat spyware semakin sulit
+     teridentifikasi melalui analisis dinamis tradisional.
+
+Dari sisi karakteristik perilaku, spyware modern cenderung memanfaatkan teknik
+     living-off-the-land, yaitu memanfaatkan fungsi atau layanan sah dari sistem
+     operasi seperti PowerShell, WMI, atau API Windows untuk melaksanakan
+     aksinya tanpa mengunduh file berbahaya tambahan. Pendekatan ini
+     menjadikan spyware semakin sulit dilacak, karena aktivitasnya tampak seperti
+     proses sistem yang normal. Koutsokostas dan Patsakis (2021) menegaskan
+     bahwa pola serangan semacam ini tidak hanya menunjukkan kelemahan
+     sistem deteksi antivirus, tetapi juga menyoroti perlunya pendekatan baru
+     berbasis perilaku (behavior-based detection) yang mampu mengenali anomali
+     aktivitas sistem, bukan sekadar menandai file berbahaya.
+
+Secara keseluruhan, literatur menunjukkan bahwa spyware merupakan evolusi
+     dari malware tradisional menuju ancaman yang lebih canggih, tersembunyi,
+     dan adaptif. Dengan kemampuan memanfaatkan celah pada sistem deteksi
+     statis maupun dinamis, spyware modern menjadi tantangan utama dalam
+     bidang keamanan siber. Oleh karena itu, penelitian dan pengembangan sistem
+II
+
+
+
+     pertahanan di masa depan perlu berfokus pada integrasi antara analisis
+     perilaku, pembelajaran mesin, dan threat intelligence untuk mendeteksi
+     aktivitas mencurigakan secara proaktif. Pendekatan ini diharapkan dapat
+     menutup celah yang selama ini dimanfaatkan oleh spyware untuk beroperasi
+     tanpa terdeteksi di berbagai platform, baik desktop maupun mobile.
+II
+
+
+
+
+                               BAB III​ ​
+
+                         ANALISIS MASALAH
+
+
+III.1​ Analisis Kondisi Saat Ini
+
+Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan,
+bergerak dari malware tradisional berbasis file menuju serangan yang lebih
+canggih dan tersembunyi, seperti fileless malware dan spyware mode stealth.
+Evolusi ini menciptakan celah kritis dalam kemampuan deteksi sistem
+anti-malware (AV) dan Endpoint Detection and Response (EDR) yang masih
+berpegangan pada mekanisme pertahanan konvensional.
+
+
+
+Secara konseptual, serangan spyware modern yang berfokus pada Initial Access
+dan Packer melibatkan beberapa komponen utama: Target (sistem yang diserang),
+Packer/Dropper (Artefak spyware yang disamarkan), Anti-Malware/EDR (Sistem
+pertahanan), dan Server (Pengumpul informasi, seperti yang digambarkan dalam
+alur General Flow).
+
+
+
+III.1.1​ Masalah Kerentanan dan Ketertinggalan Anti-Malware Konvensional
+
+Sistem pertahanan keamanan siber menghadapi beberapa masalah kritis yang
+membuat mereka rentan terhadap spyware mode stealth yang baru:
+
+III.1.1.1​ Keterbatasan Deteksi Berbasis Tanda Tangan (Signature-Based)
+
+Anti-malware tradisional masih sangat mengandalkan pencocokan tanda tangan
+(signature-based detection). Spyware mode stealth menggunakan teknik Packer
+(seperti yang dijelaskan dalam konsep arsitektur serangan) untuk melakukan
+II
+
+
+
+kompresi, enkripsi, dan obfuscation pada payload. Teknik ini secara efektif
+mengubah tanda tangan digital (signature) spyware, sehingga membuatnya lolos
+dari deteksi signature-based karena dianggap sebagai file baru atau tidak dikenal.
+
+III.1.1.2​ Gagal Menganalisis Code Bytecode dan Fileless Execution
+
+Situasi ini diperparah dengan temuan bahwa banyak alat keamanan gagal
+menganalisis kode yang dikemas menggunakan alat populer seperti PyInstaller.
+Kegagalan ini terjadi karena antivirus tidak dapat memahami konten Python
+bytecode, yang secara efektif menyamarkan skrip berbahaya dari analisis statis.
+Selain itu, fileless malware memanfaatkan komponen sah dari sistem operasi
+(seperti PowerShell dan WMI) untuk menjalankan kode berbahaya langsung di
+memori tanpa menulis file ke disk, sehingga sulit dideteksi oleh antivirus
+konvensional.
+
+III.1.1.3​ Efektivitas Teknik Evasi Sederhana
+
+Meskipun serangan semakin canggih, penelitian menunjukkan bahwa metode
+evasi yang relatif sederhana, seperti enkripsi, injeksi proses, dan penambahan data
+sampah (junk data) ke file eksekusi, terbukti sangat efektif dalam menghindari
+deteksi. Bahkan, dalam sebuah studi tahun 2023, hampir separuh dari 12 mesin
+antivirus yang diuji hanya mampu mendeteksi kurang dari setengah varian
+malware yang disamarkan.
+
+III.1.1.4​ Kurangnya Deteksi Proaktif Terhadap Arsitektur Serangan
+
+Kurangnya deteksi yang efektif oleh solusi keamanan menciptakan celah besar
+yang dieksploitasi oleh Advanced Persistent Threats (APTs). Sistem pertahanan
+saat ini terlalu reaktif, berfokus pada file yang sudah terinstal, bukan pada deteksi
+perilaku evasif dari Packer di fase Initial Access dan Establish Foothold.
+II
+
+
+
+III.1.2​ Gap Analysis Celah Deteksi Packer Spyware Mode Stealth
+
+Berdasarkan kondisi saat ini dan studi literatur, sebuah Analisis Kesenjangan
+(Gap Analysis) dirumuskan untuk menyoroti perbedaan antara kondisi ideal
+deteksi dan realitas sistem anti-malware saat ini.
+
+
+
+
+     ID       Critical to     Kondisi        Gap         Kondisi Ideal
+              Quality         Saat Ini
+              (CTQ)
+
+     CTQ-01   Deteksi         Deteksi        Celah       Sistem mampu mendeteksi
+              Packer/Dro      berfokus       Signature   anomali pada header file yang
+              pper pada       pada           -Evasion    dipack atau proses unpack
+              Initial         signature                  sebelum payload dieksekusi,
+              Access          file yang                  termasuk perubahan entropy
+                              mudah                      yang tidak wajar.
+                              di-bypass
+                              oleh
+                              teknik
+                              enkripsi
+                              dan
+                              obfuscati
+                              on
+
+     CTQ-02   Verifikasi      Gagal          Celah       Sistem mampu mendekode
+              Integritas      menganal       Obfuscati   (de-obfuscate) skrip terenkripsi
+              Kode Bita       isis           on    dan   atau menganalisis bytecode
+              (Bytecode)      bytecode       Bytecode    untuk    mendeteksi payload
+                              Python         Analysis    tersembunyi.
+                              atau skrip
+                              yang
+                              ter-obfusc
+                              ated
+
+     CTQ-03   Akurasi         Deteksi        Celah       Sistem     secara     proaktif
+              Deteksi         rendah         In-Memo     memantau     perilaku proses
+              Fileless        karena         ry    dan   sistem yang sah (misalnya
+              Execution       payload        Behavior    PowerShell) untuk aktivitas
+                              berjalan       al
+II
+
+
+
+
+                            langsung                  mencurigakan (behavior-based
+                            di                        detection).
+                            memori
+                            (via
+                            PowerShe
+                            ll/WMI).
+
+
+
+III.2​ Analisis Kebutuhan
+
+Analisis kebutuhan ini akan menetapkan fungsionalitas dan kualitas yang
+diperlukan untuk mengembangkan prototipe Packer Spyware Mode Stealth dan
+menguji/memvalidasi celah deteksi yang diidentifikasi dalam Gap Analysis
+(CTQ).
+
+III.2.1​ Kebutuhan Fungsional
+
+Kebutuhan fungsional mendefinisikan kapabilitas yang harus dimiliki oleh Packer
+Spyware untuk menguji celah keamanan (CTQ).
+
+
+
+
+     ID    Kebutuhan                                                    CTQ
+                                                                        Terkait
+
+     FR-   Prototipe harus mampu mengenkripsi         payload    dan    CTQ-01
+     A1    menyembunyikan signature asli.
+
+
+     FR-   Prototipe harus mampu melakukan pengemasan (packing)         CTQ-02
+     A2    dan obfuscation tingkat tinggi pada binary akhir.
+
+     FR-   Prototipe harus mampu menjalankan payload secara fileless    CTQ-03
+     A3    melalui PowerShell.
+II
+
+
+
+
+     FR-    Prototipe harus memiliki kemampuan Initial Access dan      CTQ-01,
+     A4     Persistence dasar (misalnya, membuat entri registry).      CTQ-03
+
+
+     FR-    Prototipe harus mampu mengirimkan sinyal keberhasilan      CTQ-01,
+     A5     Initial Access ke Server pengumpul data.                   FR-A3
+
+
+
+III.2.2​ Kebutuhan Nonfungsional
+
+Kebutuhan nonfungsional berfokus pada bagaimana sistem pengujian harus
+bekerja untuk memastikan hasil yang valid dan andal.
+
+     ID     Kebutuhan                            Aspek           CTQ Terkait
+
+
+     NFR-   Executable yang dihasilkan harus     Keandalan &     CTQ-01,
+     E1     kecil dan reliable di Windows 11.    Validitas       CTQ-02, CTQ-03
+
+
+     NFR-   Lingkungan     pengujian   harus     Validitas       CTQ-01,
+     E2     mencakup setidaknya lima produk      Komparatif      CTQ-02, CTQ-03
+            anti-malware/EDR komersial yang
+            berbeda.
+
+     NFR-   Implementasi harus menggunakan       Auditabilitas   CTQ-01, CTQ-03
+     E3     code safety (low-level Rust) untuk
+            memastikan     debugging      yang
+            efisien.
+
+
+
+
+III.3​ Analisis Pemilihan Solusi
+
+Setelah masalah dianalisis, langkah selanjutnya adalah melaksanakan evaluasi
+berbagai solusi yang dapat mewujudkan tujuan penelitian. Analisis ini mencakup
+penilaian pendekatan teknis dan konseptual yang paling ideal sesuai dengan
+kebutuhan sistem dan kriteria desain yang telah ditetapkan. Tujuan utama dari
+II
+
+
+
+penelitian ini adalah merancang dan mengimplementasikan Packer Spyware Mode
+Stealth untuk menguji kapabilitas deteksi anti-malware, sehingga dapat
+memvalidasi teknik evasion dan mengungkap kelemahan sistem keamanan
+konvensional.
+
+III.3.1​ Alternatif Solusi
+
+Dalam upaya mencari solusi yang paling optimal untuk mengatasi permasalahan
+yang teridentifikasi, subbab ini akan menguraikan berbagai konsep implementasi
+alternatif untuk setiap Kebutuhan Fungsional (FR) dan Kebutuhan Non
+Fungsional (NFR) modul packer spyware mode stealth. Setiap alternatif ini akan
+dijelaskan secara ringkas mengenai pendekatannya dan bagaimana ia berpotensi
+memenuhi kebutuhan yang bersangkutan.
+
+
+
+
+     Kode   Solusi    Bahasa       Pendekatan Utama dalam Evasion
+            Pemrograman
+
+     S-1    Rust                   Bahasa sistem yang menghasilkan binary
+                                   statis, unggul dalam kontrol memori dan
+                                   low-level manipulation.
+
+     S-2    C/C++                  Bahasa sistem tradisional yang menawarkan
+                                   kontrol penuh atas API Windows dan
+                                   memory injection.
+
+     S-3    Python (PyInstaller)   Bahasa scripting. Mengandalkan obfuscation
+                                   bytecode dan packer wrapper.
+
+
+
+III.3.1.1​ Rust
+
+Rust adalah bahasa pemrograman sistem yang akan digunakan untuk
+mengembangkan Packer dan Dropper utama. Bahasa ini dipilih karena mampu
+menghasilkan binary yang sangat efisien dan terkompilasi menjadi native code.
+II
+
+
+
+Kontrol tingkat rendah yang disediakan Rust memungkinkan implementasi
+manipulasi memori dan panggilan API Windows secara langsung, yang sangat
+penting untuk teknik fileless execution (FR-A3). Packer yang dibangun dengan
+Rust dapat mengenkripsi payload (FR-A1) dan memiliki resistensi tinggi terhadap
+analisis statis (reverse engineering), karena minimnya jejak runtime yang mudah
+dideteksi (Potensi Stealth).
+
+III.3.1.2​ C/C++
+
+C/C++ adalah bahasa pemrograman sistem tradisional yang merupakan standar
+umum     untuk      pengembangan     alat    low-level.   Penggunaan    bahasa   ini
+memungkinkan pengembang untuk memiliki kontrol penuh atas manajemen
+memori dan akses langsung ke API Windows, yang esensial untuk implementasi
+memory injection dan fileless execution (FR-A3). Packer yang dikembangkan
+dengan C/C++ dapat mengkompilasi payload menjadi binary native yang kuat,
+menjadikannya alternatif yang efektif untuk menyamarkan payload dan
+melakukan enkripsi tingkat lanjut (FR-A1).
+
+III.3.1.3​ Python
+
+Python adalah bahasa scripting tingkat tinggi yang menawarkan kemudahan dan
+kecepatan dalam pengembangan payload dan logika enkripsi sederhana (FR-A1).
+Ketika dikombinasikan dengan alat packer seperti PyInstaller, script Python dapat
+dibungkus menjadi executable Windows. Solusi ini memanfaatkan obfuscation
+bytecode dan packer wrapper sebagai lapisan pertahanan awal terhadap deteksi
+signature-based. Namun, solusi ini bergantung pada mekanisme wrapper yang
+seringkali kurang stealth dibandingkan kompilasi low-level murni.
+
+III.3.2​ Analisis Penentuan Solusi
+
+Untuk memastikan solusi yang dihasilkan dapat menyelesaikan masalah yang
+telah   diidentifikasi    sebelumnya,       kriteria   desain   ditetapkan   dengan
+II
+
+
+
+mempertimbangkan hasil identifikasi masalah dan tujuan solusi. Kriteria ini
+berfungsi sebagai acuan dalam merancang, mengembangkan, dan mengevaluasi
+solusi secara sistematis. Tabel dibawah akan menjelaskan kriteria-kriteria desain
+tersebut yang akan menjadi dasar dalam menilai keberhasilan artefak yang
+dikembangkan dalam penelitian ini.
+
+
+
+     Kode   Kriteria Desain          Keterkaitan    dengan      Evasion        &
+                                     Non-Functional Requirement
+
+     KD-    Dukungan                 Kemampuan       native   bahasa    dalam
+     1      Enkripsi/Packing         mengimplementasikan enkripsi payload
+                                     dan packing kode sumber yang ringkas.
+
+     KD-    Kontrol Low-Level        Kemampuan memanggil Windows API dan
+     2      & Fileless               memanipulasi memori langsung untuk
+                                     fileless execution, mendukung integritas dan
+                                     stealth.
+
+     KD-    Resistensi   Analisis    Kesulitan   reverse engineering yang
+     3      Statis                   ditimbulkan pada binary . Bahasa yang kuat
+                                     juga mendukung keamanan dan reliability
+                                     kode.
+
+
+     KD-    Potensi Stealth    &     Ukuran binary yang kecil dan minimnya
+     4      Footprint                ketergantungan pada runtime eksternal yang
+                                     mudah terdeteksi, mendukung lingkungan
+                                     pengujian stealth.
+
+     KD-    Kompleksitas             Perkiraan effort dan waktu yang dibutuhkan
+     5      Implementasi       &     (safety kode memengaruhi debugging),
+            Safety                   yang secara langsung memengaruhi
+                                     efisiensi proyek.
+
+     KD-    Kompatibilitas           Kemampuan bahasa untuk menghasilkan
+     6      Sistem Target            executable yang kompatibel dan reliable di
+                                     Microsoft Windows.
+II
+
+
+
+Tabel III.5 menyajikan rangkuman hasil evaluasi dari setiap alternatif solusi
+berdasarkan kriteria desain yang telah ditentukan, menggunakan skala penilaian 1
+hingga 9. Skor 1 menunjukkan bahwa suatu alternatif solusi memiliki tingkat
+kesesuaian yang sangat rendah terhadap kriteria desain. Skor 9 mencerminkan
+bahwa solusi tersebut sangat memenuhi kriteria yang ditetapkan dan memiliki
+potensi tinggi untuk menyelesaikan permasalahan secara efektif.
+
+
+
+     Kode       S-1   S-2    S-3    Normalized       Normalized      Normalized
+     kriteria                       S-1              S-2             S-3
+
+     KD-1       8     9      9      0.308            0.346           0.346
+
+
+     KD-2       9     9      4      0.409            0.409           0.182
+
+
+     KD-3       9     8      3      0.450            0.400           0.150
+
+
+     KD-4       9     8      5      0.409            0.364           0.227
+
+
+     KD-5       6     4      8      0.333            0.222           0.444
+
+
+     KD-6       9     9      9      0.333            0.333           0.333
+
+
+
+Untuk menentukan solusi terbaik secara objektif, digunakan pendekatan
+MultiCriteria Decision Analysis (MCDA) dengan Entropy Weight Method
+(EWM). Metode ini digunakan untuk menentukan bobot kriteria secara ilmiah dan
+obyektif berdasarkan tingkat keragaman informasi (diversifikasi) dari setiap
+kriteria (Zhu, Tian, dan Yan 2020). Analisis MCDA dilakukan dengan melakukan
+normalisasi decision matrix, seperti yang telah terlihat pada Tabel III.5. Skor dari
+II
+
+
+
+setiap solusi terhadap suatu kriteria dinormalisasi menggunakan metode rasio
+terhadap total skor dalam kriteria tersebut, seperti yang terlihat pada Rumus III.1.
+
+
+Untuk menentukan solusi terbaik secara objektif, digunakan pendekatan
+MultiCriteria Decision Analysis (MCDA) dengan Entropy Weight Method
+(EWM). Metode ini digunakan untuk menentukan bobot kriteria secara ilmiah dan
+obyektif berdasarkan tingkat keragaman informasi (diversifikasi) dari setiap
+kriteria (Zhu, Tian, dan Yan 2020). Analisis MCDA dilakukan dengan melakukan
+normalisasi decision matrix, seperti yang telah terlihat pada Tabel III.5. Skor dari
+setiap solusi terhadap suatu kriteria dinormalisasi menggunakan metode rasio
+terhadap total skor dalam kriteria tersebut, seperti yang terlihat pada Rumus III.1.
+
+
+                                               𝑥𝑖𝑗
+                                     𝑃𝑖𝑗 =    𝑛
+                                             Σ𝑖=1𝑥𝑖𝑗
+
+                                       (III.1)
+Untuk menentukan bobot setiap kriteria, perhitungan entropi dilakukan guna
+mengukur tingkat ketidakpastian atau penyebaran data dari masing-masing
+kriteria, dengan menggunakan Rumus III.2. Entropi berfungsi sebagai indikator
+sejauh mana suatu kriteria memberikan informasi yang berbeda antar alternatif
+solusi. Semakin rendah nilai entropi suatu kriteria, semakin besar kontribusinya
+terhadap pengambilan keputusan, karena kriteria tersebut dianggap mengandung
+informasi yang lebih penting dan relevan.
+                                           𝑛
+                                      1
+                             𝑒𝑗 =−   𝑙𝑛 𝑛
+                                           ∑ 𝑝𝑖𝑗 × 𝑙𝑛 𝑝𝑖𝑗
+                                          𝑖=1
+
+                                       (III.2)
+Setelah mendapatkan nilai entropi untuk setiap kriteria, nilai derajat diversifikasi
+ditentukan untuk mengukur signifikansi relatif suatu kriteria dalam konteks
+multicriteria decision. Semakin tinggi nilai derajat diversifikasi, semakin penting
+II
+
+
+
+kriteria tersebut. Nilai derajat diversifikasi dapat ditentukan dengan menggunakan
+Rumus III.3.
+                                   𝑑𝑗 = 1 − 𝑒𝑗
+
+                                       (III.3)
+Setelah nilai derajat diversifikasi diperoleh, langkah berikutnya adalah
+menghitung bobot relatif untuk setiap kriteria. Bobot ini diperoleh dengan
+menormalisasi nilai derajat diversifikasi menggunakan Rumus III.4, sehingga total
+bobot dari seluruh kriteria berjumlah 1. Bobot yang dihasilkan akan digunakan
+untuk mengevaluasi 44 dan membandingkan alternatif solusi secara objektif
+berdasarkan tingkat kepentingan masing-masing kriteria.
+                                             𝑑𝑗
+                                    𝑤𝑗 =    𝑚
+                                           Σ𝑗=1𝑑𝑗
+
+                                       (III.4)
+Hasil penghitungan entropi, derajat diversifikasi, dan bobot akhir untuk setiap
+kriteria ditunjukkan pada Tabel III.6. Tabel ini memberikan gambaran
+komprehensif mengenai seberapa besar kontribusi masing-masing kriteria dalam
+proses pengambilan keputusan. Informasi ini menjadi dasar penting dalam
+mengevaluasi dan memilih alternatif solusi yang paling sesuai dengan tujuan
+penelitian.
+
+
+
+
+     Kode          Entropi        Derajat Diversifikasi       Bobot Akhir
+     Kriteria
+
+     KD-1          0.9979         0.0021                      0.0081
+
+     KD-2          0.9609         0.0391                      0.1518
+
+     KD-3          0.8716         0.1284                      0.4984
+II
+
+
+
+
+     KD-4              0.9641            0.0359               0.1394
+
+     KD-5              0.9489            0.0511               0.1984
+
+     KD-6              1.0000            0.0000               0.0000
+
+     Total                               0.2576               1.0000
+
+
+
+
+Setelah mendapatkan bobot untuk setiap kriteria, nilai normalisasi dari setiap
+solusi dikalikan dengan bobot kriteria. Skor akhir setiap solusi kemudian
+diperoleh dengan menjumlahkan seluruh hasil perkalian antara nilai normalisasi
+dan bobot kriteria. Solusi dengan skor akhir tertinggi dipilih sebagai solusi yang
+paling optimal dan layak dikembangkan lebih lanjut.
+
+Berdasarkan evaluasi terhadap setiap alternatif solusi dengan mempertimbangkan
+kriteria desain yang telah ditetapkan, solusi Rust (S-1) untuk pengembangan
+Packer Spyware Mode Stealth dipilih sebagai solusi yang paling optimal untuk
+dikembangkan. Solusi ini memperoleh skor akhir tertinggi, menunjukkan
+kesesuaiannya dengan kebutuhan sistem. Detail hasil penghitungan skor akhir
+tersebut disajikan pada Tabel III.7.
+
+
+
+
+     Kriteria Desain            Bobot         S-1      S-2             S-3
+                                EWM
+
+
+
+     KD-1                       0.0081        0.0025   0.0028          0.0028
+
+     KD-2                       0.1518        0.0621   0.0621          0.0276
+
+     KD-3                       0.4984        0.2243   0.1994          0.0748
+II
+
+
+
+
+     KD-4         0.1394   0.0570   0.0506   0.0316
+
+     KD-5         0.1984   0.0660   0.0440   0.0881
+
+     KD-6         0.0000   0.0000   0.0000   0.0000
+
+     Total Skor   1.0000   0.3546   0.3235   0.1994
+II
+
+
+
+
+                                BAB IV​ ​
+
+                               DESAIN SOLUSI
+
+Bab ini menyajikan penjelasan rinci mengenai rancangan sistem yang diusulkan
+dalam penelitian, yaitu desain modul packer pada spyware dengan mode stealth
+yang akan digunakan untuk menguji kapabilitas deteksi antivirus dalam
+lingkungan terisolasi. Sebagai pedoman metodologis, kerangka Design Research
+Methodology yang telah diuraikan pada Bab I diadaptasi dalam bab ini.
+Pendekatan tersebut diterapkan karena dapat memvisualisasikan alur pengujian
+modul packer pada anti-spyware. Oleh karena itu, seluruh proses desain dan
+pengembangan dalam bab ini diarahkan untuk menciptakan artefak yang tidak
+hanya memiliki fungsi teknis, tetapi juga memenuhi kebutuhan analisis dan
+visualisasi data keamanan yang telah ditetapkan pada Bab III.
+
+IV.1​   Klarifikasi Tugas Desain dan Persyaratan Solusi
+
+Proses desain dalam penelitian ini akan mencakup pembuatan artefak berupa
+prototipe Packer Spyware Mode Stealth yang dirancang untuk menguji kapabilitas
+deteksi anti-spyware. Pengembangan solusi dilakukan dengan mengikuti pedoman
+Design Research Methodology (DRM), yang diperkenalkan oleh Lucienne
+Blessing dan Amaresh Chakrabarti, untuk memastikan riset dilakukan secara
+efektif dan efisien. DRM menekankan pentingnya dasar teori yang relevan dan
+penerapan pengalaman praktis dalam bidang cybersecurity dan teknik evasion.
+Pada tahap Prescriptive Study dalam DRM, metodologi perancangan akan
+digunakan untuk mendesain artefak ini, yang akan memungkinkan pendekatan
+yang lebih terfokus pada pengujian teknis, di mana desain difokuskan untuk
+memenuhi kebutuhan analisis dan visualisasi data keamanan yang telah
+diidentifikasi pada Bab III.
+II
+
+
+
+Tahap desain solusi ini merupakan bagian dari Prescriptive Study DRM, yang
+fokusnya adalah Desain dan Pengembangan Artefak. Aktivitas utama dalam tahap
+ini mencakup:
+
+     1.​ Perumusan Persyaratan (Requirements Elicitation): Mengacu pada
+        Kebutuhan Fungsional (FR) dan Nonfungsional (NFR) yang telah
+        ditetapkan pada Bab III.
+     2.​ Desain Arsitektur: Merancang hubungan logis antara modul Packer,
+        Dropper, dan Payload dalam skenario serangan.
+     3.​ Desain Komponen Detail: Merinci mekanisme teknik evasion (enkripsi,
+        obfuscation), eksekusi fileless (via PowerShell), dan persistence.
+     4.​ Desain Lingkungan Uji: Menentukan spesifikasi sistem target dan
+        pemilihan produk anti-malware komersial sebagai subjek pengujian.
+IV.1.1​ Penentuan Key Factors dan Intended Impact Model
+
+Penentuan Key Factors merujuk pada elemen kunci dari Bab III Analisis Masalah
+yang menjadi fokus intervensi desain. Dalam konteks ini, Key Factors yang
+ditargetkan   oleh   Packer    Spyware    adalah kelemahan inti        anti-spyware
+konvensional:
+
+     1.​ Signature Evasion: Kegagalan deteksi statis karena payload dienkripsi dan
+        di-pack.
+
+     2.​ Fileless In-Memory Execution: Kegagalan deteksi dinamis karena payload
+        dijalankan di RAM melalui proses sistem sah (PowerShell).
+
+     3.​ Low-Level Memory Manipulation: Pemanfaatan bahasa low-level (Rust)
+        untuk menghindari hooking dan monitoring di tingkat API.
+
+Intended Impact Model (IM) memvisualisasikan hipotesis dampak yang
+diharapkan dari artefak yang dikembangkan:
+II
+
+
+
+Model ini memvisualisasikan bahwa Actual Support yang dirancang (Packer
+Spyware Mode Stealth), ketika diuji (Prescriptive Study), akan menghasilkan
+Dampak Evasion yang tinggi              (measurable success criteria), sehingga
+memvalidasi Asumsi Celah Keamanan pada produk anti-spyware modern.
+
+IV.1.2​ Desain Artefak Packer
+
+Artefak yang dikembangkan berfokus pada fungsi Packer yang bertanggung
+jawab untuk memastikan spyware lolos pada tahap Initial Access dan Execution.
+Desain modul ini secara langsung menargetkan kelemahan deteksi berbasis tanda
+tangan (signature-based) dan script monitoring.
+
+IV.1.2.1​ Arsitektur Modul Packer dan Evasion
+
+Modul       Packer    dirancang     sebagai   komponen   gabungan   dari      Packing
+(penyembunyian) dan Dropper (eksekusi) untuk menguji kapabilitas deteksi
+anti-spyware secara menyeluruh.
+
+     Komponen        Bahasa            Fungsi Utama dalam       Justifikasi
+     Modul           Implementasi      Evasion                  Pengujian
+                                                                (CTQ)
+
+
+     Packer          Rust              Menerapkan enkripsi      Menyerang
+     (Penyembu                         payload           dan    CTQ-01 (Celah
+     nyi)                              manipulasi header file   Signature-Evasio
+                                       executable.              n)
+
+     Dropper         Rust/PowerSh      Menjalankan    script    Menyerang
+     (Pelaksana)     ell               mendekripsi      dan     CTQ-02 (Celah
+                                       mengeksekusi payload     Obfuscation dan
+                                       di memori melalui        Bytecode
+                                       PowerShell.              Analysis)    &
+                                                                CTQ-03 (Celah
+                                                                In-Memory)
+II
+
+
+
+
+     Payload         Rust               Misi non-destruktif:     Bukti Eksekusi
+     (Mission)                          Mengumpulkan             Berhasil (Proof
+                                        system info.             of Concept).
+
+
+IV.1.2.2​ Modul Packer: Teknik Obfuscation dan Enkripsi
+
+Desain modul Packer akan berfokus pada dua lapisan evasion utama:
+
+      1.​ Teknik Enkripsi (Payload Concealment)
+
+          Payload spyware akan dienkripsi secara penuh (full encryption)
+          menggunakan       algoritma   simetris   (misalnya,   AES-256)    sebelum
+          dimasukkan ke dalam binary Rust.
+
+          Kunci dekripsi dan algoritma ditanamkan secara ter-obfuscated dalam
+          dropper Rust untuk menghindari deteksi melalui string analysis.
+
+      2.​ Teknik Packing Custom (Signature Evasion)
+
+          Kompilasi Rust akan menghasilkan binary yang lebih sulit dianalisis
+          secara statis dibandingkan bahasa yang lebih umum.
+
+          Teknik penambahan junk data akan diterapkan pada binary Rust untuk
+          meningkatkan ukuran file. Hal ini bertujuan untuk mengelabui scanner
+          anti-malware yang sering membatasi ukuran file untuk analisis cloud atau
+          sandbox.
+
+IV.1.3​ Rancangan Lingkungan Pengujian
+
+Lingkungan pengujian dirancang untuk menciptakan kondisi yang terkontrol
+(controlled environment) dan relevan, sesuai dengan NFR-E1 dan NFR-E2.
+
+IV.1.4​ Spesifikasi Mesin Uji
+
+Pengujian akan dilakukan menggunakan mesin virtual (VM) yang terisolasi untuk
+memastikan kondisi yang konsisten di seluruh produk anti-spyware yang diuji.
+II
+
+
+
+
+     Komponen        Spesifikasi           Justifikasi
+                     (Target VM)
+
+     Sistem          Windows 11
+     Operasi
+
+     Kapasitas       Intel core I5 gen 8
+                     RAM 8 GB
+                     Storage SSD 1 TB
+
+     Jaringan        Public (ITB) &
+                     local      (untuk
+                     pengujian)
+
+     Kakas           Windows
+     Pendukung       defender
+                     AVG
+                     Avast​
+                     McAfee
+
+
+
+
+IV.2​     Konseptualisasi Arsitektur Prototipe
+
+Fase konseptualisasi adalah di mana ide-ide solusi (support concept) dihasilkan
+dan dipecah secara sistematis, sebelum implementasi dimulai.
+
+IV.2.1​ Analisis Fungsional Prototipe
+
+Fungsi prototipe dipecah menjadi tiga fase utama sesuai dengan siklus Initial
+Access dan Dropper:
+
+
+
+
+     Fungsi         Tugas           Keterangan Teknis
+     Utama          Sub-Modul
+II
+
+
+
+
+     Fungsi          Enkripsi        Mengambil      payload     akhir        dan
+     Packing (FP)    Payload         mengenkripsinya dengan AES-256.
+
+
+     Fungsi          Runtime         Mengandung kunci dan logika dekripsi
+     Dropper         Unpack          in-memory yang ditulis dalam Rust.
+     (FD)
+
+     Fungsi          Fileless        Memanggil fungsi sistem untuk meluncurkan
+     Loader (FL)     Execution       script PowerShell yang dieksekusi dari RAM
+                                     (FR-A3).
+
+
+
+IV.2.2​ Pemilihan Konsep Solusi dan Teknik Kunci
+
+Keputusan kunci desain adalah penggunaan Rust sebagai bahasa implementasi
+Packer dan Dropper, yang telah dikonfirmasi melalui Matriks Keputusan di Bab
+III. Teknik kunci yang dipilih merefleksikan Key Factors yang paling efektif:
+
+      1.​ Teknik Packing Kunci (FR-A2): Kompilasi Rust yang menghasilkan
+          binary native yang sulit di-disassemble (memenuhi Resistensi Analisis
+          Statis).
+      2.​ Teknik Fileless Kunci (FR-A3): Pemanfaatan PowerShell Reflective
+          Loading (atau setara API Call Rust) untuk mengeksekusi payload dari
+          memori, menargetkan Celah In-Memory.
+      3.​ Teknik Evasion Tambahan: Penambahan junk data pada binary untuk
+          memanipulasi ukuran file dan menghindari scanner cloud (meningkatkan
+          Potensi Stealth).
+IV.2.3​ Pembedaan Intended Support dan Actual Support
+
+Keputusan kunci desain adalah penggunaan Rust sebagai bahasa implementasi
+Packer dan Dropper, yang telah dikonfirmasi melalui Matriks Keputusan di Bab
+III. Teknik kunci yang dipilih merefleksikan Key Factors yang paling efektif:
+II
+
+
+
+     1.​ Teknik Packing Kunci (FR-A2): Kompilasi Rust yang menghasilkan
+        binary native yang sulit di-disassemble (memenuhi Resistensi Analisis
+        Statis).
+     2.​ Teknik Fileless Kunci (FR-A3): Pemanfaatan PowerShell Reflective
+        Loading (atau setara API Call Rust) untuk mengeksekusi payload dari
+        memori, menargetkan Celah In-Memory.
+     3.​ Teknik Evasion Tambahan: Penambahan junk data pada binary untuk
+        memanipulasi ukuran file dan menghindari scanner cloud (meningkatkan
+        Potensi Stealth).
+
+IV.3​ Realisasi dan Dokumentasi Actual Support
+Sub-bab ini berfokus pada implementasi detail dan pendokumentasian prototipe
+yang siap untuk evaluasi (Descriptive Study II).
+
+IV.3.1​ Desain Modul Packer dan Obfuscation
+     ●​ Implementasi Bahasa: Modul ini sepenuhnya ditulis dalam Rust,
+        menghasilkan binary native Windows.
+     ●​ Mekanisme Obfuscation: Payload (script PowerShell) dienkripsi dengan
+        AES-256 dan ditanamkan sebagai byte array dalam source code Rust.
+        Hardcoded key dekripsi di-obfuscate melalui string manipulation yang
+        kompleks pada runtime.
+     ●​ Packing Kustom (FR-A1): Konfigurasi build Rust dioptimalkan untuk
+        menghasilkan ukuran file sekecil mungkin, yang kemudian diperbesar
+        dengan penambahan junk data untuk menguji batas scanner cloud.
+IV.3.2​ Desain Modul Loader dan Eksekusi Fileless
+     ●​ Mekanisme In-Memory: Setelah binary Rust dieksekusi, Dropper akan
+        mendekripsi byte array di memori.
+     ●​ Fileless Execution (FR-A3): Dropper menggunakan API call Rust untuk
+        meluncurkan proses baru PowerShell.exe dengan argumen yang di-encode
+II
+
+
+
+        dalam Base64 [cite: 2024 Stealth in Plain Sight The Hidden Threat of
+        PowerShell Fileless Malware and Its Evasion of Modern EDRs &
+        AVs.pdf]. Payload (skrip) dijalankan melalui EncodedCommand argumen
+        PowerShell, memastikan tidak ada file skrip yang pernah disentuh disk
+        sistem target.
+IV.3.3​ Actual Introduction Plan
+
+Rencana pengantar (Actual Introduction Plan) menjelaskan langkah-langkah
+penyiapan artefak di lingkungan pengujian:
+
+     1.​ Kompilasi   Akhir: Binary     Packer Spyware (misalnya packer.exe)
+        dikompilasi ke target Windows 64-bit di mesin developer yang terpisah
+        dari lingkungan uji.
+
+     2.​ Transfer ke VM: Binary ditransfer ke setiap Virtual Machine (VM) target
+        (yang sudah terinstal anti-spyware komersial) melalui media yang tidak
+        memicu scanner (misalnya koneksi internal network).
+     3.​ Konteks Uji: Artefak akan dieksekusi manual dalam command prompt VM
+        untuk memulai siklus Dropper dan Payload di lingkungan specified
+        context of use sebelum pengujian dimulai.
+
+IV.4​ Verifikasi Internal dan Perencanaan Evaluasi Awal
+
+Tahap akhir Prescriptive Study (PS) adalah memastikan prototipe berfungsi secara
+teknis dan memiliki rencana evaluasi yang terstruktur.
+
+IV.4.1​ Support Evaluation
+     ●​ Verifikasi Fungsionalitas Internal: Pengujian internal telah dilakukan oleh
+        pengembang untuk memastikan binary Rust berhasil unpack, decrypt, dan
+        meluncurkan PowerShell tanpa crash di lingkungan Windows yang bersih
+II
+
+
+
+     ●​ Validasi Stealth: Process Monitor digunakan untuk memverifikasi bahwa
+        payload tidak menulis file apapun ke disk (no file footprint) dan Wireshark
+        digunakan untuk memverifikasi keberhasilan koneksi ke Server C2.
+IV.4.2​ Actual Impact Model dan Kriteria Keberhasilan Akhir
+
+Actual Impact Model (IM) final yang akan diuji di Bab V (DS-II) berpusat pada
+Tingkat Kegagalan Deteksi.
+
+     ●​ Measurable Success Criteria (MSC) yang Disempurnakan: Artefak akan
+        dianggap berhasil jika tingkat kegagalan deteksi statis (Celah Signature)
+        dan   kegagalan deteksi dinamis (Celah In-Memory) dari produk
+        anti-spyware melebihi 50%.
+
+IV.4.3​ Outline Evaluation Plan
+
+Garis besar rencana evaluasi empiris (Outline Evaluation Plan) menjamin bahwa
+Prescriptive Study (PS) dan Descriptive Study II (DS-II) terintegrasi erat (closely
+linked) dan bahwa evaluasi formal telah direncanakan sebelum pelaksanaan
+dimulai.
+
+Rencana ini memetakan Actual Support ke dalam Application Evaluation
+(pengujian fungsionalitas) dan Success Evaluation (pengujian MSC) yang akan
+divalidasi di Bab V.
+II
+
+
+
+
+                                   BAB V​     ​
+
+                         RENCANA SELANJUTNYA
+
+
+V.1​      Rencana Implementasi
+
+Rencana implementasi di sini merujuk pada langkah-langkah praktis dan alat yang
+diperlukan untuk menyiapkan dan menjalankan lingkungan pengujian prototipe,
+yang merupakan prasyarat sebelum evaluasi formal (DS-II) dapat dimulai.
+
+V.1.1​ Langkah-langkah Implementasi
+
+Implementasi dilakukan dalam lingkungan pengujian yang dikontrol (Controlled
+Environment) untuk mengisolasi efek prototipe dari variabel eksternal perancu.
+
+     Langkah             Justifikasi      Metodologis     Alat               yang
+                         (DRM)                            Dibutuhkan
+
+     Persiapan           Mengatur Host Windows 11         Windows      11     Host
+     Infrastruktur       untuk pengujian (baseline).      Fisik.
+     Laboratorium        Isolasi   dilakukan dengan
+     Host                memutus koneksi jaringan
+                         eksternal      saat     binary
+                         dieksekusi,         memastikan
+                         malware tidak        menyebar
+                         (R-1).    Digunakan      untuk
+                         menjamin Internal Validity.
+
+     Instalasi     dan   Menginstal dan mengaktifkan      Lisensi           Produk
+     Konfigurasi         berbagai               produk    Keamanan.
+     Produk              Anti-Malware     dan     EDR
+     Keamanan            komersial yang telah dipilih
+     (Target Evaluasi)   (misalnya, Produk A, B, dan
+                         C) pada Host Windows 11.
+                         Konfigurasi keamanan harus
+                         ditetapkan pada pengaturan
+                         default atau konfigurasi yang
+                         konsisten.
+II
+
+
+
+
+     Finalisasi Actual    Menyuntikkan            payload    Scripting
+     Support              (Prototipe Stealth) ke Host        Environment
+     (Prototipe)          Windows 11. Prototipe diuji        (misalnya,
+                          fungsionalitas      internalnya    PowerShell      ISE,
+                          (Support     Evaluation dari       terminal),   Custom
+                          Prescriptive Study) sekali lagi    Packer/Loader
+                          untuk memastikan ia dapat          (artefak       yang
+                          dieksekusi     dengan benar        dikembangkan di Bab
+                          sebelum dihadapkan pada            IV).
+                          produk keamanan.
+
+
+
+V.2​      Rencana Evaluasi
+
+Rencana evaluasi akan membagi proses pengujian menjadi Application
+Evaluation (fokus pada fungsi langsung) dan Success Evaluation (fokus pada
+MSC/dampak          keseluruhan),       menggunakan     desain   kuasi-eksperimental
+komparatif.
+
+V.2.1​ Metode Pengujian: Studi Kuasi-Eksperimental Komparatif
+
+Metode pengujian akan menggunakan pendekatan Blackbox Testing dan Whitebox
+Analysis di lingkungan virtual:
+      1.​ Blackbox Testing (Pengujian Fungsionalitas Deteksi): Mengukur status
+          deteksi yang terlihat oleh pengguna atau sistem anti-spyware tanpa melihat
+          code internalnya. Meliputi:
+             ●​ Deteksi Statis (Pre-Execution): Menguji apakah Packer Spyware
+                 yang telah di-obfuscated terdeteksi hanya karena signature file.
+             ●​ Deteksi Dinamis (Runtime):            Menguji apakah anti-spyware
+                 mendeteksi perilaku in-memory (PowerShell yang ter-obfuscated)
+                 saat Dropper sedang aktif.
+      2.​ Whitebox Analysis (Validasi Stealth): Menganalisis log sistem VM
+          (Process Monitor dan Event Log) dan traffic jaringan untuk memverifikasi
+II
+
+
+
+          bahwa spyware telah berhasil dieksekusi secara fileless dan lolos tanpa
+          meninggalkan jejak signature yang jelas.
+
+
+V.2.2​ Kriteria Keberhasilan
+
+Keberhasilan proyek diukur dari kemampuan artefak (Prototipe Packer Spyware
+Mode Stealth) untuk mengeksploitasi celah yang telah diidentifikasi (KD-2:
+Fileless, KD-3: Statis) secara signifikan dibandingkan payload kontrol.
+
+
+     Success            Measurable     Success       Definisi   Operasional      dan
+     Criterion (SC)     Criteria (MSC)               Pengukuran
+
+     SC-1:              Prototipe      berhasil      Pengukuran: Verifikasi log
+     Keberhasilan       dieksekusi       secara      sistem               (ProcMon)
+     Evasion            fileless dan stealthy        menunjukkan binary Rust
+     Fungsional         tanpa      crash      di     berhasil        inject     dan
+                        Windows 11 Host dan          meluncurkan PowerShell tanpa
+                        mencapai         Initial     terdeteksi selama minimal 15
+                        Access.                      detik (proof of concept).
+
+     SC-2: Validasi     Tingkat      kegagalan       Pengukuran: Hitungan produk
+     Celah Signature    deteksi           statis     yang    memberi     outcome
+                        (pre-execution)              EVADED        pada    kolom
+                        terhadap      Prototipe      "Deteksi Statis (Kelompok
+                        Eksperimen harus $\ge        Eksperimen)".        Target:
+                        75\%$ (terhadap total        𝐸𝑣𝑎𝑠𝑖𝑜𝑛𝑠𝑡𝑎𝑡𝑒 ≥ 75%.
+                        produk yang diuji).
+
+     SC-3: Validasi     Tingkat         evasion      Pengukuran:      Uji   statistik
+     Celah              dinamis      (runtime)       (Chi-Square)              harus
+     In-Memory          terhadap      Prototipe      menunjukkan          perbedaan
+                        Eksperimen        harus      signifikan ($p < 0.05$) antara
+                        secara statistik lebih       tingkat Evasion Kelompok
+                        tinggi         daripada      Kontrol      vs.     Kelompok
+                        Kelompok Kontrol.            Eksperimen.
+II
+
+
+
+V.2.3​ Analisis Risiko
+
+Risiko yang diidentifikasi terkait dengan pengembangan dan pengujian malware
+simulasi (NFR-E1) serta efisiensi proyek (NFR-E3).
+
+     Risiko              Deskripsi Risiko            Strategi Mitigasi
+
+     Accidental          Binary spyware (yang        Isolasi Penuh (NFR-E1):
+     Execution      di   rentan disalahgunakan       Seluruh      pengembangan,
+     Host                atau dieksekusi tanpa       debugging,    dan     testing
+                         sengaja) bocor dari         dilakukan hanya di dalam
+                         lingkungan VM ke            mesin virtual yang terisolasi
+                         sistem            host      dan tanpa akses ke jaringan
+                         pengembangan.               host (menggunakan host-only
+                                                     atau NAT).
+
+     Deteksi             Produk      anti-spyware    Standardisasi    Lingkungan:
+     Anti-Malware        terpasang mendeteksi        Memastikan konfigurasi VM
+     VM                  lingkungan VM dan           disamarkan (VM masking)
+                         mengubah perilakunya        dan anti-VM checks pada
+                         (anti-VM      detection),   payload dikendalikan untuk
+                         merusak      hasil    uji   menjamin        anti-spyware
+                         komparatif.                 beroperasi pada mode default.
+
+
+     Kompleksitas        Kurva     pembelajaran      Modularisasi     dan    Code
+     Implementasi        Rust dan debugging          Safety: Memanfaatkan fitur
+     Rust                low-level     memakan       memory safety Rust secara
+                         waktu lebih lama dari       penuh untuk mempercepat
+                         jadwal,        menunda      debugging.     Fokus     pada
+                         penyelesaian proyek.        implementasi modul secara
+                                                     bertahap dan terpisah (Packer
+                                                     → Dropper).
+
+     False Negative      Keterbatasan      lisensi   Riset Mendalam Lisensi:
+     pada                anti-spyware komersial      Memanfaatkan uji coba (trial)
+     Anti-Spyware        membatasi        jumlah     atau open-source sandbox
+                         produk yang diuji .         terkemuka (VirusTotal atau
+                                                     Cuckoo)             sebagai
+                                                     pre-screening         untuk
+II
+
+
+
+
+                                                  memperluas    jangkauan uji
+                                                  statis.
+
+Dengan adanya metrik-metrik ini, proses evaluasi akan menghasilkan penilaian
+kuantitatif dan kualitatif terhadap efektivitas Packer Spyware Mode Stealth secara
+menyeluruh, terutama pada tahap evasi signature, eksekusi in-memory, maupun
+keberhasilan artefak dalam menghindari analisis perilaku anti-spyware.
+II
+
+
+
+
+                            DAFTAR PUSTAKA
+
+
+
+Ainslie, M., J. R. Moteff, dan M. Jones. 2023. Cyber-Threat Intelligence for
+Security Decision-Making: A Review and Research Agenda for Practice.
+Computers & Security 127: 103147.
+
+Arizal, M. A., R. Z. Fadillah, dan S. Abdullah. 2024. “Performance Comparative
+Study on Zero Day Malware Detection Using XGBoost and Random Forest
+Classifiers.” International Journal of Informatics and Computing (IJIC) 14 (2):
+98–107.
+
+Baldota, A., S. Sharma, dan R. Nair. 2025. “Spyware Detection: A
+Comprehensive Review.” International Journal of Science and Advanced
+Technology (IJSAT) 25 (2): 1–10.
+
+Al-Raisi, Ali, et al. "A Review of Social Engineering Attack Techniques and
+Their Countermeasures." Journal of Information Security and Applications 58
+(2022): 1-15.
+
+Kumar, Sushil, et al. "An Emerging Threat: Fileless Malware - A Survey and
+Research Challenges." Cybersecurity 3, no. 1 (2020): 1-12.
+
+Bellizzi, G., F. Caviglione, dan A. Merlo. 2023. “VEDRANDO: Memory
+Forensics Framework for Detecting Stealth Attacks in Android.” MDPI
+Computers 3 (3): 19–33.
+II
+
+
+
+Chatzoglou, Ilias, Panagiotis S. Efraimidis, dan Konstantinos Demertzis. 2023.
+Bypassing Antivirus Detection: Old-School Malware, New Tricks. Greece:
+Democritus University of Thrace.
+
+Koutsokostas, Nikolaos, dan Constantinos Patsakis. 2021. Python and Malware:
+Developing Stealth and Evasive Malware Without Obfuscation. Journal of
+Information Security and Applications 58: 1–13.
+
+Kozák, M., dan J. Jureček. 2023. “Combining Generators of Adversarial Malware
+Examples to Increase Evasion Rate.” arXiv preprint arXiv:2304.07360.
+
+Kozák, M., J. Jureček, M. Stamp, dan F. Di Troia. 2023. “Creating Valid
+Adversarial Examples of Malware.” arXiv preprint arXiv:2306.13587.
+
+Mohammed, S. A., R. Al-Jarrah, dan M. Al-Ayyoub. 2021. “HAPSSA: Holistic
+Approach to PDF Malware Detection Using Signal and Statistical Analysis.”
+arXiv preprint arXiv:2111.04703.
+
+Rodrigues, A., R. Almeida, dan P. Azevedo. 2024. FLECO: A Tool to Boost the
+Adoption of Holistic Cybersecurity Management. Journal of Cybersecurity
+Practice and Research 9 (1): 45–58.
+
+Samociuk, Łukasz. 2023. “Antivirus Evasion Methods in Modern Operating
+Systems.” Applied Sciences 13 (8): 5083.
+
+Sudhakar, R., dan A. Kumar. 2020. An Emerging Threat: Fileless Malware — A
+Survey and Research Challenges. Journal of Information Security and
+Applications 54: 1–15.
+II
+II
+
+
+
+
+                         LAMPIRAN A ​
+                       JUDUL LAMPIRAN
+
+
+
+A.B​ Contoh Judul Anak Lampiran
+
+Contoh anak lampiran
+II
+
+
+
+
+Version Control
+ Tanggal          Perubahan                       Pengubah
+ 1 April 2025        1.​ Perubahan pada Bab III IGB Baskara Nugraha
+                         dan Bab IV untuk
+                         memperjelas bahwa Bab
+                         III hanya untuk analisis
+                         dan Bab IV untuk
+                         penjelasan desain secara
+                         detail.
+                     2.​ Bab IV dan V didetailkan
+

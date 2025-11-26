@@ -5,34 +5,80 @@
 \label{chap:pendahuluan}
 % --- Latar Belakang ---
 \section{Latar Belakang}
-Latar Belakang menjelaskan dasar pemikiran, motivasi, kebutuhan, alasan, atau urgensi pemilihan masalah tugas akhir. Subbab ini berisi penjelasan ringkas tentang kondisi atau situasi yang ada saat ini terkait dengan topik yang dibahas. Tujuan utamanya adalah untuk memberikan informasi secukupnya kepada pembaca agar memahami topik yang akan dibahas. Dalam subbab ini, jelaskan hal-hal berikut ini:
-\begin{enumerate}
-\item	Kondisi atau situasi topik yang dibahas beserta permasalahannya, misalnya tentang pengelolaan informasi di puskesmas daerah pedesaan dan masalah yang dihadapi.
-\item	Berbagai solusi yang telah diterapkan atau solusi yang tersedia dan memungkinkan untuk diterapkan untuk menyelesaikan masalah tersebut.
-\end{enumerate}
+Ancaman siber saat ini telah berevolusi dari malware tradisional berbasis file menjadi serangan yang lebih canggih dan tersembunyi, seperti fileless malware dan spyware. Malware jenis ini dirancang khusus untuk menghindari deteksi dengan memanfaatkan fitur-fitur sah dari sistem operasi, seperti PowerShell dan Windows Management Instrumentation (WMI), untuk menjalankan kode berbahaya langsung di memori tanpa menulis file apapun ke disk. Karena tidak memiliki file yang dapat dideteksi oleh antivirus berbasis tanda tangan (signature-based), serangan ini seringkali luput dari pantauan sistem keamanan tradisional.
+
+Kecanggihan ini membuat fileless malware menjadi ancaman yang sangat berbahaya bagi perusahaan manapun karena kemampuannya untuk bertahan lama dan menghindari solusi antivirus yang ada. Menurut penelitian, anti-malware modern masih memiliki kelemahan signifikan, bahkan terhadap malware "lama" yang dimodifikasi dengan trik baru. Misalnya, sebuah studi pada tahun 2023 menemukan bahwa hampir separuh dari 12 mesin antivirus yang diuji hanya mampu mendeteksi kurang dari setengah varian malware yang disamarkan. Penelitian lain juga menunjukkan bahwa metode seperti enkripsi, injeksi proses, dan penambahan data sampah ke file eksekusi (junk data) terbukti sangat efektif dalam menghindari deteksi. Teknik ini bahkan dapat membingungkan antivirus gratis dan berbayar, membuat mereka gagal mendeteksi atau mengkarantina file yang berbahaya.
+
+Situasi ini semakin diperparah dengan temuan bahwa banyak alat keamanan, termasuk anti-malware, sering kali gagal menganalisis kode yang dikemas menggunakan alat populer seperti PyInstaller untuk bahasa Python. Hal ini terjadi karena antivirus tidak dapat memahami konten kode bita Python (Python bytecode), yang secara efektif menyamarkan skrip berbahaya dari analisis statis. Kurangnya deteksi yang efektif oleh solusi keamanan yang ada, termasuk anti-malware dan EDRs (Endpoint Detection and Response), menciptakan celah besar yang dieksploitasi oleh kelompok penjahat siber dan APTs (Advanced Persistent Threats), yang semakin sering menggunakan skrip fileless PowerShell untuk menghindari pertahanan.
+
 
 % --- Rumusan Masalah ---
 \section{Rumusan Masalah}
-Rumusan Masalah berisi masalah utama yang dibahas dalam tugas akhir. Rumusan masalah yang baik memiliki struktur sebagai berikut:
+Berdasarkan latar belakang di atas, maka rumusan masalah dalam penelitian ini adalah:
 \begin{enumerate}
-\item	Pokok persoalan dari kondisi atau situasi yang ada saat ini. Dengan kata lain, jelaskan kelemahan atau kekurangan dari kondisi, situasi, atau solusi yang dijelaskan pada latar belakang. Ini merupakan pokok rumusan masalah.
-\item	Elaborasi lebih lanjut urgensi penyelesaian masalah tersebut (mengapa penting untuk diselesaikan dan akibat yang dapat terjadi jika tidak diselesaikan).
-\item	Usulan singkat terkait dengan solusi yang ditawarkan untuk menyelesaikan persoalan.
-Penting untuk diperhatikan bahwa persoalan yang dideskripsikan pada subbab ini akan dipertanggungjawabkan di bab Evaluasi (apakah terselesaikan atau tidak).
+\item	Bagaimana kapabilitas sistem anti-malware dalam mendeteksi aktivitas tersembunyi dari perilaku spyware mode stealth pada lingkungan uji terkontrol?
+\item	Bagaimana pendekatan paling efektif untuk menyisipkan spyware mode stealth ke sistem?
+\item	Bagaimana teknik penyamaran (obfuscation) dan metode eksekusi berbasis memori (in-memory execution) mempengaruhi kemampuan deteksi produk anti-malware saat ini?
+\item Apa saja celah keamanan dan kelemahan spesifik yang ditemukan pada produk anti-malware dan EDR ketika dihadapkan pada serangan spyware kustom yang dirancang untuk menghindari deteksi?
 \end{enumerate}
 
 % --- Tujuan ---
 \section{Tujuan}
-Tuliskan tujuan utama dan/atau tujuan detail yang akan dicapai dalam pelaksanaan tugas akhir. Fokuskan pada hasil akhir yang ingin diperoleh setelah tugas akhir diselesaikan, terkait dengan penyelesaian persoalan pada rumusan masalah. Penting untuk diperhatikan bahwa tujuan yang dideskripsikan pada subbab ini akan dipertanggungjawabkan di akhir pelaksanaan tugas akhir apakah tercapai atau tidak. Tuliskan kriteria keberhasilan tugas akhir ini.
+Secara umum, tujuan dari pelaksanaan tugas akhir ini adalah untuk mengukur dan mengevaluasi efektivitas produk anti-malware dan EDR komersial dalam mendeteksi spyware mode stealth yang dikembangkan dengan teknik-teknik penghindaran deteksi modern.
+
+Secara spesifik, tujuan yang ingin dicapai adalah:
+\begin{enumerate}
+    \item Menganalisis dan mengidentifikasi teknik-teknik evasi yang paling efektif digunakan oleh spyware untuk menghindari deteksi dari anti-malware dan EDR.
+    \item Mengembangkan sebuah prototipe spyware mode stealth, termasuk reverse shell fileless PowerShell, yang menggabungkan teknik-teknik evasif yang telah diidentifikasi.
+    \item Melakukan pengujian komparatif prototipe spyware pada sejumlah produk anti-malware dan EDR komersial untuk mengevaluasi tingkat keberhasilan dan kegagalan deteksi.
+    \item Mendokumentasikan dan mempublikasikan celah keamanan yang ditemukan pada produk anti-malware, serta menyusun rekomendasi mitigasi untuk pengembangan sistem pertahanan yang lebih adaptif dan tangguh.
+\end{enumerate}
+
+kriteria keberhasilan dari pelaksanaan tugas akhir ini adalah:
+
+\begin{itemize}
+    \item Prototipe spyware berhasil dikembangkan dengan setidaknya dua teknik evasif (misalnya, enkripsi dan obfuscation) dan mampu menghindari deteksi oleh salah satu produk anti-malware yang diuji.
+    \item Hasil pengujian menunjukkan bahwa ada perbedaan signifikan dalam tingkat deteksi antara format skrip dan anti-malware yang berbeda.
+\end{itemize}
+
+Kedua kriteria tersebut menjadi indikator utama untuk menilai efektivitas penelitian, serta menunjukkan sejauh mana solusi yang ditawarkan mampu mengungkap kelemahan sistem keamanan siber saat ini. Pencapaian terhadap kriteria ini diharapkan dapat menjadi dasar pertimbangan dalam peningkatan kapabilitas deteksi anti-malware dan EDR di masa depan
 
 % --- Batasan Masalah ---
 \section{Batasan Masalah}
-Tuliskan batasan-batasan yang diambil dalam pelaksanaan tugas akhir. Batasan ini dapat dihindari (bersifat opsional, tidak perlu ada) jika topik atau judul tugas akhir dibuat cukup spesifik.
+Batasan masalah dalam pelaksanaan tugas akhir adalah sebagai berikut: 
+\begin{enumerate}
+    \item Penelitian ini hanya berfokus pada pengujian kapabilitas deteksi anti-spyware terhadap aktivitas awal (Initial Access) yang dilakukan oleh spyware mode stealth pada sistem operasi desktop.	
+    \item Evaluasi hanya mencakup perangkat anti spyware yang dipilih sesuai kriteria penelitian, tidak membandingkan seluruh produk anti malware yang ada.
+    \item Aktivitas malware yang diujikan dibatasi secara ketat pada tahap penyusupan, enkripsi payload, fileless execution, dan upaya persistence.
+    \item Tugas akhir ini dikerjakan secara kelompok dengan anggota penelitian sebagai berikut: 
+    \begin{itemize}
+        \item Nathaniel Liady
+        \item M. Kasyfil Aziz
+        \item Audra Zelvania Putri Harjanto
+        \item Khayla Belva Annandira
+\end{enumerate}
 
 % --- Metodologi Pengerjaan TA ---
 \section{Metodologi}
-Tuliskan semua tahapan yang akan dilalui selama pelaksanaan tugas akhir. Tahapan ini spesifik untuk menyelesaikan persoalan tugas akhir. Khusus untuk penyusunan proposal ini, jelaskan secara detail:
+Metodologi penelitian yang digunakan adalah Design Research Methodology (DRM) dikenalkan oleh Lucienne Blessing dan Amaresh Chakrabarti [BLE09]. DRM dibuat dengan tujuan supaya riset dilakukan dengan lebih efektif dan efisien. Metodologi ini terdiri dari empat tahap utama yaitu Research Clarification (RC), Descriptive Study I (DS-I), Perspective Study (PS), dan Descriptive Study II (DS-II). Berikut ini adalah gambaran dari kerangka kerja DRM. 
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{image/Design-Research-Methodology-Framework-Blessing-and-Chakrabarti-2009.png}
+    \label{fig: Design Research Methodology}
+    
+    Gambar 1.1 Design Research Methodology Framework 
+    \end{figure}
 \begin{enumerate}
-\item	Tahapan investigasi pengumpulan fakta di latar belakang untuk merumuskan masalah.
-\item	Langkah-langkah pencarian, pengelompokan, dan penapisan literatur atau sumber informasi untuk mengumpulkan informasi yang relevan tentang topik yang diangkat, termasuk teori (konsep atau teori apa saja yang perlu dicari), hal-hal yang telah dicapai oleh orang lain (cara mencari dan kata kuncinya), dan berbagai informasi pendukung, untuk mencari solusi terhadap masalah yang dibahas. Gunakan metodologi yang tepat dalam menggali informasi dan dokumentasikan prosesnya (termasuk rekaman wawancara atau survei) di dalam Lampiran, termasuk tautan ke video atau foto. Hasil penggalian informasi ini akan dijelaskan secara sistematis di Bab II Studi Literatur.
+\item \textit{Research Clarification (RC)}
+    
+    Fase ini akan dimulai dengan identifikasi masalah utama: adanya celah yang signifikan antara teknik serangan siber modern, khususnya spyware mode stealth, dan kemampuan deteksi solusi keamanan yang ada. Pengumpulan data awal akan dilakukan melalui tinjauan literatur komprehensif, termasuk laporan industri, artikel akademis, dan berita, untuk memahami lanskap ancaman dan teknik evasif yang digunakan untuk menghindari deteksi anti-malware dan EDR. Hasil dari fase ini adalah rumusan masalah yang jelas dan terperinci, yang akan menjadi landasan untuk seluruh penelitian.
+\item \textit{Descriptive Study I (DS-I)}
+    
+    Pada fase ini, analisis mendalam terhadap masalah yang telah dirumuskan akan dilakukan dengan mengumpulkan data dan informasi yang relevan. Ini mencakup analisis rinci mengenai teknik-teknik evasi canggih, seperti penggunaan PowerShell dan obfuscation, untuk memahami bagaimana ancaman ini bekerja dan mengapa mereka sulit dideteksi. Selain itu, studi-studi terdahulu yang telah menguji bypass antivirus akan dikaji untuk mendapatkan wawasan mengenai metode dan potensi hasil. Sebagai bagian penting dari fase ini, alur kerja atau arsitektur teknis dari serangan spyware akan disusun, yang akan menjelaskan fase-fase seperti Initial Access, Establish Foothold & Persistence, Data Collection, dan Exfiltration. Diagram alur yang telah ada akan menjadi representasi visual dari arsitektur ini.
+    \item \textit{Perspective Study (PS)}
+
+    Fase ini merupakan inti dari DRM, di mana solusi untuk masalah yang telah didefinisikan akan dirancang dan dikembangkan. Artefak yang akan dibuat adalah prototipe spyware mode stealth dengan fungsi-fungsi spesifik seperti keylogging dan screen capture. Desain prototipe akan mengintegrasikan teknik evasi yang telah diidentifikasi pada fase sebelumnya, seperti enkripsi payload dan penggunaan PowerShell untuk menjalankan kode langsung di memori. Berbagai modul, termasuk Packer untuk menyamarkan payload.
+    \item \textit{Descriptive Study II (DS-II)}
+    
+    Fase terakhir ini bertujuan untuk menguji dan mengevaluasi efektivitas solusi yang telah dikembangkan. Serangkaian pengujian eksperimental akan dilakukan dalam lingkungan virtual yang terisolasi untuk mengukur tingkat deteksi berbagai produk anti-malware terhadap prototipe spyware. Hasil pengujian akan dianalisis untuk mengidentifikasi teknik evasi mana yang paling efektif dan mengapa produk keamanan tertentu gagal atau berhasil dalam mendeteksi ancaman. Analisis ini akan memvalidasi temuan awal dan memberikan kontribusi nyata pada pemahaman tentang kerentanan sistem keamanan modern, yang akan menjadi dasar untuk rekomendasi perbaikan dan penelitian lebih lanjut.
 \end{enumerate}
