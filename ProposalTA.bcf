@@ -4967,10 +4967,17 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">daftar-pustaka.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">BPBI</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">laudon2020</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">laudon2020</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">pressman2019</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">Blessing2009DesignResearchMethodology</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">Verma2021InformationGathering</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Verma2021InformationGathering</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Ainslie2023CTI</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Ainslie2023CTI</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">Sudhakar2020FilelessMalware</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">DominguezDorado2024FLECO</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">BPBI</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">laudon2020</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">laudon2020</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">pressman2019</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="cms">
