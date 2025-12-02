@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.11.25)  30 NOV 2025 12:54
+This is XeTeX, Version 3.141592653-2.6-0.999995 (MiKTeX 24.1) (preloaded format=xelatex 2025.11.25)  1 DEC 2025 23:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1125,7 +1125,22 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'ProposalTA.bbl' found.
-(ProposalTA.bbl)
+(ProposalTA.bbl
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                laudon2020
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                pressman2019
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+)
 Package biblatex Info: Reference section=0 on input line 200.
 Package biblatex Info: Reference segment=0 on input line 200.
 File: image/ganesha.jpg Graphic file (type bmp)
@@ -1157,17 +1172,7 @@ No file ProposalTA.lot.
 \tf@lot=\write7
 \openout7 = `ProposalTA.lot'.
 
-[4] (ProposalTA.lol
-LaTeX Font Info:    Trying to load font information for U+msa on input line 1.
-
-(C:\Users\User_HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 1.
-
-(C:\Users\User_HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
+[4] (ProposalTA.lol)
 \tf@lol=\write8
 \openout8 = `ProposalTA.lol'.
 
@@ -1232,132 +1237,6 @@ Bab I.
 
 
 ] [2]
-
-Bab I - Pendahuluan.tex:59: LaTeX Error: \begin{itemize} on input line 54 ended
- by \end{enumerate}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.59 \end{enumerate}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Citation 'Blessing2009DesignResearchMethodology' on page 3 undef
-ined on input line 63.
-
-File: image/Design-Research-Methodology-Framework-Blessing-and-Chakrabarti-2009
-.png Graphic file (type bmp)
-<image/Design-Research-Methodology-Framework-Blessing-and-Chakrabarti-2009.png>
-
-
-Overfull \hbox (3.40717pt too wide) in paragraph at lines 63--72
-\TU/TimesNewRoman(0)/m/n/12 (DRM) dikenalkan oleh ([]). DRM
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3] [4]) (Bab II - Studi-Literatur.tex [5]
-Bab II.
-
-LaTeX Warning: Citation 'Verma2021InformationGathering' on page 6 undefined on 
-input line 9.
-
-
-Overfull \hbox (37.76949pt too wide) in paragraph at lines 9--10
-\TU/TimesNewRoman(0)/m/n/12 memahami permukaan serangan yang tersedia. ([])
- []
-
-
-LaTeX Warning: Citation 'Verma2021InformationGathering' on page 6 undefined on 
-input line 11.
-
-[6
-
-] [7]
-
-LaTeX Warning: Citation 'Ainslie2023CTI' on page 8 undefined on input line 23.
-
-
-LaTeX Warning: Citation 'Ainslie2023CTI' on page 8 undefined on input line 25.
-
-
-LaTeX Warning: Citation 'Sudhakar2020FilelessMalware' on page 8 undefined on in
-put line 25.
-
-[8]
-
-LaTeX Warning: Citation 'DominguezDorado2024FLECO' on page 9 undefined on input
- line 27.
-
-
-LaTeX Warning: Reference `gambar:jaringan' on page 9 undefined on input line 33
-.
-
-[9]
-File: image/gambar1.png Graphic file (type bmp)
-<image/gambar1.png>
- [10]
-
-LaTeX Warning: Reference `tbl:harga1' on page 11 undefined on input line 61.
-
-
-LaTeX Warning: Reference `tbl:harga2' on page 11 undefined on input line 61.
-
-
-LaTeX Warning: Reference `tbl:harga3' on page 11 undefined on input line 96.
-
-(table/tabel1.tex)
-
-LaTeX Warning: Reference `tbl:longtable1' on page 11 undefined on input line 10
-6.
-
-[11]
-
-Package longtable Warning: Column widths have changed
-(longtable)                in table II.4 on input line 182.
-
-[12]
-
-LaTeX Warning: Reference `eq:contoh1' on page 13 undefined on input line 185.
-
-
-LaTeX Warning: Reference `eq:rumus2' on page 13 undefined on input line 192.
-
-[13]
-
-LaTeX Warning: Reference `eq:rumus3' on page 14 undefined on input line 200.
-
-
-LaTeX Warning: Reference `alg:contoh1' on page 14 undefined on input line 222.
-
-
-LaTeX Warning: Reference `lst:contoh1' on page 14 undefined on input line 223.
-
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 229.
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 228--235
-[]$[]$ 
- []
-
-[14]
-(C:\Users\User_HP\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 238.
-
-Overfull \hbox (30.0pt too wide) in paragraph at lines 236--243
-[]$[]$ 
- []
-
-
 (C:\Users\User_HP\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/en\bab
 el-english.tex
 Package babel Info: Importing basic data for english
@@ -1369,26 +1248,141 @@ Package biblatex Warning: No localisation for language 'english' loaded.
 (biblatex)                be requested properly.
 
 
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Blessing2009DesignResearchMethodology' on i
+nput line 64.
+
+
 Package biblatex Warning: Using fallback definition for \mkbibdatelong.
 (biblatex)                The command should be defined in the .lbx file.
 (biblatex)                If you see this message, the .lbx file could not be
 (biblatex)                loaded, is faulty or does not contain a definition
 (biblatex)                for \mkbibdatelong.
 
+File: image/Design-Research-Methodology-Framework-Blessing-and-Chakrabarti-2009
+.png Graphic file (type bmp)
+<image/Design-Research-Methodology-Framework-Blessing-and-Chakrabarti-2009.png>
 
-Overfull \hbox (19.22398pt too wide) in paragraph at lines 255--261
- [][] 
+
+Overfull \hbox (2.44656pt too wide) in paragraph at lines 64--73
+\TU/TimesNewRoman(0)/m/n/12 Metodologi penelitian yang digunakan adalah \TU/Tim
+esNewRoman(0)/m/it/12 Design Research Methodology \TU/TimesNewRoman(0)/m/n/12 (
+DRM)
  []
 
 
-LaTeX Warning: Reference `tbl:sedangkan_sehingga' on page 15 undefined on input
- line 274.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[15] [16]) (Bab III - Analisis-Masalah.tex [17]
-Bab III.
+[3] [4]) (Bab II - Studi-Literatur.tex [5]
+Bab II.
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Verma2021InformationGathering' on input lin
+e 9.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Verma2021InformationGathering' on input lin
+e 11.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[6
+
+] [7]
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Ainslie2023CTI' on input line 23.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[8]
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Ainslie2023CTI' on input line 25.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
 
 Package biblatex Warning: Bibliography string 'and' untranslated
-(biblatex)                at entry 'laudon2020' on input line 10.
+(biblatex)                at entry 'Sudhakar2020FilelessMalware' on input line 
+25.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'DominguezDorado2024FLECO' on input line 27.
+
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Overfull \hbox (12.52925pt too wide) in paragraph at lines 27--28
+\TU/TimesNewRoman(0)/m/n/12 keamanan siber. FLECO, sebuah kerangka kerja yang d
+ikembangkan oleh [][][][][]Domínguez-
+ []
+
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Ainslie2023CTI' on input line 30.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[9]
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Chatzoglou2023AVBypassing' on input line 32
+.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Koutsokostas2021PythonMalware' on input lin
+e 32.
 
 
 Package biblatex Warning: Using fallback definition for \mkbibdatelong.
@@ -1404,31 +1398,135 @@ Package biblatex Warning: Using fallback definition for \mkbibdatelong.
 (biblatex)                loaded, is faulty or does not contain a definition
 (biblatex)                for \mkbibdatelong.
 
-[18
 
-]) (Bab IV - Desain-Konsep-Solusi.tex [19] [20]
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+Bab II - Studi-Literatur.tex:34: Undefined control sequence.
+l.34 ...l yang tangguh dan sulit dilacak. \texcite
+                                                  {Koutsokostas2021PythonMal...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'DominguezDorado2024FLECO' on input line 34.
+
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Sudhakar2020FilelessMalware' on input line 
+38.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[10]
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Chatzoglou2023AVBypassing' on input line 40
+.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Koutsokostas2021PythonMalware' on input lin
+e 42.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[11]
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Koutsokostas2021PythonMalware' on input lin
+e 47.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'andothers' untranslated
+(biblatex)                at entry 'Chatzoglou2023AVBypassing' on input line 49
+.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Koutsokostas2021PythonMalware' on input lin
+e 51.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+[12]) (Bab III - Analisis-Masalah.tex [13]
+Bab III.
+[14
+
+] [15]) (Bab IV - Desain-Konsep-Solusi.tex [16]
 Bab IV.
 
-LaTeX Warning: Reference `chap:analisis-masalah' on page 21 undefined on input 
+LaTeX Warning: Reference `chap:analisis-masalah' on page 17 undefined on input 
 line 9.
 
-) (Bab V - Rencana-Selanjutnya.tex [21
+) (Bab V - Rencana-Selanjutnya.tex [17
 
 ]
 Bab V.
-) [22
+) [18
 
 ]
 
-Package biblatex Warning: Using fallback definition for \mkbibdatelong.
-(biblatex)                The command should be defined in the .lbx file.
-(biblatex)                If you see this message, the .lbx file could not be
-(biblatex)                loaded, is faulty or does not contain a definition
-(biblatex)                for \mkbibdatelong.
-
-
-Package biblatex Warning: Bibliography string 'urlseen' untranslated
-(biblatex)                at entry 'BPBI' on input line 400.
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Ainslie2023CTI' on input line 400.
 
 
 Package biblatex Warning: Using fallback definition for \mkbibdatelong.
@@ -1437,20 +1535,78 @@ Package biblatex Warning: Using fallback definition for \mkbibdatelong.
 (biblatex)                loaded, is faulty or does not contain a definition
 (biblatex)                for \mkbibdatelong.
 
+LaTeX Font Info:    Trying to load font information for U+msa on input line 400
+.
+(C:\Users\User_HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 400
+.
 
-Package biblatex Warning: Using fallback definition for \mkbibordinal.
+(C:\Users\User_HP\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Blessing2009DesignResearchMethodology' on i
+nput line 400.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
 (biblatex)                The command should be defined in the .lbx file.
 (biblatex)                If you see this message, the .lbx file could not be
 (biblatex)                loaded, is faulty or does not contain a definition
-(biblatex)                for \mkbibordinal.
-
-
-Package biblatex Warning: Bibliography string 'october' untranslated
-(biblatex)                at entry 'BPBI' on input line 400.
+(biblatex)                for \mkbibdatelong.
 
 
 Package biblatex Warning: Bibliography string 'and' untranslated
-(biblatex)                at entry 'laudon2020' on input line 400.
+(biblatex)                at entry 'DominguezDorado2024FLECO' on input line 400
+.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Overfull \hbox (5.2193pt too wide) in paragraph at lines 400--400
+[][]\TU/TimesNewRoman(0)/m/n/12 Domínguez-Dorado, Manuel, Francisco J. Rodrígue
+z-Pérez, Jesús Galeano-Brajones,
+ []
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Chatzoglou2023AVBypassing' on input line 40
+0.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+c:/Users/User_HP/Downloads/TA BOSS/Nulis_TA/Tugas-Akhir/ProposalTA.tex:400: Mis
+placed alignment tab character &.
+<inserted text> ...nd Its Evasion of Modern EDRs &
+                                                   AVs.pdf"
+l.400 \printbibliography[title={DAFTAR PUSTAKA}]
+                                                
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
 
 Package biblatex Warning: Using fallback definition for \mkbibdatelong.
@@ -1467,38 +1623,72 @@ Package biblatex Warning: Using fallback definition for \mkbibdatelong.
 (biblatex)                for \mkbibdatelong.
 
 
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Koutsokostas2021PythonMalware' on input lin
+e 400.
 
 
-c:/Users/User_HP/Downloads/TA BOSS/Nulis_TA/Tugas-Akhir/ProposalTA.tex:410: LaT
-eX Error: \begin{enumerate} on input line 49 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.410 \end{document}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[23
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
 
 
-] (ProposalTA.aux
-ProposalTA.aux:26: Missing \endcsname inserted.
+Overfull \hbox (13.72586pt too wide) in paragraph at lines 400--400
+\TU/TimesNewRoman(0)/m/n/12 and Malware Developing Stealth and Evasive Malware 
+Without Obfuscation.pdf”.[] 
+ []
+
+[19
+
+
+]
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Sudhakar2020FilelessMalware' on input line 
+400.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package biblatex Warning: Bibliography string 'and' untranslated
+(biblatex)                at entry 'Verma2021InformationGathering' on input lin
+e 400.
+
+
+Package biblatex Warning: Using fallback definition for \mkbibdatelong.
+(biblatex)                The command should be defined in the .lbx file.
+(biblatex)                If you see this message, the .lbx file could not be
+(biblatex)                loaded, is faulty or does not contain a definition
+(biblatex)                for \mkbibdatelong.
+
+
+Package caption Warning: Unused \captionsetup[table] on input line 378.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: Unused \captionsetup[lstlisting] on input line 380.
+See the caption package documentation for explanation.
+
+[20] (ProposalTA.aux
+ProposalTA.aux:33: Missing \endcsname inserted.
 <to be read again> 
                    \protect 
-l.26 ...e 67}}{4}{Metodologi}{figure.caption.3}{}}
+l.33 ...e 68}}{4}{Metodologi}{figure.caption.3}{}}
                                                   
 The control sequence marked <to be read again> should
 not appear between \csname and \endcsname.
 
-ProposalTA.aux:26: Extra \endcsname.
+ProposalTA.aux:33: Extra \endcsname.
 <recently read> \endcsname 
                            
-l.26 ...e 67}}{4}{Metodologi}{figure.caption.3}{}}
+l.33 ...e 68}}{4}{Metodologi}{figure.caption.3}{}}
                                                   
 I'm ignoring this, since I wasn't doing a \csname.
 
@@ -1521,7 +1711,7 @@ Package rerunfilecheck Warning: File `ProposalTA.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `ProposalTA.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  C84A77DC81526DD5AA831BE7614459A9;7016.
+(rerunfilecheck)             After:  D97EE15F93668F09F77E62E431F40320;3958.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                ProposalTA
@@ -1530,18 +1720,22 @@ Package biblatex Warning: Please (re)run Biber on the file:
 Package logreq Info: Writing requests to 'ProposalTA.run.xml'.
 \openout1 = `ProposalTA.run.xml'.
 
- )
-(\end occurred inside a group at level 1)
 
-### semi simple group (level 1) entered at line 49 (\begingroup)
-### bottom level 
+Overfull \hbox (235.17703pt too wide) in paragraph at lines 33--410
+[]\TU/TimesNewRoman(0)/m/it/12 Design Research Methodology                     
+                                                                               
+                                                                               
+                                                                  
+ []
+
+ ) 
 Here is how much of TeX's memory you used:
- 30048 strings out of 409617
- 587936 string characters out of 5773606
- 1950191 words of memory out of 5000000
- 51813 multiletter control sequences out of 15000+600000
- 563458 words of font info for 83 fonts, out of 8000000 for 9000
+ 29845 strings out of 409617
+ 586323 string characters out of 5773606
+ 1931191 words of memory out of 5000000
+ 51625 multiletter control sequences out of 15000+600000
+ 563266 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 79i,14n,93p,1383b,5945s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,6n,93p,1463b,5397s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ProposalTA.pdf (29 pages).
+Output written on ProposalTA.pdf (26 pages).

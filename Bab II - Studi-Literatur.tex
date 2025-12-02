@@ -3,12 +3,12 @@
 % ==========================================
 \chapter{STUDI LITERATUR}
 \label{chap:studi-literatur}
-Bab ini membahas landasan teori dan kajian literatur yang relevan untuk mendukung penelitian ini. Studi literatur dilakukan untuk memahami konsep, teori, dan teknologi yang mendasari penelitian, termasuk \textit{information gathering, social engineering, cyber security, anti-malware, malware}, dan \textit{spyware}. Selain itu, kajian terhadap penelitian terdahulu yang berkaitan juga dilakukan untuk mengidentifikasi solusi yang sudah ada, celah penelitian, serta pendekatan yang dapat diadopsi atau dikembangkan lebih lanjut. Hasil dari studi literatur ini akan menjadi dasar dalam merumuskan solusi desain yang diusulkan dalam penelitian ini.
+Bab ini membahas landasan teori dan kajian literatur yang relevan untuk mendukung penelitian ini. Studi literatur dilakukan untuk memahami konsep, teori, dan teknologi yang mendasari penelitian, termasuk \textit{information gathering, social engineering, cyber security, Anti-Spyware, malware}, dan \textit{spyware}. Selain itu, kajian terhadap penelitian terdahulu yang berkaitan juga dilakukan untuk mengidentifikasi solusi yang sudah ada, celah penelitian, serta pendekatan yang dapat diadopsi atau dikembangkan lebih lanjut. Hasil dari studi literatur ini akan menjadi dasar dalam merumuskan solusi desain yang diusulkan dalam penelitian ini.
 
 \section{\textit{Information Gathering}}
-\textit{Information gathering} merupakan tahap awal yang sangat penting dalam proses pengujian keamanan siber maupun kegiatan intelijen digital. Tahap ini bertujuan untuk mengumpulkan informasi sebanyak mungkin mengenai target, baik berupa sistem, jaringan, organisasi, maupun individu, dengan tujuan memahami permukaan serangan yang tersedia. \cite{Verma2021InformationGathering} menjelaskan bahwa kegiatan \textit{information gathering} dilakukan untuk memetakan aset dan mengidentifikasi potensi kerentanan sebelum serangan atau pengujian keamanan dilakukan. Secara umum, proses ini terbagi menjadi dua pendekatan utama, yaitu pasif dan aktif. Pengumpulan informasi secara pasif dilakukan tanpa melakukan interaksi langsung dengan sistem target, misalnya dengan memanfaatkan data publik dari mesin pencari, basis data domain, atau sumber intelijen terbuka (\textit{Open Source Intelligence/OSINT}). Sebaliknya, pendekatan aktif melibatkan aktivitas langsung seperti \textit{port scanning, service enumeration}, atau \textit{banner grabbing} untuk memperoleh data teknis yang lebih spesifik, namun metode ini berisiko lebih tinggi untuk terdeteksi oleh sistem keamanan target.
+\textit{Information gathering} merupakan tahap awal yang sangat penting dalam proses pengujian keamanan siber maupun kegiatan intelijen digital. Tahap ini bertujuan untuk mengumpulkan informasi sebanyak mungkin mengenai target, baik berupa sistem, jaringan, organisasi, maupun individu, dengan tujuan memahami permukaan serangan yang tersedia. \textcite{Verma2021InformationGathering} menjelaskan bahwa kegiatan \textit{information gathering} dilakukan untuk memetakan aset dan mengidentifikasi potensi kerentanan sebelum serangan atau pengujian keamanan dilakukan. Secara umum, proses ini terbagi menjadi dua pendekatan utama, yaitu pasif dan aktif. Pengumpulan informasi secara pasif dilakukan tanpa melakukan interaksi langsung dengan sistem target, misalnya dengan memanfaatkan data publik dari mesin pencari, basis data domain, atau sumber intelijen terbuka (\textit{Open Source Intelligence/OSINT}). Sebaliknya, pendekatan aktif melibatkan aktivitas langsung seperti \textit{port scanning, service enumeration}, atau \textit{banner grabbing} untuk memperoleh data teknis yang lebih spesifik, namun metode ini berisiko lebih tinggi untuk terdeteksi oleh sistem keamanan target.
 
-Teknik \textit{information gathering} secara tradisional terdiri atas tiga tahap utama, yaitu \textit{footprinting, scanning}, dan \textit{enumeration}. Pada tahap \textit{footprinting}, peneliti mengumpulkan informasi dasar seperti alamat IP, nama domain, sistem operasi, serta teknologi yang digunakan. Tahap \textit{scanning} bertujuan untuk menemukan \textit{host} aktif dan \textit{port} terbuka, sementara \textit{enumeration} melibatkan eksplorasi lebih dalam terhadap layanan, pengguna, atau konfigurasi sistem yang dapat dimanfaatkan dalam tahap berikutnya. Seiring berkembangnya teknologi, berbagai alat bantu seperti Nmap, Wireshark, The Harvester, Netcraft, dan Metagoofil banyak digunakan untuk mendukung proses pengumpulan informasi ini. Studi \cite{Verma2021InformationGathering} juga menyoroti pentingnya kombinasi antara OSINT dan pemindaian aktif untuk meningkatkan efektivitas deteksi potensi risiko, meskipun penggunaan metode ini harus dibatasi dalam ruang lingkup yang legal dan etis.
+Teknik \textit{information gathering} secara tradisional terdiri atas tiga tahap utama, yaitu \textit{footprinting, scanning}, dan \textit{enumeration}. Pada tahap \textit{footprinting}, peneliti mengumpulkan informasi dasar seperti alamat IP, nama domain, sistem operasi, serta teknologi yang digunakan. Tahap \textit{scanning} bertujuan untuk menemukan \textit{host} aktif dan \textit{port} terbuka, sementara \textit{enumeration} melibatkan eksplorasi lebih dalam terhadap layanan, pengguna, atau konfigurasi sistem yang dapat dimanfaatkan dalam tahap berikutnya. Seiring berkembangnya teknologi, berbagai alat bantu seperti Nmap, Wireshark, The Harvester, Netcraft, dan Metagoofil banyak digunakan untuk mendukung proses pengumpulan informasi ini. Studi \textcite{Verma2021InformationGathering} juga menyoroti pentingnya kombinasi antara OSINT dan pemindaian aktif untuk meningkatkan efektivitas deteksi potensi risiko, meskipun penggunaan metode ini harus dibatasi dalam ruang lingkup yang legal dan etis.
 
 Selain aspek teknis, penelitian terbaru menekankan pentingnya aspek etika dan hukum dalam kegiatan \textit{information gathering}. Pengumpulan data secara berlebihan atau tanpa izin dapat melanggar privasi individu maupun regulasi keamanan informasi. Oleh karena itu, para peneliti dianjurkan untuk melakukan kegiatan ini dalam lingkungan laboratorium yang terisolasi, dengan batasan yang jelas dan persetujuan dari pihak terkait. Di sisi lain, hasil pengumpulan informasi juga harus dikelola dengan prinsip \textit{responsible disclosure}, yaitu melaporkan temuan yang berpotensi sensitif kepada pihak yang berwenang tanpa menyebarkannya secara publik. Dengan demikian, \textit{information gathering} tidak hanya berfungsi sebagai tahapan teknis untuk mendukung pengujian keamanan, tetapi juga sebagai fondasi penting dalam membangun kesadaran, kebijakan, dan strategi pertahanan siber yang lebih komprehensif.
 
@@ -20,293 +20,35 @@ Penelitian terbaru mengidentifikasi berbagai metode serangan \textit{social engi
 Berbagai studi telah mengidentifikasi beberapa faktor yang membuat individu rentan terhadap serangan \textit{social engineering}. Kesadaran keamanan yang rendah adalah salah satu faktor utama. Penyerang juga mengeksploitasi emosi seperti ketakutan, urgensi, rasa ingin tahu, dan kepercayaan untuk mendorong korban membuat keputusan yang salah. Kepercayaan berlebihan pada figur otoritas juga membuat korban lebih mudah dimanipulasi. Serangan-serangan ini memiliki dampak yang signifikan, termasuk kerugian finansial, kerusakan reputasi, dan hilangnya data. Studi kasus skema penipuan keuangan yang menargetkan Google dan Facebook menunjukkan bahwa organisasi dengan sistem keamanan yang kuat pun tidak kebal terhadap \textit{social engineering}.
 
 \section{\textit{Cyber Security}}
-\textit{Cyber security} merupakan disiplin ilmu dan praktik yang berfokus pada perlindungan sistem komputer, jaringan, data, serta perangkat digital dari berbagai ancaman yang dapat mengganggu kerahasiaan, integritas, dan ketersediaan informasi. Menurut \cite{Ainslie2023CTI}, keamanan siber tidak hanya menjadi isu teknis, melainkan juga tantangan strategis yang berpengaruh terhadap pengambilan keputusan di tingkat organisasi. Dalam konteks modern, setiap keputusan bisnis harus mempertimbangkan potensi risiko siber, karena ancaman digital kini dapat berdampak langsung pada keberlanjutan operasional dan reputasi perusahaan. Oleh karena itu, \textit{cyber security} mencakup kombinasi aspek teknologi, manusia, dan kebijakan organisasi yang bekerja secara terpadu untuk mencegah, mendeteksi, dan merespons insiden keamanan secara efektif.
+\textit{Cyber security} merupakan disiplin ilmu dan praktik yang berfokus pada perlindungan sistem komputer, jaringan, data, serta perangkat digital dari berbagai ancaman yang dapat mengganggu kerahasiaan, integritas, dan ketersediaan informasi. Menurut \textcite{Ainslie2023CTI}, keamanan siber tidak hanya menjadi isu teknis, melainkan juga tantangan strategis yang berpengaruh terhadap pengambilan keputusan di tingkat organisasi. Dalam konteks modern, setiap keputusan bisnis harus mempertimbangkan potensi risiko siber, karena ancaman digital kini dapat berdampak langsung pada keberlanjutan operasional dan reputasi perusahaan. Oleh karena itu, \textit{cyber security} mencakup kombinasi aspek teknologi, manusia, dan kebijakan organisasi yang bekerja secara terpadu untuk mencegah, mendeteksi, dan merespons insiden keamanan secara efektif.
 
-Komponen utama dalam \textit{cyber security} meliputi perlindungan data dan privasi, pengelolaan risiko, deteksi serta respons terhadap insiden, hingga penerapan \textit{Cyber Threat Intelligence (CTI)} yang berfungsi untuk mengidentifikasi pola serangan dan memberikan wawasan bagi pengambilan keputusan keamanan \cite{Ainslie2023CTI}. Selain itu, munculnya ancaman baru seperti fileless malware turut memperluas ruang lingkup keamanan siber. Berdasarkan penelitian \cite{Sudhakar2020FilelessMalware}, \textit{fileless malware} beroperasi langsung di memori tanpa menyimpan file berbahaya di sistem, sehingga sulit dideteksi oleh \textit{antivirus} tradisional yang berbasis tanda tangan. Ancaman ini menunjukkan bahwa sistem pertahanan harus bergeser dari deteksi berbasis file menuju pendekatan berbasis perilaku dan analisis memori.
+Komponen utama dalam \textit{cyber security} meliputi perlindungan data dan privasi, pengelolaan risiko, deteksi serta respons terhadap insiden, hingga penerapan \textit{Cyber Threat Intelligence (CTI)} yang berfungsi untuk mengidentifikasi pola serangan dan memberikan wawasan bagi pengambilan keputusan keamanan \textcite{Ainslie2023CTI}. Selain itu, munculnya ancaman baru seperti fileless malware turut memperluas ruang lingkup keamanan siber. Berdasarkan penelitian \textcite{Sudhakar2020FilelessMalware}, \textit{fileless malware} beroperasi langsung di memori tanpa menyimpan file berbahaya di sistem, sehingga sulit dideteksi oleh \textit{antivirus} tradisional yang berbasis tanda tangan. Ancaman ini menunjukkan bahwa sistem pertahanan harus bergeser dari deteksi berbasis file menuju pendekatan berbasis perilaku dan analisis memori.
 
-Dalam penerapannya, pendekatan holistik menjadi kunci keberhasilan manajemen keamanan siber. FLECO, sebuah kerangka kerja yang dikembangkan oleh \cite{DominguezDorado2024FLECO}, menekankan pentingnya integrasi antara aspek teknologi, tata kelola, dan budaya organisasi untuk membangun sistem keamanan yang berkelanjutan. Pendekatan ini membantu organisasi dalam mengukur kesiapan keamanan siber dan memperkuat koordinasi lintas departemen agar setiap unit memahami tanggung jawabnya dalam menjaga keamanan digital. Dengan demikian, \textit{cyber security} tidak hanya berfungsi untuk merespons ancaman yang terjadi, tetapi juga sebagai strategi proaktif yang melibatkan seluruh komponen organisasi dalam menciptakan ketahanan siber yang adaptif dan menyeluruh.
+Dalam penerapannya, pendekatan holistik menjadi kunci keberhasilan manajemen keamanan siber. FLECO, sebuah kerangka kerja yang dikembangkan oleh \textcite{DominguezDorado2024FLECO}, menekankan pentingnya integrasi antara aspek teknologi, tata kelola, dan budaya organisasi untuk membangun sistem keamanan yang berkelanjutan. Pendekatan ini membantu organisasi dalam mengukur kesiapan keamanan siber dan memperkuat koordinasi lintas departemen agar setiap unit memahami tanggung jawabnya dalam menjaga keamanan digital. Dengan demikian, \textit{cyber security} tidak hanya berfungsi untuk merespons ancaman yang terjadi, tetapi juga sebagai strategi proaktif yang melibatkan seluruh komponen organisasi dalam menciptakan ketahanan siber yang adaptif dan menyeluruh.
 
-\section{\textit{Anto-Malware}}
-\textit{Anti-malware} merupakan salah satu komponen inti dalam sistem pertahanan siber yang dirancang untuk mendeteksi, mencegah, dan menanggulangi perangkat lunak berbahaya seperti virus, trojan, \textit{ransomware}, maupun \textit{spyware}. Seiring berkembangnya kompleksitas serangan dan munculnya varian malware yang memanfaatkan teknik penyamaran (\textit{obfuscation}), efektivitas sistem deteksi tradisional berbasis tanda tangan mengalami penurunan signifikan. Menurut Tayyab dkk. (2022), pendekatan modern dalam deteksi malware harus menggabungkan analisis statis dan dinamis untuk meningkatkan kemampuan identifikasi terhadap ancaman baru. Melalui penerapan deep learning berbasis analisis perilaku, penelitian mereka menunjukkan peningkatan akurasi deteksi hingga lebih dari 97\%, menegaskan bahwa integrasi metode pembelajaran mesin dan analisis perilaku jauh lebih efisien dibanding deteksi berbasis pola semata.
+\section{\textit{Anti-Spyware}}
+Sistem \textit{anti-spyware} modern menghadapi tantangan signifikan dalam lanskap keamanan siber yang terus berevolusi, beralih dari malware tradisional menuju serangan stealth yang canggih. Menurut Sudhakar dan Kumar (2020), fileless malware beroperasi langsung di memori, menjadikannya sulit dideteksi oleh antivirus tradisional yang berbasis tanda tangan. Spyware merupakan ancaman yang beroperasi tersembunyi, dirancang untuk memantau dan mengumpulkan informasi pengguna secara rahasia, dan dikategorikan sebagai ancaman cyber espionage. Ancaman ini terus berkembang: vektor serangan meluas hingga menyasar fitur modern seperti asisten suara smartphone dan spyware disebarkan melalui injeksi pada aplikasi palsu. Selanjutnya, \textcite{Ainslie2023CTI} menekankan bahwa keamanan siber bukan hanya isu teknis, tetapi tantangan strategis yang memengaruhi pengambilan keputusan di tingkat organisasi, sehingga pentingnya \textit{Cyber Threat Intelligence (CTI)} semakin krusial.
 
-\subsection{Gambar}
-Contoh gambar dapat dilihat pada Gambar \ref{gambar:jaringan}. Gambar dan judulnya diposisikan di tengah. Nomor gambar tidak diakhiri tanda titik. Gambar tersebut dibuat menggunakan aplikasi draw.io dan disimpan ke format PNG setelah dengan zoom setting pada angka 300\%. Ukuran gambar yang ditampilkan dapat diatur dengan mengubah nilai \textit{width} dalam sintaks \textit{includegraphics}.
+Kelemahan deteksi pada sistem \textit{anti-spyware} timbul dari metode evasi canggih yang memanfaatkan celah arsitektur keamanan. \textcite{Chatzoglou2023AVBypassing} menjelaskan bahwa spyware menggunakan teknik \textit{packing} dan \textit{obfuscation} untuk mengubah tanda tangan digitalnya, secara efektif menghindari deteksi berbasis tanda tangan. Bahkan, \textcite{Koutsokostas2021PythonMalware} menunjukkan bahwa malware dapat memanfaatkan \textit{obfuscation bytecode} Python karena kegagalan alat keamanan dalam memprosesnya. Lebih lanjut, ancaman \textit{fileless} mengandalkan skrip bawaan sistem operasi, terutama PowerShell, untuk evasi, karena eksekusi langsung di memori (\textit{in-memory}) menghindari deteksi berbasis file tradisional. \textcite{KareemPegasus} menggarisbawahi bahwa spyware tingkat lanjut menunjukkan kapabilitas \textit{zero-click} dan memerlukan mekanisme deteksi yang jauh lebih kompleks.
 
-\begin{figure}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-	\centering
-  \captionsetup{justification=centering}
-    	\includegraphics[width=0.7\textwidth]{image/gambar1.png}
-	\caption{Contoh gambar jaringan}
-	\label{gambar:jaringan}
-\end{figure}
-
-Gambar umumnya tidak jelas atau kabur jika gambar tersebut:
-\begin{enumerate}[a.]
-  \item diperoleh dari hasil cropping pada suatu halaman buku atau situs web;
-  \item hasil pembesaran gambar yang gambar aslinya sebenarnya berukuran kecil; atau
-  \item disimpan dalam resolusi kecil
-\end{enumerate}
-Ketidakjelasan gambar ini dapat dilihat pada garis-garis diagram yang tidak tegas dan tulisan-tulisan dalam gambar yang tampak kabur dan kurang jelas terbaca.
-
-Untuk mendapatkan gambar yang tidak kabur (\textit{blur}), langkah-langkah berikut dapat digunakan:
-\begin{enumerate}[(a)]
-\item Gambar yang didapat di suatu pustaka atau referensi sebaiknya digambar ulang, misalnya menggunakan PowerPoint, Canva, Figma, draw.io, atau yang lainnya.
-\item Jika diagram atau ilustrasi digambar menggunakan draw.io, saat gambar disimpan ke format PNG atau JPG (\textit{export as}), lakukan \textit{zoom} ke minimal 300\% (\textit{the default value is} 100\%). 
-\item Jika diagram digambar dengan menggunakan PowerPoint, gambar dapat langsung di-\textit{copy-paste} ke Word.
-\end{enumerate}
-
-\subsection{Tabel}
-Tabel ada dua jenis, yaitu tabel yang bisa termuat dalam satu halaman dan tabel yang sangat panjang sehingga tidak muat dalam satu halaman.
-\subsubsection{Tabel yang Muat dalam Satu Halaman}
-Contoh tabel dapat dilihat pada Tabel \ref{tbl:harga1} dan \ref{tbl:harga2}. Tabel dan judulnya dibuat rata kiri dan judul tabel diletakkan di atas tabel. Usahakan tabel dapat ditulis dalam satu halaman, tidak terpotong ke halaman berikutnya.
-
-\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-  \begin{tabular}{ | p{2cm} | p{2cm} | p{3cm} |}
-	\hline
-	Nama 	& Satuan 		& Harga \\
-	\hline
-	Buku 	& Exemplar	& 25000 \\
-	Komputer	& Unit		& 2500000 \\
-	Pensil	& Buah		& 118900 \\
-	\hline
-	\end{tabular}
-\caption{Tabel harga bahan pokok}
-\label{tbl:harga1}
-\end{table}
+Mengingat kompleksitas ancaman yang ada, strategi \textit{anti-spyware} harus beralih dari deteksi pasif menuju pendekatan yang lebih proaktif dan holistik. Dalam konteks pengembangan alat offensive security, \textcite{Kerkour2021BlackHatRust} memilih bahasa pemrograman modern seperti Rust sebagai pilihan unggulan karena unggul dalam menciptakan tool yang tangguh dan sulit dilacak. \texcite{Koutsokostas2021PythonMalware} serta \textcite{Elghaly2024PowerShellMalware} sama-sama menekankan bahwa inti dari penguatan \textit{anti-spyware} adalah adopsi pendekatan deteksi berbasis perilaku (\textit{behavior-based}) untuk mengenali anomali aktivitas sistem, alih-alih hanya menandai \textit{file}. Selain itu, \textcite{DominguezDorado2024FLECO} menyoroti bahwa manajemen keamanan siber harus berfokus pada integrasi aspek teknologi, tata kelola, dan budaya organisasi, didukung oleh kerangka kerja holistik seperti FLECO. 
 
 
+\section{\textit{Malware}}
+\textit{Malware} merupakan salah satu ancaman utama dalam dunia keamanan siber yang terus berevolusi dari generasi ke generasi. Secara umum, \textit{malware} adalah perangkat lunak berbahaya yang dirancang untuk menyusup, merusak, atau mencuri data dari sistem komputer tanpa sepengetahuan pengguna. \textcite{Sudhakar2020FilelessMalware} menjelaskan bahwa evolusi malware telah bergeser dari bentuk tradisional berbasis \textit{file} menuju \textit{fileless malware} yang beroperasi sepenuhnya di memori. Jenis \textit{malware} ini tidak meninggalkan jejak \textit{file} di sistem, sehingga sulit dideteksi oleh antivirus berbasis tanda tangan. \textit{Fileless malware} sering memanfaatkan komponen sah dari sistem operasi, seperti \textit{Windows Management Instrumentation (WMI)} dan PowerShell, untuk melancarkan serangan tanpa menulis \textit{file} berbahaya ke \textit{disk}. Teknik ini memungkinkan pelaku untuk melakukan aksi seperti \textit{reconnaissance}, pencurian data, dan persistensi tanpa terdeteksi oleh solusi keamanan konvensional.
 
-\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-	\begin{tabular}{ | l | c | r | }
-	\hline
-	Nama 	& Satuan 		& Harga \\
-	\hline
-	Buku 	& Exemplar	& 25000 \\
-	Komputer	& Unit		& 2500000 \\
-	Pensil	& Buah		& 118900 \\
-	\hline
-	\end{tabular}
-\caption{Tabel harga bahan sekunder}
-\label{tbl:harga2}
-\end{table}
+\textcite{Chatzoglou2023AVBypassing} menambahkan bahwa dalam “permainan kucing dan tikus” antara pembuat \textit{malware} dan pembuat \textit{antivirus}, berbagai teknik penghindaran deteksi terus berkembang. Teknik-teknik seperti \textit{code obfuscation, polymorphism, packing}, dan \textit{process injection} digunakan untuk mengubah struktur dan perilaku kode agar tidak mudah dikenali. Studi mereka menunjukkan bahwa dari 16 sampel \textit{malware} yang diujikan dengan tujuh teknik penghindaran klasik, hanya sebagian kecil antivirus yang mampu mendeteksi lebih dari separuh variasi \textit{malware} tersebut. Hal ini menegaskan bahwa bahkan \textit{malware} “lama” dengan trik penyamaran baru masih mampu menembus sistem deteksi modern. Lebih jauh lagi, peneliti juga menemukan bahwa penggunaan model pembelajaran mesin (ML) untuk deteksi \textit{malware} masih rentan terhadap serangan \textit{adversarial}, di mana pembuat \textit{malware} dapat menghasilkan varian baru yang tampak seperti program sah.
 
-% -- Example of importing table from external file --
-\subsubsection{Mengimpor Tabel dari Berkas Eksternal}
+\textcite{Koutsokostas2021PythonMalware} berfokus pada pengembangan \textit{malware stealth} berbasis Python yang mampu menghindari deteksi tanpa menggunakan \textit{obfuscation}. Mereka menemukan bahwa keterbatasan pada mesin deteksi statis, seperti VirusTotal dan sandbox analisis dinamis, dapat dimanfaatkan untuk menciptakan \textit{malware} yang “bersih” dari hasil pemindaian puluhan antivirus. Studi tersebut mengungkapkan bahwa PyInstaller—alat populer untuk membungkus program Python menjadi \textit{executable} dapat dimodifikasi agar menghasilkan \textit{malware} yang tidak terdeteksi karena kelemahan inheren dalam cara antivirus memproses bytecode Python. Selain itu, mereka menemukan bahwa sandbox publik sering kali gagal mendeteksi \textit{malware} yang menunda eksekusi, mendeteksi lingkungan virtual, atau memeriksa artefak sistem sebelum beraksi.
 
-Tabel \ref{tbl:harga3} diimpor dari berkas eksternal \textit{table/tabel1.tex} menggunakan perintah \textit{input}. 
-Dengan demikian, jika tabel tersebut perlu diubah, cukup mengubah pada berkas eksternal tersebut tanpa perlu mengubah pada berkas utama ini.
+Berdasarkan literatur tersebut, tren utama dalam penelitian \textit{malware} modern menyoroti bahwa ancaman kini tidak hanya berasal dari varian baru, tetapi dari kemampuan \textit{malware} untuk beradaptasi terhadap mekanisme pertahanan yang ada. Dengan kombinasi teknik \textit{living-off-the-land}, penghindaran berbasis memori, dan eksploitasi terhadap celah dalam sistem analisis otomatis, \textit{malware} modern semakin sulit diidentifikasi. Oleh karena itu, studi-studi ini menegaskan perlunya pendekatan deteksi berbasis perilaku dan kecerdasan buatan yang mampu mengenali pola aktivitas abnormal alih-alih bergantung semata pada tanda tangan statis. Dengan demikian, penelitian mengenai \textit{malware} tidak hanya penting untuk memahami sifat serangan, tetapi juga menjadi dasar dalam merancang sistem pertahanan yang lebih adaptif dan tangguh terhadap ancaman siber generasi baru.
 
-\input table/tabel1.tex
+\section{\textit{Spyware}}
+\textit{Spyware} merupakan salah satu bentuk \textit{malware} yang dirancang untuk memantau, mengumpulkan, dan mengirimkan informasi pengguna tanpa izin atau kesadaran mereka. Perangkat lunak ini biasanya berjalan secara tersembunyi di latar belakang sistem dan dapat merekam aktivitas pengguna, seperti penekanan tombol (\textit{keylogging}), riwayat peramban, data \textit{login}, serta \textit{file} sensitif. Dalam literatur keamanan siber, \textit{spyware} sering dikategorikan sebagai ancaman yang bersifat \textit{stealth}, karena kemampuannya untuk beroperasi tanpa menimbulkan indikasi mencolok bagi pengguna maupun sistem keamanan. Menurut \textcite{Koutsokostas2021PythonMalware}, kemampuan \textit{stealth} seperti ini muncul karena \textit{malware} modern, termasuk \textit{spyware}, memanfaatkan teknik penghindaran analisis dan deteksi baik dalam bentuk statis maupun dinamis. Mereka menunjukkan bahwa banyak \textit{antivirus} gagal mengenali kode berbahaya yang dikemas menggunakan alat seperti PyInstaller karena keterbatasan dalam menganalisis \textit{bytecode Python}. Hal ini menyebabkan sebagian besar \textit{multi-engine scanner}, termasuk VirusTotal, dapat memberikan hasil “bersih” terhadap \textit{file} yang sebenarnya mengandung komponen \textit{spyware}.
 
+\textcite{Chatzoglou2023AVBypassing} dalam studi “\textit{Bypassing Antivirus Detection: Old-school Malware, New Tricks}” menguatkan temuan tersebut dengan menyoroti bagaimana teknik klasik seperti \textit{code obfuscation, packing}, dan \textit{process injection} masih sangat efektif untuk menghindari deteksi \textit{antivirus} modern. Mereka menguji berbagai varian \textit{malware}, termasuk \textit{spyware}, terhadap beberapa produk \textit{antivirus} dan menemukan bahwa sebagian besar sistem deteksi hanya mampu mengenali sebagian kecil varian yang dimodifikasi. Temuan ini menunjukkan bahwa banyak mesin \textit{antivirus} masih mengandalkan pencocokan tanda tangan (\textit{signature-based detection}), yang tidak mampu mengidentifikasi pola perilaku baru dari \textit{spyware} yang berevolusi. Selain itu, metode penghindaran berbasis lingkungan—seperti deteksi sandbox atau penundaan eksekusi (\textit{delayed execution}) membuat spyware semakin sulit teridentifikasi melalui analisis dinamis tradisional.
 
-% -- Example of long table --
-\subsubsection{Tabel yang Sangat Panjang}
-Jika tabel terlalu panjang sehingga tidak muat dalam satu halaman, gunakan paket 
-\textit{longtable} untuk membuat tabel yang dapat terpotong ke halaman berikutnya, 
-seperti pada Tabel \ref{tbl:longtable1}.
+Dari sisi karakteristik perilaku, \textit{spyware} modern cenderung memanfaatkan teknik \textit{living-off-the-land}, yaitu memanfaatkan fungsi atau layanan sah dari sistem operasi seperti PowerShell, WMI, atau API Windows untuk melaksanakan aksinya tanpa mengunduh \textit{file} berbahaya tambahan. Pendekatan ini menjadikan \textit{spyware} semakin sulit dilacak, karena aktivitasnya tampak seperti proses sistem yang normal. \textcite{Koutsokostas2021PythonMalware} menegaskan bahwa pola serangan semacam ini tidak hanya menunjukkan kelemahan sistem deteksi \textit{antivirus}, tetapi juga menyoroti perlunya pendekatan baru berbasis perilaku (\textit{behavior-based detection}) yang mampu mengenali anomali aktivitas sistem, bukan sekadar menandai \textit{file} berbahaya.
 
-\begin{longtable}{@{\extracolsep{\fill}} l c r r}
-\caption{Comprehensive Data Table Example}\label{tbl:longtable1} \\
-\toprule
-\textbf{ID} & \textbf{Name} & \textbf{Score} & \textbf{Rank} \\
-\midrule
-\endfirsthead
+Secara keseluruhan, literatur menunjukkan bahwa \textit{spyware} merupakan evolusi dari malware tradisional menuju ancaman yang lebih canggih, tersembunyi, dan adaptif. Dengan kemampuan memanfaatkan celah pada sistem deteksi statis maupun dinamis, \textit{spyware} modern menjadi tantangan utama dalam bidang keamanan siber. Oleh karena itu, penelitian dan pengembangan sistem pertahanan di masa depan perlu berfokus pada integrasi antara analisis perilaku, pembelajaran mesin, dan \textit{threat intelligence} untuk mendeteksi aktivitas mencurigakan secara proaktif. Pendekatan ini diharapkan dapat menutup celah yang selama ini dimanfaatkan oleh \textit{spyware} untuk beroperasi tanpa terdeteksi di berbagai \textit{platform}, baik \textit{desktop} maupun \textit{mobile}.
 
-\caption{Comprehensive Data Table Example (lanjutan)} \\
-\toprule
-\textbf{ID} & \textbf{Name} & \textbf{Score} & \textbf{Rank} \\
-\midrule
-\endhead
-
-\midrule
-\multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya}} \\
-%\bottomrule
-\endfoot
-
-\bottomrule
-\endlastfoot
-
-% === Table Data ===
-1 & Alice Smith & 89 & 5 \\
-2 & Bob Johnson & 93 & 3 \\
-3 & Carol Davis & 95 & 2 \\
-4 & Daniel Wilson & 88 & 6 \\
-5 & Eve Thompson & 97 & 1 \\
-6 & Frank Brown & 85 & 7 \\
-7 & Grace Lee & 91 & 4 \\
-8 & Henry Miller & 80 & 9 \\
-9 & Irene Garcia & 83 & 8 \\
-10 & Jack Robinson & 78 & 10 \\
-% Repeat with more rows to make it long
-11 & Kevin Harris & 76 & 11 \\
-12 & Laura Martin & 75 & 12 \\
-13 & Michael Clark & 74 & 13 \\
-14 & Natalie Lewis & 73 & 14 \\
-15 & Olivia Walker & 72 & 15 \\
-16 & Peter Hall & 71 & 16 \\
-17 & Quinn Allen & 70 & 17 \\
-18 & Rachel Young & 69 & 18 \\
-19 & Samuel King & 68 & 19 \\
-20 & Tina Wright & 67 & 20 \\
-21 & Uma Scott & 66 & 21 \\
-22 & Victor Green & 65 & 22 \\
-23 & Wendy Adams & 64 & 23 \\
-24 & Xavier Nelson & 63 & 24 \\
-25 & Yolanda Carter & 62 & 25 \\
-26 & Zachary Perez & 61 & 26 \\
-27 & Amelia Baker & 60 & 27 \\
-28 & Benjamin Rivera & 59 & 28 \\
-29 & Charlotte Rogers & 58 & 29 \\
-30 & David Murphy & 57 & 30 \\
-31 & Ethan Cooper & 56 & 31 \\
-32 & Fiona Reed & 55 & 32 \\
-33 & George Bailey & 54 & 33 \\
-34 & Hannah Cox & 53 & 34 \\
-35 & Isaac Howard & 52 & 35 \\
-36 & Julia Ward & 51 & 36 \\
-37 & Kyle Flores & 50 & 37 \\
-38 & Lily Bell & 49 & 38 \\
-39 & Mason Sanders & 48 & 39 \\
-40 & Nora Patterson & 47 & 40 \\
-41 & Owen Ramirez & 46 & 41 \\
-42 & Penelope Torres & 45 & 42 \\
-43 & Quentin Foster & 44 & 43 \\
-44 & Rebecca Gonzales & 43 & 44 \\
-45 & Sebastian Bryant & 42 & 45 \\
-46 & Taylor Alexander & 41 & 46 \\
-47 & Ursula Russell & 40 & 47 \\
-48 & Vincent Griffin & 39 & 48 \\
-49 & William Diaz & 38 & 49 \\
-50 & Zoe Simmons & 37 & 50 \\
-% (You can easily extend this list to hundreds of rows)
-\end{longtable}
-
-\subsubsection{Beberapa Contoh Penulisan Rumus atau Persamaan Matematika Menggunakan LaTeX Termasuk Penomorannya}
-Contoh rumus matematika dapat ditulis seperti pada Persamaan \ref{eq:contoh1} di bawah ini. 
-Penomoran persamaan diletakkan di sebelah kanan, dan rumus ditulis dalam mode \textit{display math}.
-\begin{equation}
-E = mc^2
-\label{eq:contoh1}
-\end{equation}
-
-Contoh lain penulisan rumus matematika yang lebih kompleks dapat ditulis seperti pada Persamaan \ref{eq:rumus2}.
-
-\begin{align}
-f(x) &= ax^2 + bx + c \\
-f'(x) &= \frac{d}{dx}(ax^2 + bx + c) \notag \\ % tidak menampilkan nomor pada baris ini
-      &= 2ax + b \label{eq:rumus2}
-\end{align}
-
-Jika rumus terlalu panjang untuk ditulis dalam satu baris, gunakan lingkungan \textit{multline} seperti pada Persamaan \ref{eq:rumus3} di bawah ini.
-\begin{multline} 
-y = a_0 + a_1x + a_2x^2 + a_3x^3 + a_4x^4 + a_5x^5 + a_6x^6 + a_7x^7 \\
-    + a_8x^8 + a_9x^9 + a_{10}x^{10} \label{eq:rumus3}
-\end{multline}
-
-Jika ada penurunan rumus yang terdiri dari beberapa baris, namun tidak memerlukan penomoran pada setiap baris, gunakan lingkungan \textit{align*}, misalnya:
-
-\begin{align*} 
-S &= \sum_{i=1}^{n} i^2 \\
-  &= 1^2 + 2^2 + 3^2 + \cdots + n^2 \\
-  &= \frac{n(n + 1)(2n + 1)}{6}
-\intertext{Contoh lainnya adalah rumus untuk mencari nilai rata-rata fungsi $f(x)$ pada interval $[p, q]$:}
-\bar{f} &= \frac{1}{q - p} \int_{p}^{q} f(x) \, dx \\
-        &= \frac{1}{q - p} \int_{p}^{q} (ax^2 + bx + c) \, dx \\
-        &= \frac{1}{q - p} \left[ \frac{a}{3}x^3 + \frac{b}{2}x^2 + cx \right]_p^q \\
-        &= \frac{a(q^3 - p^3)}{3(q - p)} + \frac{b(q^2 - p^2)}{2(q - p)} + c \label{eq:rumus4}
-\end{align*}
-
-
-
-\subsection{Algoritma, Pseudocode, atau Kode}
-Contoh penulisan algoritma atau pseudocode dapat ditulis seperti pada Kode \ref{alg:contoh1} di bawah ini. 
-Gunakan paket \textit{listings} untuk menulis source code dalam bahasa pemrograman tertentu, seperti pada Kode \ref{lst:contoh1}. 
-
-
-% -- Example of pseudocode and source code listing --
-% -- Gunakan minipage agar listing tidak terpotong ke halaman berikutnya --
-\begin{minipage}{\textwidth} 
-\begin{lstlisting}[frame=lines, captionpos=t, caption={Contoh pseudocode}, label={alg:contoh1}]
-ALGORITHM HelloWorld
-   PRINT "Hello, World!"
-END ALGORITHM
-\end{lstlisting}
-\end{minipage}
-
-\begin{minipage}{\textwidth}
-\begin{lstlisting}[language=Python, frame=single, caption={Contoh source code Python}, captionpos=t, label={lst:contoh1}]
-def hello_world():
-    print("Hello, World!")       
-hello_world()
-\end{lstlisting}
-\end{minipage}
-
-
-\section{Beberapa Kesalahan Penulisan yang Sering Terjadi}
-\subsection{Penggunaan Kata "di mana" atau "dimana"}
-Banyak yang menuliskan kata "di mana" atau "dimana" sebagai pengganti kata "which" dalam bahasa Inggris. 
-Padahal, penggunaan kata "di mana" atau "dimana" tidak tepat dalam konteks tersebut. Demikian juga untuk kata serupa, misalnya "yang mana".
-Kata "di mana" atau "dimana" ini harus diganti dengan kata lain, seperti "dengan", "tempat", "yang", dan sebagainya tergantung kalimatnya.
-Penjelasan lengkap dapat dilihat pada \autocite{BPBI}.
-
-\subsection{Penggunaan Kata "sedangkan" dan "sehingga"}
-
-\begin{table}[t]
-  \begin{tabular}{|c|l|l|}
-  \hline
-  Kata & Salah & Benar \\ \hline
-  sedangkan & \begin{tabular}[c]{@{}c@{}}Sedangkan sistem lama masih\\ digunakan oleh banyak pengguna.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sistem lama masih digunakan\\ oleh banyak pengguna,\\ sedangkan sistem baru belum siap.\end{tabular} \\ \hline
-  sehingga & \begin{tabular}[c]{@{}c@{}}Sehingga sistem lama masih\\ digunakan oleh banyak pengguna.\end{tabular} & \begin{tabular}[c]{@{}c@{}}Sistem lama masih digunakan\\ oleh banyak pengguna sehingga\\ sistem baru belum siap.\end{tabular} \\ \hline
-  \end{tabular}
-  \caption{Contoh penggunaan kata "sedangkan" dan "sehingga"}
-  \label{tbl:sedangkan_sehingga}
-\end{table}
-
-Kata "sedangkan" dan "sehingga" adalah kata hubung atau konjungsi. 
-Konjungsi adalah kata atau ungkapan yang menghubungkan satuan bahasa 
-(kata, frasa, klausa, dan kalimat). 
-Konjungsi dapat dibagi menjadi konjungsi intrakalimat dan antarkalimat.  
-Kata "sedangkan" menghubungkan dua klausa yang bersifat kontrasif, 
-sedangkan "sehingga" menghubungkan dua klausa yang bersifat kausal. 
-Dalam ragam formal, kata hubung “sedangkan” dan “sehingga” hanya dapat digunakan 
-sebagai konjungsi intrakalimat sehingga kedua konjungsi itu \textbf{tidak dapat diletakkan pada awal kalimat}.
-Selain itu, penggunaan kata "sedangkan" harus didahului oleh koma (,), sedangkan kata "sehingga" tidak perlu didahului oleh koma (,).
-Contoh penggunaan yang benar dan salah dapat dilihat pada Tabel \ref{tbl:sedangkan_sehingga}.
-
-
-\subsection{Penggunaan Istilah yang Tidak Baku}
-Ada beberapa istilah yang sering digunakan dalam pembicaraan sehari-hari, tetapi tidak baku dalam penulisan ilmiah.
-Beberapa istilah tersebut antara lain:
-\begin{enumerate}
-  \item analisa $\rightarrow$ analisis
-  \item eksisting atau existing $\rightarrow$ yang ada atau saat ini
-  \item bisnis proses $\rightarrow$ proses bisnis
-  \item user $\rightarrow$ pengguna
-  \item system $\rightarrow$ sistem
-  \item database $\rightarrow$ basis data
-  \item aktifitas $\rightarrow$ aktivitas
-  \item efektifitas $\rightarrow$ efektivitas
-  \item sosial media $\rightarrow$ media sosial
-\end{enumerate}
-
-\subsection{Pemisah Desimal dan Ribuan}
-Tanda pemisah desimal dalam bahasa Indonesia adalah tanda koma, contoh:
-\begin{enumerate}
-  \item (Salah) Akurasi naik menjadi 50.6\% 
-  \item (Benar) Akurasi naik menjadi 50,6\% 
-\end{enumerate}
-
-\subsection{Daftar atau \textit{List}}
-Ada beberapa aturan penulisan daftar atau \textit{list} yang perlu diperhatikan, antara lain:
-\begin{enumerate}[a)]
-\item Jika memungkinkan, hindari penggunaan “bullet points” atau sejenisnya. Sebaiknya, gunakan angka (1, 2, 3, ...) atau huruf (a, b, c, …). Dengan demikian, pembaca dapat dengan mudah melihat jumlah \textit{item} atau \textit{list}. 
-\item Jika dalam daftar hanya ada satu item, tidak perlu menggunakan nomor urut.
-\item Penjelasan atau deskripsi suatu item sebaiknya menyatu dengan judul item tersebut, tidak berbeda halaman. Contoh yang salah: judul item ada di halaman 10, namun deskripsinya di halaman 11. Sebaiknya pindahkan judul tersebut ke halaman 11.
-\item Jika penjelasan atau deskripsi suatu item cukup panjang, misalnya lebih dari 1 halaman atau terdiri atas beberapa paragraf, sebaiknya setiap item tersebut dijadikan judul subbab, kecuali jika level subbab sudah mencapai level 4. 
-\end{enumerate}
-
-\subsection{Penggunaan Kata "masing-masing" dan "setiap"}
-Kata “masing-masing” digunakan di belakang kata yang diterangkan, misalnya 
-"Setiap proses menggunakan algoritma masing-masing". Kata “tiap-tiap” atau “setiap”
-ditempatkan di depan kata yang diterangkan, misalnya
-"Setiap proses menggunakan algoritma tertentu".
