@@ -8,13 +8,41 @@
 \label{chap:analisis-masalah}
 
 \section{Analisis Kondisi Saat Ini}
-Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan, bergerak dari \textit{malware} tradisional berbasis \textit{file} menuju serangan yang lebih canggih dan tersembunyi, seperti \textit{fileless malware} dan \textit{spyware mode stealth}. Evolusi ini menciptakan celah kritis dalam kemampuan deteksi sistem \textit{anti-malware (AV)} dan \textit{Endpoint Detection and Response (EDR)} yang masih berpegangan pada mekanisme pertahanan konvensional.
+Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan, bergerak dari \textit{malware} tradisional berbasis \textit{file} menuju serangan yang lebih canggih dan tersembunyi, seperti \textit{fileless malware} dan \textit{spyware mode stealth}. Evolusi ini menciptakan celah kritis dalam kemampuan deteksi sistem \textit{anti-spyware (AS)} dan \textit{Endpoint Detection and Response (EDR)} yang masih berpegangan pada mekanisme pertahanan konvensional.
 
 Secara konseptual, serangan \textit{spyware} modern yang berfokus pada \textit{Initial Access} dan \textit{Packer} melibatkan beberapa komponen utama: Target (sistem yang diserang), \textit{Packer/Dropper} (Artefak \textit{spyware} yang disamarkan), \textit{Anti-Malware/EDR} (Sistem pertahanan), dan \textit{Server} (Pengumpul informasi, seperti yang digambarkan dalam alur \textit{General Flow}).
 
-\subsection{Masalah Kerentanan dan Ketertinggalan Anti-Malware Konvensional}
+\subsection[]{Masalah Kerentanan dan Ketertinggalan \textit{Anti-Malware} Konvensional}
 Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan, bergerak dari \textit{malware} tradisional berbasis \textit{file} menuju serangan yang lebih canggih dan tersembunyi, seperti \textit{fileless malware} dan \textit{spyware mode stealth}. Evolusi ini menciptakan celah kritis dalam kemampuan deteksi sistem \textit{anti-malware (AV)} dan \textit{Endpoint Detection and Response (EDR)} yang masih berpegangan pada mekanisme pertahanan konvensional.
 
+\subsection[]{Keterbatasan Deteksi Berbasis Tanda Tangan (\textit{Signature-Based})}
+\textit{Anti-malware} tradisional masih sangat mengandalkan pencocokan tanda tangan (\textit{signature-based detection}). \tetxit{Spyware mode stealth} menggunakan teknik \textit{Packer} (seperti yang dijelaskan dalam konsep arsitektur serangan) untuk melakukan kompresi, enkripsi, dan \textit{obfuscation} pada \textit{payload}. Teknik ini secara efektif mengubah tanda tangan digital (\textit{signature}) \textit{spyware}, sehingga membuatnya lolos dari deteksi \textit{signature-based} karena dianggap sebagai \textit{file} baru atau tidak dikenal.
+
+\subsection[]{Gagal Menganalisis Code \textit{Fileless Execution}}
+Situasi ini diperparah dengan temuan bahwa banyak alat keamanan gagal tidak dapat mendeteksi \textit{fileless malware}. \textit{Fileless malware} memanfaatkan komponen sah dari sistem operasi (seperti PowerShell dan WMI) untuk menjalankan kode berbahaya langsung di memori tanpa menulis \textit{file} ke disk, sehingga sulit dideteksi oleh \textit{antivirus} konvensional.
+
+\subsection[]{Efektivitas Teknik Evasi Sederhana}
+Meskipun serangan semakin canggih, penelitian menunjukkan bahwa metode evasi yang relatif sederhana, seperti enkripsi, injeksi proses, dan penambahan data sampah (\textit{junk data}) ke file eksekusi, terbukti sangat efektif dalam menghindari deteksi. Bahkan, dalam sebuah studi \textcite{Chatzoglou2023AVBypassing}, hampir separuh dari 12 mesin \textit{antivirus} yang diuji hanya mampu mendeteksi kurang dari setengah varian \textit{malware} yang disamarkan.
+
+\subsection[short]{Kurangnya Deteksi Proaktif Terhadap Arsitektur Serangan}
+Kurangnya deteksi yang efektif oleh solusi keamanan menciptakan celah besar yang dieksploitasi oleh \textit{Advanced Persistent Threats (APTs)}. Sistem pertahanan saat ini terlalu reaktif, berfokus pada \textit{file} yang sudah terinstal, bukan pada deteksi perilaku evasif dari \textit{Packer} di fase \textit{Initial Access} dan \textit{Establish Foothold}.
+
+\subsection[short]{{Gap Analysis} Celah Deteksi \textit{Packer Spyware Mode Stealth}}
+Berdasarkan kondisi saat ini dan studi literatur, sebuah Analisis Kesenjangan (\textit{Gap Analysis}) dirumuskan untuk menyoroti perbedaan antara kondisi ideal deteksi dan realitas sistem \textit{anti-spyware} saat ini.
+
+\begin{table}[H]
+  \centering
+  \caption{Persyaratan fungsional (Functional Requirements)\label{tab:gap-analysis}}
+  \begin{tabular}{p{1.2cm}p{2cm}p{3.5cm}p{2.2cm}p{3.5cm}}
+    \toprule
+    \textbf{ID} & \textbf{\textit{Critical to Quality(CTQ)}} & \textbf{Kondisi Saat ini} & \textbf{\textit{Gap}} & \textbf{Kondisi Ideal}\\
+    \midrule
+    CTQ-01 & Deteksi \textit{Packer/Dropper} pada \textit{Initial Access} & Deteksi berfokus pada \textit{signature file} yang mudah di-\textit{bypass} oleh teknik enkripsi dan \textit{obfuscation} & Celah \textit{Signature-Evasion} & Sistem mampu mendeteksi anomali pada \textit{header file} yang di\textit{pack} atau proses \textit{unpack} sebelum \textit{payload} dieksekusi, termasuk perubahan \textit{entropy} yang tidak wajar.\\
+    CTQ-02 & Verifikasi Integritas Kode Bit (\textit{Bytecode}) & Gagal menganalisis \textit{bytecode} Python atau skrip yang ter-\textit{obfuscated} & Celah \textit{Obfuscation} dan \textit{Bytecode Analysis} & Sistem mampu mendekode (\textit{de-obfuscate}) skrip terenkripsi atau menganalisis \textit{bytecode} untuk mendeteksi \textit{payload} tersembunyi. \\
+    CTQ-03 & Akurasi Deteksi \textit{Fileless Execution} & Deteksi rendah karena \textit{payload} berjalan langsung di memori (via PowerShell/WMIC) & Celah \textit{In-Memory} dan \textit{Behavioral} & Sistem secara proaktif memantau perilaku proses sistem yang sah (misalnya PowerShell) untuk aktivitas mencurigakan (\textit{behavior-based detection}). \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Identifikasi Masalah Pengguna}
 \lipsum[5]
