@@ -12,11 +12,11 @@ Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan,
 
 Secara konseptual, serangan \textit{spyware} modern yang berfokus pada \textit{Initial Access} dan \textit{Packer} melibatkan beberapa komponen utama: Target (sistem yang diserang), \textit{Packer/Dropper} (Artefak \textit{spyware} yang disamarkan), \textit{Anti-Malware/EDR} (Sistem pertahanan), dan \textit{Server} (Pengumpul informasi, seperti yang digambarkan dalam alur \textit{General Flow}).
 
-\subsection[]{Masalah Kerentanan dan Ketertinggalan \textit{Anti-Malware} Konvensional}
+\subsection[]{Masalah Kerentanan dan Ketertinggalan \texorpdfstring{\textit{Anti-Malware}} Konvensional}
 Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan, bergerak dari \textit{malware} tradisional berbasis \textit{file} menuju serangan yang lebih canggih dan tersembunyi, seperti \textit{fileless malware} dan \textit{spyware mode stealth}. Evolusi ini menciptakan celah kritis dalam kemampuan deteksi sistem \textit{anti-malware (AV)} dan \textit{Endpoint Detection and Response (EDR)} yang masih berpegangan pada mekanisme pertahanan konvensional.
 
 \subsection[]{Keterbatasan Deteksi Berbasis Tanda Tangan (\textit{Signature-Based})}
-\textit{Anti-malware} tradisional masih sangat mengandalkan pencocokan tanda tangan (\textit{signature-based detection}). \tetxit{Spyware mode stealth} menggunakan teknik \textit{Packer} (seperti yang dijelaskan dalam konsep arsitektur serangan) untuk melakukan kompresi, enkripsi, dan \textit{obfuscation} pada \textit{payload}. Teknik ini secara efektif mengubah tanda tangan digital (\textit{signature}) \textit{spyware}, sehingga membuatnya lolos dari deteksi \textit{signature-based} karena dianggap sebagai \textit{file} baru atau tidak dikenal.
+\textit{Anti-malware} tradisional masih sangat mengandalkan pencocokan tanda tangan (\textit{signature-based detection}). \textit{Spyware mode stealth} menggunakan teknik \textit{Packer} (seperti yang dijelaskan dalam konsep arsitektur serangan) untuk melakukan kompresi, enkripsi, dan \textit{obfuscation} pada \textit{payload}. Teknik ini secara efektif mengubah tanda tangan digital (\textit{signature}) \textit{spyware}, sehingga membuatnya lolos dari deteksi \textit{signature-based} karena dianggap sebagai \textit{file} baru atau tidak dikenal.
 
 \subsection[]{Gagal Menganalisis Code \textit{Fileless Execution}}
 Situasi ini diperparah dengan temuan bahwa banyak alat keamanan gagal tidak dapat mendeteksi \textit{fileless malware}. \textit{Fileless malware} memanfaatkan komponen sah dari sistem operasi (seperti PowerShell dan WMI) untuk menjalankan kode berbahaya langsung di memori tanpa menulis \textit{file} ke disk, sehingga sulit dideteksi oleh \textit{antivirus} konvensional.
@@ -32,27 +32,115 @@ Berdasarkan kondisi saat ini dan studi literatur, sebuah Analisis Kesenjangan (\
 
 \begin{table}[H]
   \centering
-  \caption{Persyaratan fungsional (Functional Requirements)\label{tab:gap-analysis}}
+  \caption{Kebutuhan fungsional (Functional Requirements)\label{tab:gap-analysis}}
   \begin{tabular}{p{1.2cm}p{2cm}p{3.5cm}p{2.2cm}p{3.5cm}}
     \toprule
     \textbf{ID} & \textbf{\textit{Critical to Quality(CTQ)}} & \textbf{Kondisi Saat ini} & \textbf{\textit{Gap}} & \textbf{Kondisi Ideal}\\
     \midrule
-    CTQ-01 & Deteksi \textit{Packer/Dropper} pada \textit{Initial Access} & Deteksi berfokus pada \textit{signature file} yang mudah di-\textit{bypass} oleh teknik enkripsi dan \textit{obfuscation} & Celah \textit{Signature-Evasion} & Sistem mampu mendeteksi anomali pada \textit{header file} yang di\textit{pack} atau proses \textit{unpack} sebelum \textit{payload} dieksekusi, termasuk perubahan \textit{entropy} yang tidak wajar.\\
-    CTQ-02 & Verifikasi Integritas Kode Bit (\textit{Bytecode}) & Gagal menganalisis \textit{bytecode} Python atau skrip yang ter-\textit{obfuscated} & Celah \textit{Obfuscation} dan \textit{Bytecode Analysis} & Sistem mampu mendekode (\textit{de-obfuscate}) skrip terenkripsi atau menganalisis \textit{bytecode} untuk mendeteksi \textit{payload} tersembunyi. \\
-    CTQ-03 & Akurasi Deteksi \textit{Fileless Execution} & Deteksi rendah karena \textit{payload} berjalan langsung di memori (via PowerShell/WMIC) & Celah \textit{In-Memory} dan \textit{Behavioral} & Sistem secara proaktif memantau perilaku proses sistem yang sah (misalnya PowerShell) untuk aktivitas mencurigakan (\textit{behavior-based detection}). \\
+    CTQ-01 & Deteksi \textit{Packer} pada \textit{Initial Access} & Deteksi berfokus pada \textit{signature file} yang mudah di-\textit{bypass} oleh teknik enkripsi dan \textit{obfuscation} & Celah \textit{Signature-Evasion} & \textit{Packer} harus menggunakan enkripsi unik dan \textit{obfuscation} untuk \textit{payload}.\\
+    CTQ-02 & Gagal menganalisis kode \textit{payload} ter-\textit{obfuscated}. & Gagal menganalisis skrip yang ter-\textit{obfuscated} & Celah \textit{Obfuscation} & Prototipe harus dirancang dengan bahasa yang menghasilkan \textit{binary} resisten (\textit{low-level Rust}).\\
+    CTQ-03 & Akurasi Deteksi \textit{Fileless Execution} & Deteksi rendah karena \textit{payload} berjalan langsung di memori (via PowerShell/WMIC) & Celah \textit{In-Memory} dan \textit{Behavioral} & \textit{Packer} harus mampu mengintegrasikan \textit{loader in-memory} (\textit{single-stage}) yang \textit{stealth}. \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-\subsection{Identifikasi Masalah Pengguna}
-\lipsum[5]
+\section{Analisis Kebutuhan}
+Berdasarkan \textit{gap analysis} (CTQ) di atas, diperlukan suatu artefak uji yang mampu mensimulasikan serangan \textit{spyware mode stealth} secara terkontrol. Oleh karena itu, pada bagian berikut disusun kebutuhan fungsional dan nonfungsional dari prototipe \textit{packer spyware}.
+
 \subsection{Kebutuhan Fungsional}
-\lipsum[6]
+Kebutuhan fungsional mendefinisikan kapabilitas yang harus dimiliki oleh \textit{Packer Spyware} untuk menguji celah keamanan (CTQ).
+
+\begin{table}[H]
+  \centering
+  \caption{Kebutuhan fungsional (Functional Requirements)\label{tab:Functional-requirement-table}}
+  \begin{tabular}{p{1.2cm}p{9cm}p{2.2cm}}
+    \toprule
+    \textbf{ID} & \textbf{Kebutuhan} & \textbf{CTQ Terkait}\\
+    \midrule
+    FR-01 & Prototipe harus mampu mengenkripsi \textit{payload} dan menyembunyikan \textit{signature} asli. & CTQ-01\\
+    FR-02 & Prototipe harus mampu melakukan pengemasan (\textit{packing}) dan \textit{obfuscation} tingkat tinggi pada \textit{binary} akhir.& CTQ-02\\
+    FR-03 & Prototipe harus mampu menjalankan \textit{payload} secara \textit{fileless} melalui PowerShell. & CTQ-03\\
+    FR-04 & Prototipe harus memiliki kemampuan \textit{Initial Access} dan \textit{Persistence} dasar. & CTQ-01, CTQ-03\\
+    FR-05 & Prototipe harus mampu mengirimkan sinyal keberhasilan \textit{Initial Access} ke \textit{Server} pengumpul data. & CTQ-01\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 \subsection{Kebutuhan Nonfungsional}
-\lipsum[7]
+Kebutuhan nonfungsional berfokus pada bagaimana sistem pengujian harus bekerja untuk memastikan hasil yang valid dan andal.
+
+\begin{table}[H]
+  \centering
+  \caption{Kebutuhan fungsional (Functional Requirements)\label{tab:NonFunctional-requirement-table}}
+  \begin{tabular}{p{1.2cm}p{6cm}p{3cm}p{2.2cm}}
+    \toprule
+    \textbf{ID} & \textbf{Kebutuhan} & \textbf{CTQ Terkait}\\
+    \midrule
+    NFR-01 & \textit{Executable} yang dihasilkan harus kecil dan \textit{reliable} di Windows 11. & Keandalan \& Validitas & CTQ-01, CTQ-02, CTQ-03\\
+    NFR-02 & Lingkungan pengujian harus mencakup setidaknya empat produk \textit{anti-malware/EDR} komersial yang berbeda. & Validitas komparatif & CTQ-01, CTQ-02, CTQ-03\\
+    NFR-03 & Implementasi harus menggunakan \textit{code safety (low-level Rust)} untuk memastikan \textit{debugging} yang efisien. & Audibilitas & CTQ-01, CTQ-03\\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{Analisis Pemilihan Solusi}
+Setelah masalah dianalisis, langkah selanjutnya adalah melaksanakan evaluasi berbagai solusi yang dapat mewujudkan tujuan penelitian. Analisis ini mencakup penilaian pendekatan teknis dan konseptual yang paling ideal sesuai dengan kebutuhan sistem dan kriteria desain yang telah ditetapkan. Tujuan utama dari penelitian ini adalah merancang dan mengimplementasikan \textit{Packer Spyware Mode Stealth} untuk menguji kapabilitas deteksi \textit{anti-malware}, sehingga dapat memvalidasi teknik \textit{evasion} dan mengungkap kelemahan sistem keamanan konvensional.
+
 \subsection{Alternatif Solusi}
-\lipsum[8]
+Dalam upaya mencari solusi yang paling optimal untuk mengatasi permasalahan yang teridentifikasi, subbab ini akan menguraikan berbagai konsep implementasi alternatif untuk setiap Kebutuhan Fungsional (FR) dan Kebutuhan Non Fungsional (NFR) modul \textit{packer spyware mode stealth}. Setiap alternatif ini akan dijelaskan secara ringkas mengenai pendekatannya dan bagaimana ia berpotensi memenuhi kebutuhan yang bersangkutan.
+
+\begin{table}[H]
+  \centering
+  \caption{Kebutuhan fungsional (Functional Requirements)\label{tab:Alternatif-solution-table}}
+  \begin{tabular}{p{1.2cm}p{4.2cm}p{7cm}}
+    \toprule
+    \textbf{Kode} & \textbf{Solusi Bahasa pemrograman} & \textbf{Pendekatan Utama \textit{(Evasion)}}\\
+    \midrule
+    S-01 &  Rust & Bahasa sistem yang menghasilkan \textit{binary} statis, unggul dalam kontrol memori dan \textit{low-level manipulation}.\\
+    S-02 &  C/C++& Bahasa sistem tradisional yang menawarkan kontrol penuh atas API Windows dan \textit{memory injection}.\\
+    S-03 & Python (PyInstaller) & Bahasa \textit{scripting}. Mengandalkan \textit{obfuscation bytecode} dan \textit{packer wrapper}.\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection[short]{Rust}
+Rust adalah bahasa pemrograman sistem yang akan digunakan untuk mengembangkan \textit{Packer}. Bahasa ini dipilih karena mampu menghasilkan \textit{binary} yang sangat efisien dan terkompilasi menjadi \textit{native code}. Kontrol tingkat rendah yang disediakan Rust memungkinkan implementasi manipulasi memori dan panggilan API Windows secara langsung, yang sangat penting untuk teknik \textit{fileless execution} (FR-A3). \textit{Packer} yang dibangun dengan Rust dapat mengenkripsi \textit{payload} (FR-A1) dan memiliki resistensi tinggi terhadap analisis statis (\textit{reverse engineering}), karena minimnya jejak \textit{runtime} yang mudah dideteksi (Potensi \textit{Stealth}).
+
+\subsection[short]{C/C++}
+C/C++ adalah bahasa pemrograman sistem tradisional yang merupakan standar umum untuk pengembangan alat \textit{low-level}. Penggunaan bahasa ini memungkinkan pengembang untuk memiliki kontrol penuh atas manajemen memori dan akses langsung ke API Windows, yang esensial untuk implementasi \textit{memory injection} dan \textit{fileless execution} (FR-A3). \textit{Packer} yang dikembangkan dengan C/C++ dapat mengkompilasi \textit{payload} menjadi \textit{binary native} yang kuat, menjadikannya alternatif yang efektif untuk menyamarkan \textit{payload} dan melakukan enkripsi tingkat lanjut (FR-A1).
+
+\subsection[short]{Python (PyInstaller)}
+Python adalah bahasa \textit{scripting} tingkat tinggi yang menawarkan kemudahan dan kecepatan dalam pengembangan \textit{payload} dan logika enkripsi sederhana (FR-A1). Ketika dikombinasikan dengan alat \textit{packer} seperti PyInstaller, \textit{script} Python dapat dibungkus menjadi \textit{executable} Windows. Solusi ini memanfaatkan \textit{obfuscation bytecode} dan \textit{packer wrapper} sebagai lapisan pertahanan awal terhadap deteksi \textit{signature-based}. Namun, solusi ini bergantung pada mekanisme \textit{wrapper} yang seringkali kurang stealth dibandingkan kompilasi \textit{low-level} murni.
+
 \subsection{Analisis Penentuan Solusi}
-\lipsum[9]
+Untuk memastikan solusi yang dihasilkan dapat menyelesaikan masalah yang telah diidentifikasi sebelumnya, kriteria desain ditetapkan dengan mempertimbangkan hasil identifikasi masalah dan tujuan solusi. Kriteria ini berfungsi sebagai acuan dalam merancang, mengembangkan, dan mengevaluasi solusi secara sistematis. Tabel \ref{tab:kriteria-desain-table} akan menjelaskan kriteria-kriteria desain tersebut yang akan menjadi dasar dalam menilai keberhasilan artefak yang dikembangkan dalam penelitian ini.
+
+\begin{table}[H]
+  \centering
+  \caption{Kriteria Desain Packer Spyware\label{tab:kriteria-desain-table}}
+  \begin{tabular}{p{1.2cm}p{4.2cm}p{7cm}}
+    \toprule
+    \textbf{Kode} & \textbf{Kriteria Desain} & \textbf{Keterkaitan dengan Evasion \& Non-Functional Requirement}\\
+    \midrule
+    KD-1 & Dukungan Enkripsi/Packing & 
+    Kemampuan \textit{native} bahasa dalam mengimplementasikan enkripsi \textit{payload} dan \textit{packing} kode sumber secara ringkas, mendukung teknik \textit{code obfuscation} dan \textit{payload concealment}.\\
+
+    KD-2 & Kontrol \textit{Low-Level} \& \textit{Fileless} &
+    Mendukung pemanggilan Windows API, manipulasi memori, dan eksekusi \textit{fileless} untuk meningkatkan \textit{stealth} serta mengurangi artefak forensik.\\
+
+    KD-3 & Resistensi Analisis Statis &
+    Meningkatkan kesulitan \textit{reverse engineering} pada \textit{binary}; bahasa yang kuat membantu keamanan, integritas, dan \textit{reliability payload} terhadap analisis statis.\\
+
+    KD-4 & Potensi Stealth \& Footprint &
+    Ukuran \textit{binary} kecil dan minim dependensi \textit{runtime} eksternal sehingga mengurangi jejak deteksi AV/EDR pada pengujian \textit{stealth}.\\
+
+    KD-5 & Kompleksitas Implementasi \& Safety &
+    Effort waktu dan tingkat kesulitan implementasi (termasuk keamanan memori dan \textit{debugging}) berpengaruh langsung pada efisiensi pengembangan artefak.\\
+
+    KD-6 & Kompatibilitas Sistem Target &
+    Kemampuan menghasilkan \textit{executable} yang stabil dan kompatibel pada Windows, memastikan \textit{reliability} selama pengujian \textit{evasion}.\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Tabel  menyajikan rangkuman hasil evaluasi dari setiap alternatif solusi berdasarkan kriteria desain yang telah ditentukan, menggunakan skala penilaian 1 hingga 9. Skor 1 menunjukkan bahwa suatu alternatif solusi memiliki tingkat kesesuaian yang sangat rendah terhadap kriteria desain. Skor 9 mencerminkan bahwa solusi tersebut sangat memenuhi kriteria yang ditetapkan dan memiliki potensi tinggi untuk menyelesaikan permasalahan secara efektif. 

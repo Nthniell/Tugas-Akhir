@@ -71,37 +71,6 @@
       \verb 10.1016/j.cose.2023.103352
       \endverb
     \endentry
-    \entry{Blessing2009DesignResearchMethodology}{article}{}
-      \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=787234da0108080098491dbc6193a636}{%
-           family={Blessing},
-           familyi={B\bibinitperiod},
-           given={L.\bibnamedelimi T.\bibnamedelimi M.},
-           giveni={L\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim M\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=2d7b9150374e35cf5fd70de134d959d6}{%
-           family={Chakrabarti},
-           familyi={C\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod},
-           givenun=0}}%
-      }
-      \strng{namehash}{b26940c27a2a946515e51ee9cad500f1}
-      \strng{fullhash}{b26940c27a2a946515e51ee9cad500f1}
-      \strng{bibnamehash}{b26940c27a2a946515e51ee9cad500f1}
-      \strng{authorbibnamehash}{b26940c27a2a946515e51ee9cad500f1}
-      \strng{authornamehash}{b26940c27a2a946515e51ee9cad500f1}
-      \strng{authorfullhash}{b26940c27a2a946515e51ee9cad500f1}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{author}
-      \field{note}{Disiniasi dari file "Design-Research-Methodology.pdf"}
-      \field{title}{DRM, a Design Research Methodology}
-      \field{year}{2009}
-    \endentry
     \entry{DominguezDorado2024FLECO}{article}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=10b66fab83e97674e23363bb9d3fac3c}{%
@@ -204,20 +173,23 @@
       \field{year}{2023}
     \endentry
     \entry{Elghaly2024PowerShellMalware}{article}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=bb55f1044693349795162bc40bf2a2c9}{%
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ca6809c7cd03f022efccbe8950dbb85d}{%
            family={Elghaly},
-           familyi={E\bibinitperiod},
-           given={Yehia\bibnamedelima M.},
-           giveni={Y\bibinitperiod\bibinitdelim M\bibinitperiod},
+           familyi={E\bibinitperiod}}}%
+        {{un=0,uniquepart=base,hash=07324b07a20004054b766293c31fcba2}{%
+           family={M.},
+           familyi={M\bibinitperiod},
+           given={Yehia},
+           giveni={Y\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{bb55f1044693349795162bc40bf2a2c9}
-      \strng{fullhash}{bb55f1044693349795162bc40bf2a2c9}
-      \strng{bibnamehash}{bb55f1044693349795162bc40bf2a2c9}
-      \strng{authorbibnamehash}{bb55f1044693349795162bc40bf2a2c9}
-      \strng{authornamehash}{bb55f1044693349795162bc40bf2a2c9}
-      \strng{authorfullhash}{bb55f1044693349795162bc40bf2a2c9}
+      \strng{namehash}{0bda0e42474d88f6fa32379214a91464}
+      \strng{fullhash}{0bda0e42474d88f6fa32379214a91464}
+      \strng{bibnamehash}{0bda0e42474d88f6fa32379214a91464}
+      \strng{authorbibnamehash}{0bda0e42474d88f6fa32379214a91464}
+      \strng{authornamehash}{0bda0e42474d88f6fa32379214a91464}
+      \strng{authorfullhash}{0bda0e42474d88f6fa32379214a91464}
       \field{sortinit}{E}
       \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
       \field{extradatescope}{labelyear}
