@@ -12,22 +12,22 @@ Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan,
 
 Secara konseptual, serangan \textit{spyware} modern yang berfokus pada \textit{Initial Access} dan \textit{Packer} melibatkan beberapa komponen utama: Target (sistem yang diserang), \textit{Packer/Dropper} (Artefak \textit{spyware} yang disamarkan), \textit{Anti-Malware/EDR} (Sistem pertahanan), dan \textit{Server} (Pengumpul informasi, seperti yang digambarkan dalam alur \textit{General Flow}).
 
-\subsection[]{Masalah Kerentanan dan Ketertinggalan \texorpdfstring{\textit{Anti-Malware}} Konvensional}
+\subsection{Masalah Kerentanan dan Ketertinggalan \texorpdfstring{\textit{Anti-Malware}} Konvensional}
 Kondisi keamanan siber saat ini ditandai dengan evolusi ancaman yang signifikan, bergerak dari \textit{malware} tradisional berbasis \textit{file} menuju serangan yang lebih canggih dan tersembunyi, seperti \textit{fileless malware} dan \textit{spyware mode stealth}. Evolusi ini menciptakan celah kritis dalam kemampuan deteksi sistem \textit{anti-malware (AV)} dan \textit{Endpoint Detection and Response (EDR)} yang masih berpegangan pada mekanisme pertahanan konvensional.
 
-\subsection[]{Keterbatasan Deteksi Berbasis Tanda Tangan (\textit{Signature-Based})}
+\subsection{Keterbatasan Deteksi Berbasis Tanda Tangan (\textit{Signature-Based})}
 \textit{Anti-malware} tradisional masih sangat mengandalkan pencocokan tanda tangan (\textit{signature-based detection}). \textit{Spyware mode stealth} menggunakan teknik \textit{Packer} (seperti yang dijelaskan dalam konsep arsitektur serangan) untuk melakukan kompresi, enkripsi, dan \textit{obfuscation} pada \textit{payload}. Teknik ini secara efektif mengubah tanda tangan digital (\textit{signature}) \textit{spyware}, sehingga membuatnya lolos dari deteksi \textit{signature-based} karena dianggap sebagai \textit{file} baru atau tidak dikenal.
 
-\subsection[]{Gagal Menganalisis Code \textit{Fileless Execution}}
+\subsection{Gagal Menganalisis Code \textit{Fileless Execution}}
 Situasi ini diperparah dengan temuan bahwa banyak alat keamanan gagal tidak dapat mendeteksi \textit{fileless malware}. \textit{Fileless malware} memanfaatkan komponen sah dari sistem operasi (seperti PowerShell dan WMI) untuk menjalankan kode berbahaya langsung di memori tanpa menulis \textit{file} ke disk, sehingga sulit dideteksi oleh \textit{antivirus} konvensional.
 
-\subsection[]{Efektivitas Teknik Evasi Sederhana}
+\subsection{Efektivitas Teknik Evasi Sederhana}
 Meskipun serangan semakin canggih, penelitian menunjukkan bahwa metode evasi yang relatif sederhana, seperti enkripsi, injeksi proses, dan penambahan data sampah (\textit{junk data}) ke file eksekusi, terbukti sangat efektif dalam menghindari deteksi. Bahkan, dalam sebuah studi \textcite{Chatzoglou2023AVBypassing}, hampir separuh dari 12 mesin \textit{antivirus} yang diuji hanya mampu mendeteksi kurang dari setengah varian \textit{malware} yang disamarkan.
 
-\subsection[short]{Kurangnya Deteksi Proaktif Terhadap Arsitektur Serangan}
+\subsection{Kurangnya Deteksi Proaktif Terhadap Arsitektur Serangan}
 Kurangnya deteksi yang efektif oleh solusi keamanan menciptakan celah besar yang dieksploitasi oleh \textit{Advanced Persistent Threats (APTs)}. Sistem pertahanan saat ini terlalu reaktif, berfokus pada \textit{file} yang sudah terinstal, bukan pada deteksi perilaku evasif dari \textit{Packer} di fase \textit{Initial Access} dan \textit{Establish Foothold}.
 
-\subsection[short]{{Gap Analysis} Celah Deteksi \textit{Packer Spyware Mode Stealth}}
+\subsection{{Gap Analysis} Celah Deteksi \textit{Packer Spyware Mode Stealth}}
 Berdasarkan kondisi saat ini dan studi literatur, sebuah Analisis Kesenjangan (\textit{Gap Analysis}) dirumuskan untuk menyoroti perbedaan antara kondisi ideal deteksi dan realitas sistem \textit{anti-spyware} saat ini.
 
 \begin{table}[H]
@@ -103,13 +103,13 @@ Dalam upaya mencari solusi yang paling optimal untuk mengatasi permasalahan yang
   \end{tabular}
 \end{table}
 
-\subsection[short]{Rust}
+\subsection{Rust}
 Rust adalah bahasa pemrograman sistem yang akan digunakan untuk mengembangkan \textit{Packer}. Bahasa ini dipilih karena mampu menghasilkan \textit{binary} yang sangat efisien dan terkompilasi menjadi \textit{native code}. Kontrol tingkat rendah yang disediakan Rust memungkinkan implementasi manipulasi memori dan panggilan API Windows secara langsung, yang sangat penting untuk teknik \textit{fileless execution} (FR-A3). \textit{Packer} yang dibangun dengan Rust dapat mengenkripsi \textit{payload} (FR-A1) dan memiliki resistensi tinggi terhadap analisis statis (\textit{reverse engineering}), karena minimnya jejak \textit{runtime} yang mudah dideteksi (Potensi \textit{Stealth}).
 
-\subsection[short]{C/C++}
+\subsection{C/C++}
 C/C++ adalah bahasa pemrograman sistem tradisional yang merupakan standar umum untuk pengembangan alat \textit{low-level}. Penggunaan bahasa ini memungkinkan pengembang untuk memiliki kontrol penuh atas manajemen memori dan akses langsung ke API Windows, yang esensial untuk implementasi \textit{memory injection} dan \textit{fileless execution} (FR-A3). \textit{Packer} yang dikembangkan dengan C/C++ dapat mengkompilasi \textit{payload} menjadi \textit{binary native} yang kuat, menjadikannya alternatif yang efektif untuk menyamarkan \textit{payload} dan melakukan enkripsi tingkat lanjut (FR-A1).
 
-\subsection[short]{Python (PyInstaller)}
+\subsection{Python (PyInstaller)}
 Python adalah bahasa \textit{scripting} tingkat tinggi yang menawarkan kemudahan dan kecepatan dalam pengembangan \textit{payload} dan logika enkripsi sederhana (FR-A1). Ketika dikombinasikan dengan alat \textit{packer} seperti PyInstaller, \textit{script} Python dapat dibungkus menjadi \textit{executable} Windows. Solusi ini memanfaatkan \textit{obfuscation bytecode} dan \textit{packer wrapper} sebagai lapisan pertahanan awal terhadap deteksi \textit{signature-based}. Namun, solusi ini bergantung pada mekanisme \textit{wrapper} yang seringkali kurang stealth dibandingkan kompilasi \textit{low-level} murni.
 
 \subsection{Analisis Penentuan Solusi}
@@ -143,4 +143,82 @@ Untuk memastikan solusi yang dihasilkan dapat menyelesaikan masalah yang telah d
   \end{tabular}
 \end{table}
 
-Tabel  menyajikan rangkuman hasil evaluasi dari setiap alternatif solusi berdasarkan kriteria desain yang telah ditentukan, menggunakan skala penilaian 1 hingga 9. Skor 1 menunjukkan bahwa suatu alternatif solusi memiliki tingkat kesesuaian yang sangat rendah terhadap kriteria desain. Skor 9 mencerminkan bahwa solusi tersebut sangat memenuhi kriteria yang ditetapkan dan memiliki potensi tinggi untuk menyelesaikan permasalahan secara efektif. 
+Untuk menentukan solusi terbaik secara objektif, digunakan pendekatan \textit{MultiCriteria Decision Analysis (MCDA)} dengan \textit{Entropy Weight Method (EWM)}. Metode ini digunakan untuk menentukan bobot kriteria secara ilmiah dan obyektif berdasarkan tingkat keragaman informasi (diversifikasi) dari setiap kriteria \cite{Zhu2020EWM}. Analisis MCDA dilakukan dengan melakukan normalisasi \textit{decision matrix}. Skor dari setiap solusi terhadap suatu kriteria dinormalisasi menggunakan metode rasio terhadap total skor dalam kriteria tersebut, seperti yang terlihat pada Rumus \ref{eq:normalisasi}.
+\begin{equation}
+  P_{ij} = \frac{x_{ij}}{\sum_{i=1}^{m} x_{ij}}
+  \label{eq:normalisasi}
+\end{equation}
+Keterangan: $P_{ij}$ adalah nilai normalisasi kriteria $j$ untuk alternatif $i$, $x_{ij}$ adalah skor mentah, $m$ adalah jumlah alternatif ($m=3$: Rust, C/C++, Python), dan $n$ adalah jumlah kriteria ($n=6$).
+
+Nilai entropi ($e_{j}$) dihitung untuk setiap kriteria $j$ guna mengukur tingkat ketidakpastian atau dispersi data:
+\begin{equation}
+  e_{j} = -k \sum_{i=1}^{m} P_{ij} \ln (P_{ij}), \qquad k = \frac{1}{\ln(m)}
+  \label{eq:entropi}
+\end{equation}
+
+Derajat diversifikasi ($d_{j}$) diperoleh melalui:
+\begin{equation}
+  d_{j} = 1 - e_{j}
+  \label{eq:diversifikasi}
+\end{equation}
+Bobot relatif ($w_{j}$) untuk setiap kriteria kemudian dihitung dengan:
+\begin{equation}
+  w_{j} = \frac{d_{j}}{\sum_{j=1}^{n} d_{j}}
+  \label{eq:bobot}
+\end{equation}
+Bobot mencerminkan kontribusi setiap kriteria terhadap pengambilan keputusan, di mana kriteria dengan variabilitas tinggi mendapat bobot lebih besar.
+
+Skor komposit akhir ($S_{i}$) untuk setiap alternatif solusi dihitung menggunakan:
+\begin{equation}
+  S_{i} = \sum_{j=1}^{n} w_{j} P_{ij}
+  \label{eq:skor}
+\end{equation}
+Alternatif dengan skor tertinggi dipilih sebagai solusi yang paling optimal berdasarkan pertimbangan \textit{multi-kriteria} yang objektif.
+
+\subsection{Hasil Analisis Penentuan Solusi}
+Perhitungan MCDA-EWM dilakukan terhadap matriks keputusan dengan enam kriteria desain dan tiga alternatif solusi. Kriteria yang dievaluasi adalah: KD-1 (Dukungan Enkripsi/\textit{Packing}), KD-2 (Kontrol \textit{Low-Level Fileless}), KD-3 (Resistensi Analisis Statis), KD-4 (Kemudahan Implementasi \textit{Anti-Analysis}), KD-5 (Performa Eksekusi), dan KD-6 (\textit{Ecosystem Tools/Libraries}). Hasil perhitungan entropi menunjukkan bahwa KD-2 memiliki entropi terendah dan derajat diversifikasi tertinggi, mengindikasikan bahwa kriteria ini paling efektif dalam membedakan ketiga alternatif. Tabel \ref{tab:bobot-ewm} merangkum hasil perhitungan bobot kriteria.
+
+\renewcommand{\arraystretch}{1.15}
+\begin{table}[H]
+  \centering
+  \caption{Bobot kriteria hasil metode EWM\label{tab:bobot-ewm}}
+  \begin{tabular}{p{3.4cm}ccc}
+    \toprule
+    \textbf{Kode Kriteria} & \textbf{$e_{j}$} & \textbf{$d_{j}$} & \textbf{$w_{j}$} \\
+    \midrule
+    KD-1 & 0.9979 & 0.0021 & 0.081 \\
+    KD-2 & 0.9609 & 0.0391 & 0.1518 \\
+    KD-3 & 0.8716 & 0.1284 & 0.4984 \\
+    KD-4 & 0.9641 & 0.0359 & 0.1394 \\
+    KD-5 & 0.9489 & 0.0511 & 0.1984 \\
+    KD-6 & 1.0000 & 0.0000 & 0.0000 \\
+    \midrule
+    \multicolumn{1}{r}{\textbf{Total}} &  & 0.2576 & 1.000 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Nilai bobot menunjukkan bahwa KD-3 memberikan kontribusi terbesar (49.84\%) terhadap pengambilan keputusan, diikuti oleh KD-5 (19.84\%), sedangkan kriteria lainnya memiliki kontribusi kecil.
+
+Skor komposit akhir untuk setiap alternatif disajikan pada Tabel~\ref{tab:skor-akhir}.Rust memperoleh skor tertinggi (0.3546), diikuti oleh C/C++ (0.3235), dan Python (0.1994). Dominasi skor Rust terutama disebabkan oleh performanya pada KD-3 dan KD-5, yaitu resistensi terhadap analisis statis serta kompleksitas implementasi yang lebih aman. Kedua kriteria tersebut memiliki bobot EWM tertinggi, sehingga kontribusinya paling signifikan terhadap total skor. Rust juga menunjukkan performa baik pada KD-2 dan KD-4, yang berkaitan dengan kontrol \textit{low-level}, kemampuan \textit{fileless}, serta jejak \textit{binary} yang lebih \textit{stealth}. Dengan demikian, Rust menjadi alternatif paling optimal dalam konteks \textit{evasion} dan kebutuhan non-fungsional yang telah didefinisikan.
+
+\begin{table}[H]
+\centering
+\caption{Hasil Perhitungan Bobot EWM dan Skor Solusi}\label{tab:skor-akhir}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Kriteria Desain} & \textbf{Bobot EWM} & \textbf{S-1} & \textbf{S-2} & \textbf{S-3} \\
+\midrule
+KD-1 & 0.0081 & 0.0025 & 0.0028 & 0.0028 \\
+KD-2 & 0.1518 & 0.0621 & 0.0621 & 0.0276 \\
+KD-3 & 0.4984 & 0.2243 & 0.1994 & 0.0748 \\
+KD-4 & 0.1394 & 0.0570 & 0.0506 & 0.0316 \\
+KD-5 & 0.1984 & 0.0660 & 0.0440 & 0.0881 \\
+KD-6 & 0.0000 & 0.0000 & 0.0000 & 0.0000 \\
+\midrule
+\textbf{Total Skor} & \textbf{1.0000} & \textbf{0.3546} & \textbf{0.3235} & \textbf{0.1994} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Berdasarkan hasil analisis MCDA-EWM, Rust dipilih sebagai alternatif terbaik untuk implementasi \textit{packer spyware} mode \textit{stealth}. Keputusan ini didukung oleh skor komposit tertinggi serta kontribusi dominan pada kriteria dengan bobot terbesar, yaitu resistensi terhadap analisis statis (KD-3) dan kompleksitas implementasi yang aman (KD-5). Selain itu, Rust menunjukkan performa kuat pada aspek kontrol \textit{low-level} dan kemampuan \textit{fileless} (KD-2), yang merupakan fondasi utama dalam membangun artefak berprofil rendah dan sulit dideteksi. Konsistensi performa ini menjadikan Rust pilihan paling efektif untuk menghasilkan \textit{packer} yang mampu meminimalkan jejak deteksi, menjaga integritas \textit{payload}, serta memenuhi kebutuhan \textit{evasion}.
