@@ -3,7 +3,291 @@
 % ==========================================
 \chapter{DESAIN KONSEP SOLUSI}
 \label{chap:desain-konsep-solusi}
-Ilustrasikan desain konsep solusi dalam bentuk model konseptual dan penjelasan secara ringkas, 
-beserta perbedaannya dengan sistem saat ini. Ilustrasi harus dapat dibandingkan (\textit{before} and \textit{after}). 
-Karena masih berupa proposal, bab ini hanya berisi gambar desain konsep solusi tersebut dan 
-penjelasan perbandingannya dengan gambar sistem yang ada saat ini (yang tergambar di awal Bab \ref{chap:analisis-masalah}).
+
+Bab ini menyajikan penjelasan rinci mengenai rancangan sistem yang diusulkan dalam penelitian, yaitu desain modul \textit{packer} pada \textit{spyware} dengan mode \textit{stealth} pada fase \textit{Initial Access} yang akan digunakan untuk menguji kapabilitas deteksi antivirus dalam lingkungan terisolasi. Sebagai pedoman metodologis, kerangka \textit{Design Research Methodology} yang telah diuraikan pada Bab~I diadaptasi dalam bab ini. Pendekatan tersebut diterapkan karena dapat memvisualisasikan alur pengujian modul \textit{packer} pada anti-\textit{spyware}. Oleh karena itu, seluruh proses desain dan pengembangan dalam bab ini diarahkan untuk menciptakan artefak yang tidak hanya memiliki fungsi teknis, tetapi juga memenuhi kebutuhan pengujian parameter keamanan yang telah ditetapkan pada Bab~III.
+
+\section{Diagram Konseptual}
+Bagian ini menyajikan pemetaan alur sistem sebelum dan sesudah diterapkannya solusi, sehingga terlihat jelas bagaimana \textit{packer} berperan sebagai perbaikan terhadap proses \textit{existing}.
+
+\subsection[]{Diagram \textit{Packer} konvensional}
+Diagram \textit{“before”} menunjukkan bagaimana \textit{spyware} bekerja tanpa mekanisme \textit{packing} atau penyamaran. \textit{Payload} langsung diunduh dan dijalankan sehingga \textit{anti-spyware} memiliki peluang lebih besar untuk mendeteksi struktur \textit{file} yang masih jelas.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{image/Flow_Before.jpg}
+\caption{\textit{Packer Konvensional}}\label{fig:Flow-Before}
+\end{figure}
+
+Pada sistem \ref{fig:Flow-Before},  \textit{payload} GetInfo diunduh dalam bentuk yang masih mudah dianalisis oleh \textit{anti-spyware}. Struktur file, signature, dan byte-pattern masih menyerupai malware konvensional sehingga tingkat deteksi cukup tinggi.
+
+\subsection[]{Diagram \textit{Packer} dengan Artefak \textit{Stealth}}
+Diagram ini memperlihatkan bagaimana artefak \textit{packer} mengubah alur kerja secara signifikan. \textit{Payload} tidak lagi tampil sebagai \textit{executable} biasa, melainkan sebagai \textit{packed artifact} yang terenkripsi, ter-\textit{obfuscate}, dan lebih sulit dideteksi.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{image/Flow_After.jpg}
+\caption{\textit{Packer} dengan artefak \textit{Stealth}}\label{fig:Flow-After}
+\end{figure}
+
+Perubahan utama terjadi pada tahap 1.2 dan 1.3, di mana \textit{anti-spyware} dihadapkan pada berkas \textit{executable} yang telah dimodifikasi oleh modul \textit{packer}. Pada kondisi ini, berkas tersebut tidak lagi memiliki \textit{signature} malware yang dikenal, menunjukkan tingkat entropi yang tinggi sebagai akibat dari proses kompresi atau enkripsi, serta mengandung \textit{payload} yang disembunyikan melalui mekanisme enkripsi internal. Selain itu, artefak ini juga mampu memulai proses eksekusi secara \textit{fileless}, sehingga menghindari banyak indikator statis yang lazim digunakan oleh mesin deteksi. Kombinasi karakteristik tersebut secara signifikan mengurangi kemampuan sistem deteksi tradisional untuk mengenali pola ancaman, sehingga membuat mekanisme \textit{anti-spyware} konvensional jauh lebih sulit dalam memprofilkan dan mengidentifikasi aktivitas berbahaya pada tahap awal.
+
+\subsection[]{Perbandingan \textit{Packer} Konvensional dan \textit{Packer} dengan Artefak \textit{Stealth}}
+
+\begin{table}[H]
+\centering
+\caption{Perbandingan \textit{Packer} Konvensional dan \textit{Packer} dengan Artefak \textit{Stealth}}
+\label{tab:Konvensional-stealth}
+\begin{tabular}{|p{3.2cm}|p{6cm}|p{6cm}|}
+\hline
+\textbf{Aspek} & \textbf{\text{Packer Konvensional}} & \textbf{Packer dengan Artefak \textit{Stealth}} \\ \hline
+
+Bentuk Payload & File GetInfo asli dengan signature jelas & Payload terenkripsi dan tersembunyi dalam stub \\ \hline
+
+Pola Deteksi & Mudah dikenali oleh AV berbasis signature & Signature berubah total, sulit dikenali \\ \hline
+
+Eksekusi Payload & \textit{On-disk execution} & \textit{In-memory unpacking} (fileless behavior) \\ \hline
+
+Jejak Sistem & Tinggi, mudah dilacak & Minim, struktur berubah dan ter-\textit{obfuscate} \\ \hline
+
+Realisme Serangan & Rendah & Tinggi — menyerupai spyware modern \\ \hline
+
+\end{tabular}
+\end{table}
+
+
+\section{Klarifikasi Tugas Desain}
+Langkah pertama dalam desain solusi adalah menerjemahkan masalah menjadi menjadi \textit{intended support} berupa desain artefak \textit{packer}. Berdasarkan analisis kesenjangan (\textit{Gap Analysis}) pada Bab III, tugas desain utama adalah menciptakan mekanisme penyembunyian \textit{payload}.
+
+\subsection[]{Penentuan \textit{Key Factors} dan \textit{Intended Impact Model}}
+Berdasarkan \textit{Gap Analysis} pada Bab III, diperoleh tiga \textit{Key Factors (KF)} yang harus diatasi oleh artefak \textit{packer}:
+
+\begin{table}[H]
+\centering
+\caption{Key Factors prototipe \textit{packer}}\label{tab:Key-Factors-Table}
+\begin{tabular}{|p{4cm}|p{2.5cm}|p{7cm}|}
+\hline
+\textbf{Key Factor (KF)} & \textbf{Celah Deteksi Anti-Spyware} & \textbf{Penjelasan} \\ \hline
+
+KF-01 -- \textit{Signature Evasion} & CTQ-01 & \textit{Anti-spyware} gagal mendeteksi malware yang \textit{signature}-nya berubah akibat teknik \textit{packing} dan \textit{encryption}. \\ \hline
+
+KF-02 -- \textit{Hidden Bytecode / Obfuscation Gap} & CTQ-02 & \textit{Anti-virus} tidak mampu membaca \textit{payload} yang terenkripsi atau ter-\textit{obfuscate} di dalam biner \textit{packer}. \\ \hline
+
+KF-03 -- \textit{Initial Access Blind Spot} & CTQ-03 & Banyak produk \textit{anti-virus} hanya mendeteksi saat \textit{runtime}, bukan ketika \textit{file} baru diunduh. \\ \hline
+    
+\end{tabular}
+\end{table}
+
+Untuk memastikan desain artefak \textit{packer} benar-benar merespons \textit{Key Factors} tersebut, dirumuskan Intended \textit{Impact Model (IM)} yang menggambarkan hubungan kausal antara desain solusi dan dampak yang diharapkan.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.2\textwidth]{image/Intended_Impacted_Model.jpg}
+\caption{\textit{Intended Impact Model}}\label{fig:Intended-Impact-Model}
+\end{figure}
+
+
+Model dampak ini menunjukkan bahwa solusi yang dirancang tidak hanya bersifat teknis, tetapi juga merupakan intervensi metodologis untuk menghasilkan data empiris mengenai kelemahan \textit{anti-spyware} saat menghadapi artefak \textit{stealth} pada tahap paling \textit{initial access}.
+
+\subsection[]{Desain \textit{Artefak Packer} (\textit{Intended Support})}
+Berdasarkan \textit{key factors} tersebut, \textit{intended support} berupa artefak \textit{packer} dirancang dengan karakteristik sebagai berikut:
+
+\begin{enumerate}
+    \item Payload terenkripsi dan ter-\textit{obfuscate} (tidak berbahaya).
+
+    Payload berisi instruksi sederhana, yaitu:
+    \begin{itemize}\setlength{\itemsep}{2pt}
+        \item menjalankan perintah systeminfo,
+        \item mengirim hasilnya ke server,
+        \item meminta file dropper untuk tahap berikutnya.
+    \end{itemize}
+
+    Payload tidak berisi aktivitas spionase aktif, tidak mengakses file, tidak melakukan \textit{keylogging}, dan tidak berkomunikasi secara berulang. Dengan demikian, artefak aman dan legal untuk penelitian.
+
+    Payload dienkripsi dan disisipkan ke dalam \textit{stub executable}, sehingga:
+    \begin{itemize}\setlength{\itemsep}{2pt}
+        \item \textit{signature} asli \textit{payload} hilang,
+        \item \textit{static detection} oleh antivirus menjadi sulit.
+    \end{itemize}
+
+    \vspace{6pt}
+
+    \item Binary \textit{packing} dan \textit{obfuscation}.
+
+    Packer memodifikasi struktur binary menjadi bentuk yang tidak mudah dibaca oleh mesin statis, melalui:
+    \begin{itemize}\setlength{\itemsep}{2pt}
+        \item \textit{header mutation},
+        \item \textit{junk insertion},
+        \item \textit{string obfuscation},
+        \item \textit{section entropy manipulation}.
+    \end{itemize}
+
+    Transformasi ini secara langsung menargetkan KF-01 dan KF-02.
+
+    \vspace{6pt}
+
+    \item Eksekusi \textit{payload} secara \textit{in-memory}.
+
+    \textit{Stub} mendekripsi \textit{payload} langsung di RAM dan mengeksekusinya tanpa menuliskan file tambahan ke disk.
+
+    Metode ini secara langsung menguji \textit{blind spot} anti-spyware pada fase awal eksekusi (KF-03).
+
+    \vspace{6pt}
+
+    \item Integrasi ke flow \textit{Initial Access} \textit{Packer} dengan artefak \textit{Stealth}.
+
+    Flow ini mengikuti diagram \ref{fig:Flow-After}:
+
+    \begin{enumerate}
+        \item Target mengakses pop-up/PDF/JPG.
+        \item GetInfo.exe diunduh dari server.
+        \item Artefak dieksekusi.
+        \item Payload \textit{in-memory} menjalankan:
+        \begin{itemize}\setlength{\itemsep}{2pt}
+            \item systeminfo,
+            \item mengirim hasil ke server,
+            \item meminta dropper.
+        \end{itemize}
+        \item Server mengirimkan dropper.
+        \item Artefak mengunduh dropper (1.4).
+    \end{enumerate}
+
+    Tidak ada aktivitas spyware aktif pada tahap ini.
+\end{enumerate}
+
+
+\subsection{Spesifikasi Mesin Uji}
+Pengujian akan dilakukan menggunakan \textit{controlled environment} yang terisolasi untuk memastikan kondisi yang konsisten di seluruh produk anti-spyware yang diuji.
+
+\begin{table}[h!]
+\centering
+\caption{Spesifikasi Lingkungan Target untuk Pengujian}
+\label{tab:spesifikasi-target}
+\begin{tabular}{|p{4cm}|p{8cm}|}
+\hline
+\textit{Komponen} & \textit{Spesifikasi (Target VM)} \\ \hline
+
+Sistem Operasi & Windows 11 \\ \hline
+
+Kapasitas & Intel Core i5 Gen 8 \\ \hline
+
+RAM & 8 GB \\ \hline
+
+Storage & SSD 1 TB \\ \hline
+
+Jaringan & Public (ITB) \& local (untuk pengujian) \\ \hline
+
+Kakas Pendukung &  Windows Defender,  AVG,  Avast,  McAfee \\ \hline
+
+\end{tabular}
+\end{table}
+
+
+\section{Konseptualisasi Arsitektur Solusi}
+Konseptualisasi arsitektur solusi dilakukan untuk memberikan representasi menyeluruh mengenai bagaimana artefak \textit{packer} bekerja sebagai komponen \textit{initial access} dalam skenario serangan multi-tahap. Arsitektur ini dirancang berdasarkan \textit{intended support} yang telah dijelaskan sebelumnya, serta dikonstruksi untuk mendukung evaluasi terhadap efektivitas deteksi \textit{anti-spyware} pada tahap awal infiltrasi. Secara keseluruhan, arsitefak terdiri atas dua komponen inti, yakni \textit{stub packer} (\textit{loader}) sebagai entitas eksekusi utama pada sisi target dan \textit{encrypted lightweight payload} sebagai muatan yang dijalankan secara \textit{in-memory}. Kedua komponen ini berkolaborasi untuk menciptakan mekanisme penyamaran (\textit{evasion}) yang relevan terhadap \textit{key factors} penelitian, namun tetap menjaga batasan etis dan legalitas dengan tidak memasukkan fungsi \textit{spyware} agresif atau destruktif.
+
+\subsection{Komponen Arsitektur \textit{Packer}}
+Arsitektur packer yang dikembangkan mencakup dua elemen fundamental yang berperan dalam proses packing, penyamaran, dan eksekusi \textit{payload}.
+
+\subsubsection{\textit{Stub Packer (Loader)}}
+\textit{Stub packer} merupakan komponen \textit{executable} yang bertanggung jawab untuk menjalankan seluruh tahapan kritis pada sisi target. Secara fungsional, stub memuat algoritma rekonstruksi kunci yang digunakan untuk mendekripsi \textit{payload} yang tertanam di dalam artefak. Proses dekripsi dilakukan sepenuhnya di memori (\textit{in-memory decryption}), sehingga tidak meninggalkan artefak fisik yang dapat dianalisis oleh mekanisme \textit{file-based scanning}.  Setelah payload berhasil didekripsi, stub mengeksekusi instruksi-instruksi yang terkandung di dalamnya, termasuk menjalankan perintah systeminfo untuk memperoleh informasi dasar mengenai sistem target. Informasi tersebut kemudian dikirimkan ke server sebagai bagian dari proses \textit{lightweight reconnaissance} dan sekaligus sebagai pemicu permintaan dropper.  Selain itu, stub juga menangani respons server dengan menginisiasi proses pengunduhan \textit{file dropper}. Dengan demikian, \textit{stub packer} menjadi pusat pengendali proses \textit{initial access} sekaligus modul yang memungkinkan terjadinya transisi dari tahap pengintaian awal menuju tahap infeksi berikutnya.
+
+\subsubsection{\textit{Encrypted Lightweight Payload}}
+Komponen kedua dalam arsitektur packer adalah \textit{payload} terenkripsi yang disisipkan ke dalam stub. Payload ini bersifat ringan dan tidak mengandung fungsi spionase, perusakan, atau mekanisme \textit{persistensi}. Muatan ini hanya terdiri atas tiga instruksi inti, yaitu menjalankan perintah systeminfo, mengirim hasil eksekusi tersebut ke server, dan meminta pengiriman file dropper. Payload tidak melakukan interaksi terhadap berkas sistem, tidak memodifikasi \textit{registry}, serta tidak melakukan aktivitas laten lainnya yang berpotensi dikategorikan sebagai perilaku spyware berbahaya. Payload didesain sedemikian rupa agar merepresentasikan tahap awal serangan spyware modern, yaitu pengumpulan informasi minimal untuk menentukan bagaimana tahap berikutnya akan diluncurkan oleh server.  Enkripsi payload memastikan bahwa mesin deteksi statis tidak dapat mengidentifikasi pola instruksi internal sebelum proses dekripsi terjadi di memori.
+
+\subsection{Alur \textit{Packer} dengan artefak \textit{Stealth}}
+Alur sistem \ref{fig:Implemented-Packer} menggambarkan bagaimana artefak \textit{packer} beroperasi pada lingkungan target setelah solusi diimplementasikan. Alur ini terdiri atas serangkaian tahapan berurutan yang merepresentasikan fase \textit{initial access} hingga pengunduhan \textit{dropper}. Setiap tahapan dirancang untuk menguji kemampuan deteksi \textit{anti-spyware} pada titik-titik kritis, dengan tetap menjaga agar \textit{payload} yang digunakan bersifat ringan dan tidak destruktif.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{image/Flow_After.jpg}
+\caption{\textit{Packer} dengan artefak \textit{Stealth}}\label{fig:Implemented-Packer}
+\end{figure}
+
+\begin{enumerate}
+    \item Initial Access - Tahap 1.1
+        Tahap pertama merupakan fase \textit{initial access} di mana target berinteraksi dengan konten yang telah dimanipulasi sebagai vektor serangan. Konten tersebut dapat berupa pop-up, dokumen PDF, atau gambar (JPG) yang secara sengaja dikemas untuk menampilkan tautan atau aksi yang mengarahkan pengguna ke server penyerang. Dari sudut pandang penelitian, tahap ini mensimulasikan skenario \textit{social engineering} yang lazim digunakan dalam distribusi malware modern, namun tanpa menyertakan eksploitasi kerentanan tertentu. Pada titik ini, sistem target belum menjalankan kode berbahaya apa pun; yang terjadi hanyalah interaksi pengguna dengan media yang tampak \textit{benign}.
+    \item Download Artefak - Tahap 1.2
+        Setelah pengguna mengikuti tautan yang disediakan, sistem akan mengunduh sebuah artefak eksekutabel, yaitu berkas GetInfo.exe. Artefak ini merupakan hasil proses \textit{packing} yang mengandung payload terenkripsi dan ter-\textit{obfuscate}. Proses pengunduhan ini menggambarkan fase di mana banyak produk \textit{anti-spyware} melakukan pemindaian awal (misalnya \textit{on-access scanning} terhadap file yang baru dibuat di disk). Pada penelitian ini, struktur biner GetInfo.exe telah dimodifikasi sedemikian rupa sehingga \textit{fingerprint}-nya tidak lagi identik dengan payload asli. Dengan demikian, tahap 1.2 menjadi titik penting untuk mengamati apakah \textit{engine anti-spyware} masih mampu mengidentifikasi artefak sebagai ancaman berdasarkan karakteristik statisnya.
+    \item Execute Packed Artifact - Tahap 1.3
+        Tahap berikutnya adalah eksekusi artefak yang telah diunduh. Pada saat pengguna atau sistem menjalankan GetInfo.exe, produk \textit{anti-spyware} umumnya akan melakukan kombinasi antara pemindaian statis tambahan dan analisis perilaku awal. Di sisi lain, dari perspektif solusi, \textit{stub packer} mulai berfungsi sebagai \textit{entry point} yang menyiapkan lingkungan eksekusi payload. Pada tahap ini belum terjadi aktivitas spionase ataupun pengumpulan data sensitif; stub hanya mempersiapkan proses dekripsi payload. Tujuan utama tahap 1.3 adalah mengevaluasi apakah transisi dari status “file di disk” menjadi “proses yang dieksekusi” akan memicu deteksi dini dari \textit{anti-spyware}, mengingat struktur biner telah mengalami \textit{packing} dan \textit{obfuscation}.
+    \item Run Payload (In-Memory)
+        Setelah stub berhasil dijalankan, proses berlanjut ke eksekusi payload secara \textit{in-memory}. Stub melakukan rekonstruksi kunci enkripsi berdasarkan algoritma yang tertanam di dalamnya, kemudian mendekripsi payload ringan yang disisipkan sebelumnya. Proses dekripsi ini tidak menulis file baru ke disk, melainkan langsung memuat kode hasil dekripsi ke memori dan mengeksekusinya. Pendekatan ini dirancang untuk mengeksploitasi kelemahan mekanisme deteksi yang bergantung pada artefak file, sekaligus mensimulasikan teknik \textit{fileless malware} yang banyak digunakan pada serangan kontemporer. Tahap ini menjadi krusial untuk menguji sejauh mana \textit{anti-spyware} mampu melakukan inspeksi memori proses dan mendeteksi aktivitas dekripsi serta pemanggilan fungsi internal yang tampak \textit{benign}.
+    \item Payload Execution - Sysinfo dan Permintaan Dropper
+        Payload yang telah berhasil didekripsi kemudian menjalankan tiga instruksi dasar. Pertama, payload mengeksekusi perintah systeminfo atau fungsi setara untuk memperoleh informasi lingkungan sistem, seperti versi sistem operasi, arsitektur, dan parameter penting lainnya. Kedua, hasil eksekusi systeminfo diproses menjadi representasi data yang ringkas (misalnya bentuk \textit{string} atau struktur lain) sehingga dapat dikirimkan melalui jaringan. Ketiga, payload mengirimkan informasi tersebut ke server dan secara eksplisit meminta pengiriman file dropper. Seluruh rangkaian aktivitas ini diklasifikasikan sebagai \textit{lightweight reconnaissance} karena hanya mengumpulkan informasi umum sistem tanpa menyentuh berkas, \textit{registry}, maupun kredensial pengguna. Dari perspektif penelitian, tahap ini memungkinkan pengamatan apakah \textit{anti-spyware} akan menganggap kombinasi eksekusi systeminfo dan komunikasi jaringan sederhana ini sebagai perilaku mencurigakan.
+    \item Server Response
+        Setelah menerima data systeminfo dari target, server bertindak sebagai \textit{command and control (C2)} emulator yang bertugas memilih dan mengirimkan file dropper yang sesuai. Logika pemilihan dropper dapat mempertimbangkan informasi sistem yang dikirimkan, misalnya arsitektur atau versi sistem operasi, meskipun dalam penelitian ini dapat disederhanakan sesuai kebutuhan eksperimen. Respons server berupa pengiriman lokasi atau langsung berkas dropper menjadi indikator bahwa tahap \textit{reconnaissance} awal berhasil dijalankan tanpa terputus oleh mekanisme pertahanan. Pada titik ini, seluruh fungsi packer masih berada dalam koridor penelitian karena artefak belum menjalankan aktivitas spyware tingkat lanjut.
+    \item Dropper Download - Tahap 1.4
+        Tahap terakhir dalam alur “after” adalah pengunduhan dropper oleh artefak di sisi target. Proses ini menandai selesainya fase \textit{initial access} dan perpindahan kontrol menuju artefak generasi berikutnya. Secara konseptual, tahap 1.4 penting karena menunjukkan bahwa rangkaian aktivitas mulai dari pengunduhan packer, eksekusi payload \textit{in-memory}, hingga komunikasi dengan server dapat berlangsung tanpa dihentikan oleh \textit{anti-spyware}. Dalam konteks penelitian, keberhasilan mencapai tahap ini menjadi indikator bahwa teknik \textit{packing} dan eksekusi \textit{fileless} yang diimplementasikan pada artefak packer cukup efektif dalam mengurangi visibilitas terhadap mekanisme deteksi, setidaknya hingga batas awal serangan yang dimodelkan.
+\end{enumerate}
+
+\section{Actual Support}
+Pada tahap \textit{Prescriptive Study -- Actual Support}, desain konseptual packer diwujudkan menjadi artefak konkret yang dapat dieksekusi dan diuji pada lingkungan eksperimen. Payload hanya menjalankan instruksi minimal berupa eksekusi systeminfo, pengiriman hasil ke server, serta permintaan pengiriman dropper sebagai tahap selanjutnya dalam skenario multi-tahap. Dengan demikian, \textit{Actual Support} yang dihasilkan bersifat aman, terkendali, dan sepenuhnya digunakan untuk tujuan penelitian ilmiah dalam mengevaluasi kemampuan deteksi \textit{anti-spyware} pada fase \textit{initial access}. Artefak packer yang direalisasikan terdiri atas beberapa modul sebagai berikut.
+
+\subsection{Modul yang Diimplementasikan}
+\begin{enumerate}
+    \item Payload Builder
+
+    Modul ini bertugas mengubah instruksi systeminfo menjadi representasi byte-array yang dapat dienkripsi dan disisipkan ke dalam stub. Proses ini meliputi encoding, kompresi ringan, dan penyiapan struktur payload sehingga dapat diproses oleh \textit{stub loader} pada saat runtime. Modul ini memastikan bahwa payload tidak muncul sebagai kode plaintext pada binary final, sehingga tidak dapat diidentifikasi melalui analisis statis.
+
+    \item Stub Loader
+
+    \textit{Stub loader} merupakan komponen inti yang dieksekusi saat artefak dijalankan pada mesin target. Loader bertanggung jawab untuk merekonstruksi kunci enkripsi, mendekripsi payload sepenuhnya di memori (\textit{in-memory decryption}), serta memulai eksekusi payload tanpa menuliskan file tambahan ke disk. Pendekatan ini dirancang untuk mengeksploitasi kelemahan deteksi berbasis file dan mensimulasikan teknik \textit{fileless execution}.
+
+    \item Sysinfo Executor
+
+    Setelah payload berhasil didekripsi, modul Sysinfo Executor menjalankan instruksi systeminfo melalui mekanisme yang telah ditentukan oleh sistem operasi, tanpa melakukan modifikasi pada konfigurasi OS maupun \textit{registry}. Output systeminfo kemudian diekstraksi dan diformat ke dalam bentuk yang siap dikirimkan ke server. Modul ini berfungsi sebagai \textit{lightweight reconnaissance agent} yang tidak menimbulkan perilaku mencurigakan pada tingkat sistem.
+
+    \item Network Handler
+
+    Modul ini mengelola komunikasi dengan server. Fungsi utamanya meliputi pengiriman data hasil eksekusi systeminfo dan pemanggilan \textit{endpoint} server untuk meminta pengiriman dropper. Modul ini dirancang untuk menghasilkan pola komunikasi \textit{outbound} yang sederhana dan natural, sehingga tidak memicu deteksi berbasis anomali lalu lintas jaringan.
+
+    \item Dropper Downloader
+
+    Setelah menerima respons dari server, modul ini memfasilitasi pengunduhan file dropper sebagai tahap lanjutan dari skenario serangan. Modul bekerja berdasarkan instruksi server dan menjadi titik akhir alur \textit{initial access}. Tidak ada eksekusi dropper yang dilakukan oleh packer pada tahap ini, sehingga artefak tetap berada dalam batasan aman dan non-destruktif.
+\end{enumerate}
+
+\section{Verifikasi Internal dan Rencana Evaluasi}
+Bagian ini menjelaskan mekanisme verifikasi awal terhadap artefak packer untuk memastikan bahwa implementasi Actual Support sesuai dengan desain konseptual (Intended Support) dan siap diuji pada tahap Descriptive Study II (Bab V). Verifikasi dilakukan melalui pengujian internal terhadap performa packer dalam menjalankan fungsinya dan pengamatan terhadap respons awal produk anti-spyware.
+
+\subsubsection{Kriteria Keberhasilan (Internal Success Criteria)}
+
+Kriteria keberhasilan berikut digunakan untuk menentukan apakah artefak packer telah berfungsi sesuai harapan sebelum memasuki evaluasi formal:
+
+\begin{enumerate}
+    \item Kegagalan deteksi pada tahap download (1.2)
+
+    Artefak packer diharapkan tidak terdeteksi sebagai ancaman oleh \textit{anti-spyware} ketika diunduh oleh target. Keberhasilan pada tahap ini menunjukkan bahwa struktur binary hasil \textit{packing} dan \textit{obfuscation} mampu menurunkan efektivitas \textit{signature-based detection} maupun pemindaian statis yang dilakukan pada file yang baru dibuat pada disk.
+
+    \item Payload berhasil dieksekusi secara \textit{in-memory} tanpa menghasilkan peringatan berat
+
+    Kriteria ini mengukur apakah \textit{anti-spyware} dapat mendeteksi aktivitas dekripsi payload dan eksekusinya di memori. Keberhasilan tercapai jika payload dapat dijalankan tanpa menghasilkan blokir proses atau peringatan tingkat tinggi, yang mengindikasikan bahwa mekanisme \textit{fileless execution} efektif dalam menghindari inspeksi statis maupun perilaku umum.
+
+    \item Pengiriman systeminfo berhasil dilakukan
+
+    Setelah payload dieksekusi, hasil systeminfo harus berhasil dikirimkan ke server. Keberhasilan pengiriman menunjukkan bahwa payload dan \textit{network handler} bekerja sesuai rancangan, serta tidak dihentikan oleh mekanisme perlindungan jaringan atau heuristik perilaku.
+
+    \item Server mengirimkan dropper dan artefak berhasil mengunduhnya (1.4)
+
+    Tahap akhir verifikasi adalah keberhasilan artefak menerima respons server berupa dropper dan menginisiasi proses pengunduhan. Hal ini memastikan bahwa keseluruhan alur \textit{initial access} (1.1 hingga 1.4) dapat diselesaikan tanpa interupsi dari \textit{anti-spyware}.
+\end{enumerate}
+
+\subsubsection{Ruang Lingkup Evaluasi}
+
+Rencana evaluasi tidak berfokus pada kerusakan sistem atau fungsionalitas dropper tahap kedua, melainkan menganalisis:
+
+\begin{itemize}
+    \item kemampuan \textit{anti-spyware} dalam mendeteksi artefak pada fase awal infiltrasi,
+    \item efektivitas \textit{packing} dan \textit{in-memory execution} dalam menurunkan deteksi statis dan dinamika awal,
+    \item respons terhadap komunikasi \textit{outbound} minimal,
+    \item ketahanan terhadap pemindaian heuristik selama proses download, eksekusi, dan pengiriman sistem informasi.
+\end{itemize}
+
+Dengan demikian, penelitian ini memosisikan artefak packer sebagai alat evaluatif untuk mengidentifikasi celah deteksi \textit{anti-spyware} pada \textit{initial access}, bukan sebagai malware operasional.
+
+
+
+
+
+
+
+
+

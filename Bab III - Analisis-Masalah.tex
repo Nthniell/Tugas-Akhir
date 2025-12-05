@@ -59,7 +59,7 @@ Kebutuhan fungsional mendefinisikan kapabilitas yang harus dimiliki oleh \textit
     \midrule
     FR-01 & Prototipe harus mampu mengenkripsi \textit{payload} dan menyembunyikan \textit{signature} asli. & CTQ-01\\
     FR-02 & Prototipe harus mampu melakukan pengemasan (\textit{packing}) dan \textit{obfuscation} tingkat tinggi pada \textit{binary} akhir.& CTQ-02\\
-    FR-03 & Prototipe harus mampu menjalankan \textit{payload} secara \textit{fileless} melalui PowerShell. & CTQ-03\\
+    FR-03 & Prototipe harus mampu menjalankan \textit{payload} secara \textit{fileless}. & CTQ-03\\
     FR-04 & Prototipe harus memiliki kemampuan \textit{Initial Access} dan \textit{Persistence} dasar. & CTQ-01, CTQ-03\\
     FR-05 & Prototipe harus mampu mengirimkan sinyal keberhasilan \textit{Initial Access} ke \textit{Server} pengumpul data. & CTQ-01\\
     \bottomrule
@@ -71,7 +71,7 @@ Kebutuhan nonfungsional berfokus pada bagaimana sistem pengujian harus bekerja u
 
 \begin{table}[H]
   \centering
-  \caption{Kebutuhan fungsional (Functional Requirements)\label{tab:NonFunctional-requirement-table}}
+  \caption{Kebutuhan nonfungsional (Non-Functional Requirements)\label{tab:NonFunctional-requirement-table}}
   \begin{tabular}{p{1.2cm}p{6cm}p{3cm}p{2.2cm}}
     \toprule
     \textbf{ID} & \textbf{Kebutuhan} & \textbf{CTQ Terkait}\\
@@ -91,7 +91,7 @@ Dalam upaya mencari solusi yang paling optimal untuk mengatasi permasalahan yang
 
 \begin{table}[H]
   \centering
-  \caption{Kebutuhan fungsional (Functional Requirements)\label{tab:Alternatif-solution-table}}
+  \caption{Alternatif Solusi\label{tab:Alternatif-solution-table}}
   \begin{tabular}{p{1.2cm}p{4.2cm}p{7cm}}
     \toprule
     \textbf{Kode} & \textbf{Solusi Bahasa pemrograman} & \textbf{Pendekatan Utama \textit{(Evasion)}}\\
@@ -104,13 +104,13 @@ Dalam upaya mencari solusi yang paling optimal untuk mengatasi permasalahan yang
 \end{table}
 
 \subsection{Rust}
-Rust adalah bahasa pemrograman sistem yang akan digunakan untuk mengembangkan \textit{Packer}. Bahasa ini dipilih karena mampu menghasilkan \textit{binary} yang sangat efisien dan terkompilasi menjadi \textit{native code}. Kontrol tingkat rendah yang disediakan Rust memungkinkan implementasi manipulasi memori dan panggilan API Windows secara langsung, yang sangat penting untuk teknik \textit{fileless execution} (FR-A3). \textit{Packer} yang dibangun dengan Rust dapat mengenkripsi \textit{payload} (FR-A1) dan memiliki resistensi tinggi terhadap analisis statis (\textit{reverse engineering}), karena minimnya jejak \textit{runtime} yang mudah dideteksi (Potensi \textit{Stealth}).
+Rust adalah bahasa pemrograman sistem yang akan digunakan untuk mengembangkan \textit{Packer}. Bahasa ini dipilih karena mampu menghasilkan \textit{binary} yang sangat efisien dan terkompilasi menjadi \textit{native code}. Kontrol tingkat rendah yang disediakan Rust memungkinkan implementasi manipulasi memori dan panggilan API Windows secara langsung, yang sangat penting untuk teknik \textit{fileless execution} (FR-03). \textit{Packer} yang dibangun dengan Rust dapat mengenkripsi \textit{payload} (FR-01) dan memiliki resistensi tinggi terhadap analisis statis (\textit{reverse engineering}), karena minimnya jejak \textit{runtime} yang mudah dideteksi (Potensi \textit{Stealth}).
 
 \subsection{C/C++}
-C/C++ adalah bahasa pemrograman sistem tradisional yang merupakan standar umum untuk pengembangan alat \textit{low-level}. Penggunaan bahasa ini memungkinkan pengembang untuk memiliki kontrol penuh atas manajemen memori dan akses langsung ke API Windows, yang esensial untuk implementasi \textit{memory injection} dan \textit{fileless execution} (FR-A3). \textit{Packer} yang dikembangkan dengan C/C++ dapat mengkompilasi \textit{payload} menjadi \textit{binary native} yang kuat, menjadikannya alternatif yang efektif untuk menyamarkan \textit{payload} dan melakukan enkripsi tingkat lanjut (FR-A1).
+C/C++ adalah bahasa pemrograman sistem tradisional yang merupakan standar umum untuk pengembangan alat \textit{low-level}. Penggunaan bahasa ini memungkinkan pengembang untuk memiliki kontrol penuh atas manajemen memori dan akses langsung ke API Windows, yang esensial untuk implementasi \textit{memory injection} dan \textit{fileless execution} (FR-03). \textit{Packer} yang dikembangkan dengan C/C++ dapat mengkompilasi \textit{payload} menjadi \textit{binary native} yang kuat, menjadikannya alternatif yang efektif untuk menyamarkan \textit{payload} dan melakukan enkripsi tingkat lanjut (FR-01).
 
 \subsection{Python (PyInstaller)}
-Python adalah bahasa \textit{scripting} tingkat tinggi yang menawarkan kemudahan dan kecepatan dalam pengembangan \textit{payload} dan logika enkripsi sederhana (FR-A1). Ketika dikombinasikan dengan alat \textit{packer} seperti PyInstaller, \textit{script} Python dapat dibungkus menjadi \textit{executable} Windows. Solusi ini memanfaatkan \textit{obfuscation bytecode} dan \textit{packer wrapper} sebagai lapisan pertahanan awal terhadap deteksi \textit{signature-based}. Namun, solusi ini bergantung pada mekanisme \textit{wrapper} yang seringkali kurang stealth dibandingkan kompilasi \textit{low-level} murni.
+Python adalah bahasa \textit{scripting} tingkat tinggi yang menawarkan kemudahan dan kecepatan dalam pengembangan \textit{payload} dan logika enkripsi sederhana (FR-01). Ketika dikombinasikan dengan alat \textit{packer} seperti PyInstaller, \textit{script} Python dapat dibungkus menjadi \textit{executable} Windows. Solusi ini memanfaatkan \textit{obfuscation bytecode} dan \textit{packer wrapper} sebagai lapisan pertahanan awal terhadap deteksi \textit{signature-based}. Namun, solusi ini bergantung pada mekanisme \textit{wrapper} yang seringkali kurang stealth dibandingkan kompilasi \textit{low-level} murni.
 
 \subsection{Analisis Penentuan Solusi}
 Untuk memastikan solusi yang dihasilkan dapat menyelesaikan masalah yang telah diidentifikasi sebelumnya, kriteria desain ditetapkan dengan mempertimbangkan hasil identifikasi masalah dan tujuan solusi. Kriteria ini berfungsi sebagai acuan dalam merancang, mengembangkan, dan mengevaluasi solusi secara sistematis. Tabel \ref{tab:kriteria-desain-table} akan menjelaskan kriteria-kriteria desain tersebut yang akan menjadi dasar dalam menilai keberhasilan artefak yang dikembangkan dalam penelitian ini.

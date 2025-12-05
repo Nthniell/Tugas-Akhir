@@ -3,9 +3,118 @@
 % ==========================================
 \chapter{RENCANA SELANJUTNYA}
 \label{chap:rencana-selanjutnya}
-Jelaskan secara detail langkah-langkah rencana selanjutnya, hal-hal yang diperlukan atau akan disiapkan, dan risiko dan mitigasinya, yang meliputi:
+
+\section{Rencana Implementasi}
+
+Rencana implementasi di sini merujuk pada langkah-langkah praktis dan alat yang diperlukan untuk menyiapkan dan menjalankan lingkungan pengujian prototipe, yang merupakan prasyarat sebelum evaluasi formal (\textit{DS-II}) dapat dimulai.
+
+\subsection{Langkah-langkah Implementasi}
+
+Implementasi dilakukan dalam lingkungan pengujian yang dikontrol (\textit{Controlled Environment}) untuk mengisolasi efek prototipe dari variabel eksternal perancu.
+
+\begin{table}[H]
+\centering
+\caption{Rencana Implementasi Prototipe Stealth}\label{tab:rencana-implementasi}
+\begin{tabular}{|p{3.5cm}|p{6.5cm}|p{4cm}|}
+\hline
+\textbf{Langkah} & \textbf{Justifikasi Metodologis (\textit{DRM})} & \textbf{Alat yang Dibutuhkan} \\ \hline
+
+Persiapan Infrastruktur Laboratorium Host &
+Mengatur Host Windows 11 untuk pengujian (\textit{baseline}).  
+Isolasi dilakukan dengan memutus koneksi jaringan eksternal saat binary dieksekusi, memastikan malware tidak menyebar (\textit{R-1}).  
+Digunakan untuk menjamin \textit{Internal Validity}. &
+Windows 11 Host Fisik. \\ \hline
+
+Instalasi dan Konfigurasi Produk Keamanan (\textit{Target Evaluasi}) &
+Menginstal dan mengaktifkan berbagai produk \textit{Anti-Malware} dan \textit{EDR} komersial yang telah dipilih (misalnya, Produk A, B, dan C) pada Host Windows 11.  
+Konfigurasi keamanan harus ditetapkan pada pengaturan \textit{default} atau konfigurasi yang konsisten. &
+Lisensi Produk Keamanan. \\ \hline
+
+Finalisasi \textit{Actual Support} (Prototipe) &
+Menyuntikkan payload (Prototipe Stealth) ke Host Windows 11.  
+Prototipe diuji fungsionalitas internalnya (\textit{Support Evaluation} dari \textit{Prescriptive Study}) sebelum digunakan dalam evaluasi. &
+\textit{Scripting Environment} (misalnya \textit{PowerShell ISE}, terminal), \textit{Custom Packer/Loader}. \\ \hline
+
+\end{tabular}
+\end{table}
+
+\section{Rencana Evaluasi}
+
+Rencana evaluasi akan membagi proses pengujian menjadi \textit{Application Evaluation} (fokus pada fungsi langsung) dan \textit{Success Evaluation} (fokus pada MSC/dampak keseluruhan), menggunakan desain \textit{quasi-experimental comparative study}.
+
+\subsection{Metode Pengujian: Studi Kuasi-Eksperimental Komparatif}
+
+Metode pengujian menggunakan pendekatan \textit{Blackbox Testing} dan \textit{Whitebox Analysis} di lingkungan virtual:
+
 \begin{enumerate}
-\item	Rencana implementasi, termasuk alat dan bahan yang diperlukan, lingkungan, konfigurasi, biaya, dan sebagainya.
-\item	Desain pengujian dan evaluasi, misalnya metode verifikasi dan validasi.
-\item	Analisis risiko dan mitigasi, misalnya tindakan selanjutnya jika ada yang tidak berjalan sesuai rencana.
+    \item \textit{Blackbox Testing} (Pengujian Fungsionalitas Deteksi)
+    Mengukur status deteksi yang terlihat oleh pengguna atau sistem \textit{anti-spyware} tanpa melihat kode internal. Meliputi:
+    \begin{itemize}
+        \item Deteksi Statis (\textit{Pre-Execution}  
+        Menguji apakah Packer Spyware terdeteksi hanya karena \textit{file signature}.
+        \item Deteksi Dinamis (\textit{Runtime})  
+        Menguji apakah produk keamanan mendeteksi perilaku \textit{in-memory} saat \textit{payload} di-\textit{execute}.
+    \end{itemize}
+
+    \item \textit{Whitebox Analysis} (Validasi Stealth)
+    Mengukur apakah antivirus mendeteksi perilaku runtime ketika stub melakukan dekripsi \textit{in-memory}, \textit{payload} menjalankan systeminfo, \textit{payload} mengirim data ke server.
 \end{enumerate}
+
+\subsection{Kriteria Keberhasilan}
+
+Keberhasilan diukur berdasarkan efektivitas prototipe dalam mengeksploitasi celah yang telah diidentifikasi, melampaui performa \textit{control payload}.
+
+\begin{table}[H]
+\centering
+\caption{Kriteria Keberhasilan dan Indikator Pengukuran}
+\label{tab:success-criteria}
+\begin{tabular}{|p{4.2cm}|p{4.4cm}|p{7cm}|}
+\hline
+Success Criterion (SC) & Measurable Success Criteria (MSC) & Definisi Operasional \& Indikator Pengukuran \\ \hline
+
+SC-1: Keberhasilan \textit{evasion} statis &
+MSC-1: Artefak tidak terdeteksi pada fase download (1.2) &
+Antivirus tidak memblokir atau mengkarantina file saat proses unduhan; hasil \textit{scan} awal menunjukkan status \textit{clean} / \textit{unknown}; \textit{signature-based detection} gagal membaca struktur biner hasil \textit{packing}. \\ \hline
+
+SC-2: Eksekusi \textit{in-memory} berhasil dan tidak menghasilkan \textit{alert} tinggi &
+MSC-2: Payload berhasil didekripsi dan dijalankan sepenuhnya di memori tanpa \textit{alert} tingkat tinggi dari \textit{anti-spyware} &
+\textit{Process Monitor} menunjukkan proses stub berjalan normal; tidak ada pemblokiran \textit{runtime}; antivirus tidak mendeteksi aktivitas dekripsi maupun eksekusi instruksi \textit{systeminfo}. \\ \hline
+
+SC-3: Komunikasi \textit{outbound} berhasil (\textit{sysinfo transmission}) &
+MSC-3: Hasil \textit{systeminfo} terkirim ke server dan diterima dengan benar &
+\textit{Traffic outbound} minimal terlihat stabil; server mencatat log penerimaan data \textit{systeminfo}; \textit{firewall} / EDR tidak memblokir \textit{request}. \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Analisis Risiko}
+
+Risiko-risiko berikut dapat mempengaruhi validitas maupun efisiensi proyek:
+
+\begin{table}[H]
+\centering
+\caption{Analisis Risiko Pengembangan dan Pengujian Prototipe Stealth}\label{tab:analisis-risiko}
+\begin{tabular}{|p{3cm}|p{6cm}|p{6cm}|}
+\hline
+\textbf{Risiko} & \textbf{Deskripsi Risiko} & \textbf{Strategi Mitigasi} \\ \hline
+
+\textit{Accidental Execution} di Host & Binary spyware bocor dan tidak sengaja dieksekusi pada host. & Isolasi penuh VM dan menggunakan \textit{host-only network}. \\ \hline
+
+Deteksi \textit{Anti-Malware} terhadap VM & Produk keamanan mendeteksi lingkungan virtual dan mengubah perilakunya. &
+\textit{VM masking}, standarisasi konfigurasi VM. \\ \hline
+
+Kompleksitas Implementasi Rust &
+\textit{Debugging} low-level membutuhkan waktu lebih lama. &
+Modularisasi dan memanfaatkan \textit{memory safety} Rust. \\ \hline
+
+\textit{False Negative} pada Anti-Spyware &
+Lisensi terbatas mengurangi jumlah produk yang diuji. &
+Menggunakan \textit{trial}, sandbox publik (\textit{VirusTotal}, \textit{Cuckoo}) untuk \textit{pre-screening}. \\ \hline
+
+\end{tabular}
+\end{table}
+
+Dengan metrik-metrik tersebut, proses evaluasi menghasilkan penilaian kuantitatif dan kualitatif terhadap efektivitas Packer Spyware Mode Stealth, terutama dalam evasi \textit{signature}, eksekusi \textit{in-memory}, serta kemampuan menghindari analisis perilaku \textit{anti-spyware}.
+
+
+

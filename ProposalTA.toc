@@ -1,7 +1,7 @@
 \babel@toc {indonesian}{}\relax 
-\contentsline {chapter}{DAFTAR GAMBAR}{iv}{figure.caption.1}%
-\contentsline {chapter}{DAFTAR TABEL}{v}{figure.caption.1}%
-\contentsline {chapter}{\centering \normalsize DAFTAR KODE}{vi}{chapter*.2}%
+\contentsline {chapter}{DAFTAR GAMBAR}{v}{figure.caption.1}%
+\contentsline {chapter}{DAFTAR TABEL}{vi}{figure.caption.1}%
+\contentsline {chapter}{\centering \normalsize DAFTAR KODE}{vii}{chapter*.2}%
 \contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}%
 \contentsline {section}{\numberline {I.1}Latar Belakang}{1}{section.1.1}%
 \contentsline {section}{\numberline {I.2}Rumusan Masalah}{2}{section.1.2}%
@@ -131,8 +131,8 @@
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \contentsline {subsection}{\numberline {II.6.2}\textit {Packer Spyware Mode Stealth}}{16}{subsection.2.6.2}%
-\contentsline {subsection}{\numberline {II.6.3}\textit {Payload} pada \textit {Spyware}}{17}{subsection.2.6.3}%
-\contentsline {section}{\numberline {II.7}Studi Sebelumnya}{17}{section.2.7}%
+\contentsline {subsection}{\numberline {II.6.3}\textit {Payload} pada \textit {Packer Spyware}}{17}{subsection.2.6.3}%
+\contentsline {section}{\numberline {II.7}Studi Sebelumnya}{18}{section.2.7}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 
@@ -174,7 +174,31 @@
 \babel@toc {indonesian}{}\relax 
 \contentsline {subsection}{\numberline {III.3.6}Hasil Analisis Penentuan Solusi}{27}{subsection.3.3.6}%
 \contentsline {chapter}{\numberline {IV}DESAIN KONSEP SOLUSI}{30}{chapter.4}%
-\contentsline {chapter}{\numberline {V}RENCANA SELANJUTNYA}{31}{chapter.5}%
+\contentsline {section}{\numberline {IV.1}Diagram Konseptual}{30}{section.4.1}%
+\contentsline {subsection}{\numberline {IV.1.1}}{30}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {IV.1.2}}{31}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {IV.1.3}}{32}{subsection.4.1.3}%
+\contentsline {section}{\numberline {IV.2}Klarifikasi Tugas Desain}{32}{section.4.2}%
+\contentsline {subsection}{\numberline {IV.2.1}}{32}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {IV.2.2}}{34}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {IV.2.3}Spesifikasi Mesin Uji}{35}{subsection.4.2.3}%
+\contentsline {section}{\numberline {IV.3}Konseptualisasi Arsitektur Solusi}{35}{section.4.3}%
+\contentsline {subsection}{\numberline {IV.3.1}Komponen Arsitektur \textit {Packer}}{35}{subsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {IV.3.1.1}\textit {Stub Packer (Loader)}}{36}{subsubsection.4.3.1.1}%
+\contentsline {subsubsection}{\numberline {IV.3.1.2}\textit {Encrypted Lightweight Payload}}{36}{subsubsection.4.3.1.2}%
+\contentsline {subsection}{\numberline {IV.3.2}Alur \textit {Packer} dengan artefak \textit {Stealth}}{36}{subsection.4.3.2}%
+\contentsline {section}{\numberline {IV.4}Actual Support}{39}{section.4.4}%
+\contentsline {subsection}{\numberline {IV.4.1}Modul yang Diimplementasikan}{39}{subsection.4.4.1}%
+\contentsline {section}{\numberline {IV.5}Verifikasi Internal dan Rencana Evaluasi}{40}{section.4.5}%
+\contentsline {subsubsection}{\numberline {IV.5.0.1}Kriteria Keberhasilan (Internal Success Criteria)}{40}{subsubsection.4.5.0.1}%
+\contentsline {subsubsection}{\numberline {IV.5.0.2}Ruang Lingkup Evaluasi}{41}{subsubsection.4.5.0.2}%
+\contentsline {chapter}{\numberline {V}RENCANA SELANJUTNYA}{42}{chapter.5}%
+\contentsline {section}{\numberline {V.1}Rencana Implementasi}{42}{section.5.1}%
+\contentsline {subsection}{\numberline {V.1.1}Langkah-langkah Implementasi}{42}{subsection.5.1.1}%
+\contentsline {section}{\numberline {V.2}Rencana Evaluasi}{43}{section.5.2}%
+\contentsline {subsection}{\numberline {V.2.1}Metode Pengujian: Studi Kuasi-Eksperimental Komparatif}{43}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {V.2.2}Kriteria Keberhasilan}{44}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {V.2.3}Analisis Risiko}{44}{subsection.5.2.3}%
 \babel@toc {english}{}\relax 
 \babel@toc {indonesian}{}\relax 
 \babel@toc {english}{}\relax 

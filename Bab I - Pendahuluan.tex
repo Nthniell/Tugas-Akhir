@@ -30,8 +30,8 @@ Secara umum, tujuan dari pelaksanaan tugas akhir ini adalah untuk mengukur dan m
 Secara spesifik, tujuan yang ingin dicapai adalah:
 \begin{enumerate}
     \item Menganalisis dan mengidentifikasi teknik-teknik evasi yang paling efektif digunakan oleh \textit{spyware} untuk menghindari deteksi dari \textit{anti-spyware} dan EDR.
-    \item Mengembangkan sebuah prototipe \textit{spyware mode stealth}, termasuk \textit{reverse shell fileless PowerShell}, yang menggabungkan teknik-teknik evasif yang telah diidentifikasi.
-    \item Melakukan pengujian komparatif prototipe \textit{spyware} pada sejumlah produk \textit{anti-spyware} dan EDR komersial untuk mengevaluasi tingkat keberhasilan dan kegagalan deteksi.
+    \item mengembangkan modul \textit{Packer Spyware Mode Stealth} dengan \textit{lightweight payload} untuk \textit{Initial Access}.
+    \item Melakukan pengujian komparatif prototipe \textit{packer spyware mode stealth} pada sejumlah produk \textit{anti-spyware} dan EDR komersial untuk mengevaluasi tingkat keberhasilan dan kegagalan deteksi.
     \item Mendokumentasikan dan mempublikasikan celah keamanan yang ditemukan pada produk \textit{anti-spyware}, serta menyusun rekomendasi mitigasi untuk pengembangan sistem pertahanan yang lebih adaptif dan tangguh.
 \end{enumerate}
 
@@ -50,7 +50,7 @@ Batasan masalah dalam pelaksanaan tugas akhir adalah sebagai berikut:
 \begin{enumerate}
     \item Penelitian ini hanya berfokus pada pengujian kapabilitas deteksi \textit{anti-spyware} terhadap aktivitas awal (\textit{Initial Access}) yang dilakukan oleh \textit{spyware mode stealth} pada sistem operasi \textit{desktop}.	
     \item Evaluasi hanya mencakup perangkat anti \textit{spyware} yang dipilih sesuai kriteria penelitian, tidak membandingkan seluruh produk anti malware yang ada.
-    \item Aktivitas \textit{malware} yang diujikan dibatasi secara ketat pada tahap penyusupan, enkripsi \textit{payload}, \textit{fileless execution}, dan upaya \textit{persistence}.
+    \item Aktivitas \textit{malware} yang diujikan dibatasi secara ketat pada tahap penyusupan, enkripsi \textit{payload} dan \textit{fileless execution}.
     \item Tugas akhir ini dikerjakan secara kelompok dengan anggota penelitian sebagai berikut: 
     \begin{itemize}
         \item Nathaniel Liady
@@ -80,7 +80,7 @@ Metodologi penelitian yang digunakan adalah \textit{Design Research Methodology}
     Pada fase ini, analisis mendalam terhadap masalah yang telah dirumuskan akan dilakukan dengan mengumpulkan data dan informasi yang relevan. Ini mencakup analisis rinci mengenai teknik-teknik evasi canggih, seperti penggunaan \textit{PowerShell} dan obfuscation, untuk memahami bagaimana ancaman ini bekerja dan mengapa mereka sulit dideteksi. Selain itu, studi-studi terdahulu yang telah menguji bypass \textit{antivirus} akan dikaji untuk mendapatkan wawasan mengenai metode dan potensi hasil. Sebagai bagian penting dari fase ini, alur kerja atau arsitektur teknis dari serangan \textit{spyware} akan disusun, yang akan menjelaskan fase-fase seperti \textit{Initial Access, Establish Foothold, Persistence, Data Collection}, dan \textit{Exfiltration}. Diagram alur yang telah ada akan menjadi representasi visual dari arsitektur ini.
     \item \textit{Perspective Study (PS)}
 
-    Fase ini merupakan inti dari DRM, di mana solusi untuk masalah yang telah didefinisikan akan dirancang dan dikembangkan. Artefak yang akan dibuat adalah prototipe \textit{spyware mode stealth} dengan fungsi-fungsi spesifik seperti \textit{keylogging} dan \textit{screen capture}. Desain prototipe akan mengintegrasikan teknik evasi yang telah diidentifikasi pada fase sebelumnya, seperti enkripsi \textit{payload} dan penggunaan PowerShell untuk menjalankan kode langsung di memori. Berbagai modul, termasuk Packer untuk menyamarkan \textit{payload}.
+    Fase ini merupakan inti dari DRM, di mana solusi untuk masalah yang telah didefinisikan akan dirancang dan dikembangkan. Artefak yang akan dibuat adalah prototipe \textit{spyware mode stealth} dengan fungsi-fungsi untuk \textit{initial access}. Desain prototipe akan mengintegrasikan teknik evasi yang telah diidentifikasi pada fase sebelumnya, seperti enkripsi \textit{payload} dan penggunaan PowerShell untuk menjalankan kode langsung di memori. Berbagai modul, termasuk Packer untuk menyamarkan \textit{payload}.
     \item \textit{Descriptive Study II (DS-II)}
     
     Fase terakhir ini bertujuan untuk menguji dan mengevaluasi efektivitas solusi yang telah dikembangkan. Serangkaian pengujian eksperimental akan dilakukan dalam lingkungan virtual yang terisolasi untuk mengukur tingkat deteksi berbagai produk \textit{anti-spyware} terhadap prototipe \textit{spyware}. Hasil pengujian akan dianalisis untuk mengidentifikasi teknik evasi mana yang paling efektif dan mengapa produk keamanan tertentu gagal atau berhasil dalam mendeteksi ancaman. Analisis ini akan memvalidasi temuan awal dan memberikan kontribusi nyata pada pemahaman tentang kerentanan sistem keamanan modern, yang akan menjadi dasar untuk rekomendasi perbaikan dan penelitian lebih lanjut.
